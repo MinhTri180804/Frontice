@@ -5,15 +5,24 @@ Dự án này là một ứng dụng web được xây dựng bằng React, Type
 
 ## Cấu trúc Thư mục
 /src
-├── /components # Chứa các thành phần giao diện
-├── /pages # Chứa các trang của ứng dụng
-├── /services # Chứa các dịch vụ API
-├── /store # Chứa các kho lưu trữ trạng thái
-├── /constant # Chứa các hằng số và đường dẫn
-├── /configs # Chứa cấu hình cho router và các thiết lập khác
-├── /axios # Chứa cấu hình axios
-├── App.tsx # Thành phần chính của ứng dụng
-└── main.tsx # Điểm vào của ứng dụng
+
+   ├── /components # Chứa các thành phần giao diện
+   
+   ├── /pages # Chứa các trang của ứng dụng
+   
+   ├── /services # Chứa các dịch vụ API
+   
+   ├── /store # Chứa các kho lưu trữ trạng thái
+   
+   ├── /constant # Chứa các hằng số và đường dẫn
+   
+   ├── /configs # Chứa cấu hình cho router và các thiết lập khác
+   
+   ├── /axios # Chứa cấu hình axios
+   
+   ├── App.tsx # Thành phần chính của ứng dụng
+   
+   ├── main.tsx # Điểm vào của ứng dụng
 
 ## Các Thành phần Chính
 
