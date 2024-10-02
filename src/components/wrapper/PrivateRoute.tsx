@@ -4,12 +4,13 @@ import { Navigate } from "react-router-dom";
 
 interface PrivateRouteProps {
     children: React.ReactNode;
-    isAuthenticated: boolean;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, isAuthenticated }) => {
+const isAuthenticated: boolean = true
+
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     if (!isAuthenticated) {
-        return <Navigate to={paths.login} replace />;
+        return <Navigate to={paths.login} />;
     }
 
     return <>{children}</>;

@@ -1,37 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { paths } from "../../constant";
-import Home from "../../pages/Home";
-import Login from "../../pages/Login";
-import Register from "../../pages/Register";
-import NotFound from "../../pages/NotFound";
-import PrivateRoute from "./PrivateRoute";
+import {
+    BrowserRouter,
+    useRoutes,
+    RouteObject,
+    Navigate,
+} from "react-router-dom";
+import { LoadingPage } from "../../pages";
+import routes from "../../configs/routes";
+import { AppLayout } from "../layout";
 
-const AppRouter: React.FC = () => {
-    const isAuthenticated = true;
+export interface RouterProps {
+    defaultRoute: string;
+}
+
+export function Routes(props: RouterProps) {
+    const { defaultRoute } = props;
+    const defaultRouteObject: RouteObject = {
+        index: true,
+        path: "/",
+        element: <Navigate to={defaultRoute} />,
+    };
+
+    const elements = useRoutes([defaultRouteObject, ...routes]);
 
     return (
-        <Router>
-            <Routes>
-                <Route path={paths.home} element={<Home />} />
-                <Route path={paths.login} element={<Login />} />
-                <Route path={paths.register} element={<Register />} />
-
-                {/* Route yêu cầu xác thực */}
-                <Route
-                    path="/protected"
-                    element={
-                        <PrivateRoute isAuthenticated={isAuthenticated}>
-                            <h2>Protected Page</h2>
-                        </PrivateRoute>
-                    }
-                />
-
-                <Route path={paths.default} element={<Home />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </Router>
+        <React.Suspense
+            fallback={
+                <AppLayout>
+                    <LoadingPage />
+                </AppLayout>
+            }
+        >
+            {elements}
+        </React.Suspense>
     );
-};
+}
 
-export default AppRouter;
+function Router(props: RouterProps) {
+    return (
+        <BrowserRouter>
+            <Routes {...props} />
+        </BrowserRouter>
+    );
+}
+
+export default Router;

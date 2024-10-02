@@ -1,22 +1,24 @@
 import React from "react";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+import { PrivateRoute } from "../wrapper";
 
 interface AppLayoutProps {
     children: React.ReactNode;
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-    const hideHeaderFooter = ["/login", "/register"].includes(window.location.pathname);
 
     return (
-        <div>
-            {!hideHeaderFooter &&
-                <h2>Header</h2>
-            }
+        <PrivateRoute>
+            <header>
+                <Header />
+            </header>
             <main>{children}</main>
-            {!hideHeaderFooter &&
-                <h2>Footer</h2>
-            }
-        </div>
+            <footer>
+                <Footer />
+            </footer>
+        </PrivateRoute>
     );
 };
 
