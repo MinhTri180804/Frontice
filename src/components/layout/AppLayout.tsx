@@ -2,23 +2,20 @@ import React from "react";
 
 interface AppLayoutProps {
     children: React.ReactNode;
-    hideHeaderFooter?: boolean;
 }
 
-const AppLayout: React.FC<AppLayoutProps> = ({ children, hideHeaderFooter }) => {
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+    const hideHeaderFooter = ["/login", "/register"].includes(window.location.pathname);
+
     return (
         <div>
-            {!hideHeaderFooter && (
-                <header>
-                    <h1>Header</h1>
-                </header>
-            )}
+            {!hideHeaderFooter &&
+                <h2>Header</h2>
+            }
             <main>{children}</main>
-            {!hideHeaderFooter && (
-                <footer>
-                    <p>Footer</p>
-                </footer>
-            )}
+            {!hideHeaderFooter &&
+                <h2>Footer</h2>
+            }
         </div>
     );
 };
