@@ -1,10 +1,15 @@
-function App() {
+import React from "react";
+import AppRouter from "./components/wrapper/Router";
+import AppLayout from "./components/layout/AppLayout";
+
+const App: React.FC = () => {
+  const hideHeaderFooter = window.location.pathname === "/login" || window.location.pathname === "/register";
 
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  )
-}
+    <AppLayout hideHeaderFooter={hideHeaderFooter}>
+      <AppRouter />
+    </AppLayout>
+  );
+};
 
-export default App
+export default App;
