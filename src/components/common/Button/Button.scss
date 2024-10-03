@@ -107,8 +107,8 @@
     color: $BTN-secondary-default-text;
   }
   &.tertiary {
-    background-color: $BTN-secondary-default-bg;
+    background-color: $BTN-tertiary-default-bg; //TODO:THAY DOI MAU
     border: none !important;
-    color: $BTN-secondary-default-text;
+    color: $BTN-tertiary-default-text;
   }
 }
