@@ -92,6 +92,6 @@
 }
 .button-container.tertiary {
   background-color: transparent;
-  border: none !important;
+  border: 1px solid transparent;
   color: #5250f7;
 }
