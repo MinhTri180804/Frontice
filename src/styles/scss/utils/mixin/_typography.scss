@@ -1,0 +1,184 @@
+// Typography font BeVietNamPro mixin define
+
+// Custom
+@mixin typography_BVNPro-custom(
+  $fontWeight: 400,
+  $fontSize: 18px,
+  $lineHeight: auto
+) {
+  font-family: 'BeVietNamPro';
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+// -- for desktop screen
+@mixin typography_BVNPro-desktop-h1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 125%;
+}
+
+@mixin typography_BVNPro-desktop-h2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-desktop-h3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-desktop-h4() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+}
+
+@mixin typography_BVNPro-desktop-h5() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+}
+
+@mixin typography_BVNPro-desktop-body-1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+}
+
+@mixin typography_BVNPro-desktop-body-2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+@mixin typography_BVNPro-desktop-body-3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: auto;
+}
+
+// -- for tablet screen
+@mixin typography_BVNPro-tablet-h1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+}
+
+@mixin typography_BVNPro-tablet-h2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-tablet-h3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-tablet-h4() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+@mixin typography_BVNPro-tablet-h5() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-tablet-body-1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+@mixin typography_BVNPro-tablet-body-2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+@mixin typography_BVNPro-tablet-body-3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+}
+
+// -- for mobile screen
+@mixin typography_BVNPro-mobile-h1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+}
+
+@mixin typography_BVNPro-mobile-h2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-mobile-h3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-mobile-h4() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+}
+
+@mixin typography_BVNPro-mobile-h5() {
+  font-family: 'BeVietNamPro';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 135%;
+}
+
+@mixin typography_BVNPro-mobile-body-1() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+@mixin typography_BVNPro-mobile-body-2() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+@mixin typography_BVNPro-mobile-body-3() {
+  font-family: 'BeVietNamPro';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+}
