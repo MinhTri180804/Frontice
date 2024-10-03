@@ -1,0 +1,16 @@
+@use './styles/scss/_flex-grid.scss' as *;
+@use './styles/scss/global-style' as *;
+
+html {
+  font-family: 'BeVietNamPro';
+}
+
+.testing {
+  font-size: 50px;
+  font-weight: 800 !important;
+  font-style: normal;
+}
+
+@container style(--isNew: true) {
+    
+}
