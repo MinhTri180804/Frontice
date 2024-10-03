@@ -173,6 +173,8 @@ $BTN-primary-disabled-bg: #dcdcfd;
 $BTN-primary-disabled-text: #bab9fc;
 $BTN-primary-disabled-stroke: #dcdcfd;
 
+// --------------------------
+
 // -- secondary - default
 $BTN-secondary-default-bg: transparent;
 $BTN-secondary-default-text: #5250f7;
@@ -202,3 +204,75 @@ $BTN-secondary-click-stroke: #313094;
 $BTN-secondary-disabled-bg: transparent;
 $BTN-secondary-disabled-text: #bab9fc;
 $BTN-secondary-disabled-stroke: #dcdcfd;
+
+// ---------------------------
+
+// -- Tertiary - default
+$BTN-tertiary-default-bg: transparent;
+$BTN-tertiary-default-text: #5250f7;
+$BTN-tertiary-default-stroke: transparent;
+
+// -- Tertiary - hover
+$BTN-tertiary-hover-bg: transparent;
+$BTN-tertiary-hover-text: #9796fa;
+$BTN-tertiary-hover-stroke: transparent;
+
+// -- Tertiary - focus
+$BTN-tertiary-focus-bg: transparent;
+$BTN-tertiary-focus-text: #5250f7;
+$BTN-tertiary-focus-stroke: #313094;
+
+// -- Tertiary - active
+$BTN-tertiary-active-bg: transparent;
+$BTN-tertiary-active-text: #5250f7;
+$BTN-tertiary-active-stroke: transparent;
+
+// -- Tertiary - click
+$BTN-tertiary-click-bg: transparent;
+$BTN-tertiary-click-text: #313094;
+$BTN-tertiary-click-stroke: #313094;
+
+// -- Tertiary - disabled
+$BTN-tertiary-disabled-bg: transparent;
+$BTN-tertiary-disabled-text: #313094;
+$BTN-tertiary-disabled-stroke: transparent;
+
+// Fields Color define
+
+$FIELD-form: #f7f7fd;
+$FIELD-title: #1b1d21;
+$FIELD-text: #494a4d;
+$FIELD-description: #a4a5a6;
+$FIELD-stroke-hover: #7573f9;
+$FIELD-stroke-focused: #5250f7;
+$FIELD-text-disabled: #dcdcfd;
+$FIELD-stroke-validation: #ffd482;
+$FIELD-bg-validation: #fffbf4;
+$FIELD-stroke-loading: #a9ccff;
+$FIELD-bg-error: #a9ccff;
+$FIELD-stroke-error: #ea5b33;
+$FIELD-stroke: #a4a5a6;
+$FIELD-placeholder: #a4a5a6;
+$FILED-stroke-success: #16975d;
+
+// Notification Color define
+
+// -- information
+$NOTIFICATION-information-bg: #bab9fc;
+$NOTIFICATION-information-text: #1b1d21;
+$NOTIFICATION-information-stroke: #5250f7;
+
+// -- error
+$NOTIFICATION-error-bg: rgba(247, 189, 173, 0.3);
+$NOTIFICATION-error-text: #1b1d21;
+$NOTIFICATION-error-stroke: #ea5b33;
+
+// -- success
+$NOTIFICATION-success-bg: rgba(164, 229, 199, 0.3);
+$NOTIFICATION-success-text: #1b1d21;
+$NOTIFICATION-success-stroke: #1cbd74;
+
+// -- warning
+$NOTIFICATION-warning-bg: #ffe3ab;
+$NOTIFICATION-warning-text: #1b1d21;
+$NOTIFICATION-warning-stroke: #ffb82e;

@@ -1,73 +1,73 @@
-@use './_variables.scss' as variables;
+// @use './_variables.scss' as variables;
 
-@mixin typography__heading($level, $font-weight, $line-height: auto) {
-  font-family: variables.$font-family-montserrat;
-  @if $level == 1 {
-    font-size: variables.$font-size-heading-1;
-  } @else if $level == 2 {
-    font-size: variables.$font-size-heading-2;
-  } @else if $level == 3 {
-    font-size: variables.$font-size-heading-3;
-  } @else if $level == 4 {
-    font-size: variables.$font-size-heading-4;
-  } @else if $level == 5 {
-    font-size: variables.$font-size-heading-5;
-  }
-  font-weight: $font-weight;
-  line-height: $line-height;
-}
+// @mixin typography__heading($level, $font-weight, $line-height: auto) {
+//   font-family: variables.$font-family-montserrat;
+//   @if $level == 1 {
+//     font-size: variables.$font-size-heading-1;
+//   } @else if $level == 2 {
+//     font-size: variables.$font-size-heading-2;
+//   } @else if $level == 3 {
+//     font-size: variables.$font-size-heading-3;
+//   } @else if $level == 4 {
+//     font-size: variables.$font-size-heading-4;
+//   } @else if $level == 5 {
+//     font-size: variables.$font-size-heading-5;
+//   }
+//   font-weight: $font-weight;
+//   line-height: $line-height;
+// }
 
-@mixin typography__heading-1($font-weight) {
-  @include typography__heading(1, $font-weight);
-}
+// @mixin typography__heading-1($font-weight) {
+//   @include typography__heading(1, $font-weight);
+// }
 
-@mixin typography__heading-2($font-weight) {
-  @include typography__heading(2, $font-weight, 130%);
-}
+// @mixin typography__heading-2($font-weight) {
+//   @include typography__heading(2, $font-weight, 130%);
+// }
 
-@mixin typography__heading-3($font-weight) {
-  @include typography__heading(3, $font-weight, 34px);
-}
+// @mixin typography__heading-3($font-weight) {
+//   @include typography__heading(3, $font-weight, 34px);
+// }
 
-@mixin typography__heading-4($font-weight) {
-  @include typography__heading(4, $font-weight, 28px);
-}
+// @mixin typography__heading-4($font-weight) {
+//   @include typography__heading(4, $font-weight, 28px);
+// }
 
-@mixin typography__heading-5($font-weight) {
-  @include typography__heading(5, $font-weight);
-}
+// @mixin typography__heading-5($font-weight) {
+//   @include typography__heading(5, $font-weight);
+// }
 
-@mixin typography__menu() {
-  font-family: variables.$font-family-montserrat;
-  font-size: variables.$font-size-menu;
-  font-weight: 600;
-  line-height: 20px;
-}
+// @mixin typography__menu() {
+//   font-family: variables.$font-family-montserrat;
+//   font-size: variables.$font-size-menu;
+//   font-weight: 600;
+//   line-height: 20px;
+// }
 
-@mixin typography__additional($font-weight) {
-  font-family: variables.$font-family-montserrat;
-  font-size: variables.$font-size-additional;
-  font-weight: 400;
-  line-height: auto;
-}
+// @mixin typography__additional($font-weight) {
+//   font-family: variables.$font-family-montserrat;
+//   font-size: variables.$font-size-additional;
+//   font-weight: 400;
+//   line-height: auto;
+// }
 
-@mixin typography__sub-title($font-weight: 400) {
-  font-family: variables.$font-family-raleway;
-  font-weight: $font-weight;
-  font-size: variables.$font-size-sub-title;
-  line-height: 38px;
-}
+// @mixin typography__sub-title($font-weight: 400) {
+//   font-family: variables.$font-family-raleway;
+//   font-weight: $font-weight;
+//   font-size: variables.$font-size-sub-title;
+//   line-height: 38px;
+// }
 
-@mixin typography__main($font-weight) {
-  font-family: variables.$font-family-raleway;
-  font-weight: $font-weight;
-  font-size: variables.$font-size-main;
-  line-height: 24px;
-}
+// @mixin typography__main($font-weight) {
+//   font-family: variables.$font-family-raleway;
+//   font-weight: $font-weight;
+//   font-size: variables.$font-size-main;
+//   line-height: 24px;
+// }
 
-@mixin typography__small($font-weight) {
-  font-family: variables.$font-family-raleway;
-  font-size: variables.$font-size-small;
-  font-weight: $font-weight;
-  line-height: 18px;
-}
+// @mixin typography__small($font-weight) {
+//   font-family: variables.$font-family-raleway;
+//   font-size: variables.$font-size-small;
+//   font-weight: $font-weight;
+//   line-height: 18px;
+// }

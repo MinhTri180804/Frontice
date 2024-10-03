@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from "react-toastify";
-import {
-  QueryProvider,
-  Router,
-} from "./components/wrapper"
-import { paths } from "./constant";
+import { ToastContainer } from 'react-toastify';
+import { QueryProvider, Router } from './components/wrapper';
+import { paths } from './constant';
+import './app.scss';
 
 const App: React.FC = () => {
   return (
