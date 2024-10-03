@@ -3,17 +3,18 @@ import './Input.scss'
 
 interface InputProps {
     title?: string;
+    width?: 'small' | 'medium' | 'large';
     type: string;
-    placeholder: string;
+    placeholder?: string;
     required?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({ ...props }) => {
 
-    const { title, type, placeholder, required } = props
+    const { title, type, placeholder, required, width } = props
 
     return (
-        <div className='input-container'>
+        <div className={`input-container ${width}`}>
             {title &&
                 <label>
                     {title} {required && <span style={{ color: 'red' }}>*</span>}
