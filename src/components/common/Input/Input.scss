@@ -1,57 +1,98 @@
 @use '../../../styles/scss/utils/variables/' as *;
+@use '../../../styles/scss/utils/mixin/typography' as *;
 
-.input-container {
+.input__component {
   display: flex;
   flex-direction: column;
   gap: 8px;
   position: relative;
+  &.success {
+    & > .input__component-container {
+      border-color: $FILED-stroke-success;
 
-  label {
-    color: #1e1e1e;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 160%;
+      & > .icon {
+        & > svg {
+          fill: $FILED-stroke-success;
+        }
+      }
+    }
   }
 
-  input {
-    box-sizing: border-box;
+  &.error {
+    & > .input__component-container {
+      border-color: $FIELD-stroke-error;
+
+      & > .icon {
+        & > svg {
+          fill: $FIELD-stroke-error;
+        }
+      }
+    }
+  }
+
+  & > label {
+    @include typography_field_title();
+    color: $FIELD-title;
+    text-transform: capitalize;
+  }
+
+  .input__component-container {
+    cursor: text;
+    position: relative;
+    width: 100%;
     padding: 10px 20px;
     border-radius: 8px;
     border: 1px solid grey;
     background-color: #fff;
-  }
+    transition:
+      border-color $input_transition_time_duration ease-in-out,
+      outline-color $input_transition_time_duration ease-in-out;
+    box-sizing: border-box;
+    &:hover {
+      border-color: $FIELD-stroke-hover;
 
-  .icon {
-    position: absolute;
-    bottom: 6px;
-    right: 6px;
-    height: 24px;
-    width: 24px;
-  }
+      & > .icon {
+        & > svg {
+          fill: $FIELD-stroke-hover;
+        }
+      }
+    }
 
-  &.large {
-    input {
+    &:focus-within {
+      border-color: $FIELD-stroke-focused !important;
+
+      & > .icon {
+        & > svg {
+          fill: $FIELD-stroke-focused;
+        }
+      }
+    }
+
+    &:has(.icon) {
+      width: calc(100% - 24px);
+    }
+
+    & > input {
       width: 100%;
-    }
-  }
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      @include typography_field_value();
 
-  &.medium {
-    input {
-      width: 50%;
-    }
-
-    .icon {
-      right: 780px;
-    }
-  }
-
-  &.small {
-    input {
-      width: 30%;
+      &::placeholder {
+        @include typography_field_placeholder();
+        color: $FIELD-placeholder;
+        text-transform: capitalize;
+      }
     }
 
-    .icon {
-      right: 1100px;
+    & > .icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 16px;
+      height: 24px;
+      width: 24px;
     }
   }
 }
