@@ -110,3 +110,43 @@
 @mixin typography_BVNPro-mobile-body-3() {
   @include typography_BVNPro-custom(400, 12px, 140%);
 }
+
+// Typography of Button and Link define
+
+// -- of button size large
+@mixin typography_button_large() {
+  @include typography_BVNPro-custom(400, 20px, 24);
+}
+
+// -- of button size normal
+@mixin typography_button_normal() {
+  @include typography_BVNPro-custom(400, 20px, 24);
+}
+
+// -- of button size medium
+@mixin typography_button_medium() {
+  @include typography_BVNPro-custom(400, 16px, 20);
+}
+
+// -- of button size small
+@mixin typography_button_small() {
+  @include typography_BVNPro-custom(400, 14px, 16);
+}
+
+// -- of button size extra small
+@mixin typography_button_extraSmall() {
+  @include typography_BVNPro-custom(400, 14px, 16);
+}
+
+// Typography of fields
+@mixin typography_field_title() {
+  @include typography_BVNPro-custom(400, 18px, 160%);
+}
+
+@mixin typography_field_placeholder() {
+  @include typography_BVNPro-custom(400, 16px, 24);
+}
+
+@mixin typography_field_description() {
+  @include typography_BVNPro-custom(300, 12px, 16);
+}
