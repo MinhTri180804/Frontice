@@ -1,58 +1,57 @@
-@use '../../../styles/scss/utils/variables/'as variables;
+@use '../../../styles/scss/utils/variables/' as *;
 
 .input-container {
-    display       : flex;
-    flex-direction: column;
-    gap           : 8px;
-    position      : relative;
-    border        : 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
 
-    label {
-        color      : #1E1E1E;
-        font-size  : 18px;
-        font-weight: 400;
-        line-height: 160%;
-    }
+  label {
+    color: #1e1e1e;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 160%;
+  }
 
+  input {
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    background-color: #fff;
+  }
+
+  .icon {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    height: 24px;
+    width: 24px;
+  }
+
+  &.large {
     input {
-        box-sizing      : border-box;
-        padding         : 10px 20px;
-        border-radius   : 8px;
-        border          : 1px solid grey;
-        background-color: #fff;
+      width: 100%;
+    }
+  }
+
+  &.medium {
+    input {
+      width: 50%;
     }
 
     .icon {
-        position: absolute;
-        bottom  : 6px;
-        right   : 6px;
-        height  : 24px;
-        width   : 24px;
+      right: 780px;
+    }
+  }
+
+  &.small {
+    input {
+      width: 30%;
     }
 
-    &.large {
-        input {
-            width: 100%;
-        }
+    .icon {
+      right: 1100px;
     }
-
-    &.medium {
-        input {
-            width: 50%;
-        }
-
-        .icon {
-            right: 780px;
-        }
-    }
-
-    &.small {
-        input {
-            width: 30%;
-        }
-
-        .icon {
-            right: 1100px;
-        }
-    }
+  }
 }
