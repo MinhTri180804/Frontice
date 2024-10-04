@@ -257,22 +257,34 @@ $FILED-stroke-success: #16975d;
 
 // Notification Color define
 
-// -- information
-$NOTIFICATION-information-bg: #bab9fc;
-$NOTIFICATION-information-text: #1b1d21;
-$NOTIFICATION-information-stroke: #5250f7;
+// -- Information
+$NOTIFICATION-information-bg-white: #f5f9ff;
+$NOTIFICATION-information-bg: linear-gradient(
+  94deg,
+  #2d82b2 -6.52%,
+  #329abb 108.61%
+);
+$NOTIFICATION-information-stroke: #7bcfed;
 
-// -- error
-$NOTIFICATION-error-bg: rgba(247, 189, 173, 0.3);
-$NOTIFICATION-error-text: #1b1d21;
-$NOTIFICATION-error-stroke: #ea5b33;
+// -- Error
+$NOTIFICATION-error-bg-white: #fff5f3;
+$NOTIFICATION-error-bg: linear-gradient(95deg, #f6743e -6.96%, #d42525 108.25%);
+$NOTIFICATION-error-stroke: #f0863a;
 
-// -- success
-$NOTIFICATION-success-bg: rgba(164, 229, 199, 0.3);
-$NOTIFICATION-success-text: #1b1d21;
-$NOTIFICATION-success-stroke: #1cbd74;
+// -- Success
+$NOTIFICATION-success-bg-white: #f6fff9;
+$NOTIFICATION-success-bg: linear-gradient(
+  95deg,
+  #32bb71 15.3%,
+  #2a9d8f 113.45%
+);
+$NOTIFICATION-success-stroke: #43d590;
 
-// -- warning
-$NOTIFICATION-warning-bg: #ffe3ab;
-$NOTIFICATION-warning-text: #1b1d21;
-$NOTIFICATION-warning-stroke: #ffb82e;
+// -- Warning
+$NOTIFICATION-warning-bg-white: #fff8ec;
+$NOTIFICATION-warning-bg: linear-gradient(
+  93deg,
+  #f8b806 -30.52%,
+  #ff8c04 123.88%
+);
+$NOTIFICATION-warning-stroke: #ffdf8d;
