@@ -4,6 +4,8 @@
     display       : flex;
     flex-direction: column;
     gap           : 8px;
+    position      : relative;
+    border        : 1px solid;
 
     label {
         color      : #1E1E1E;
@@ -20,6 +22,14 @@
         background-color: #fff;
     }
 
+    .icon {
+        position: absolute;
+        bottom  : 6px;
+        right   : 6px;
+        height  : 24px;
+        width   : 24px;
+    }
+
     &.large {
         input {
             width: 100%;
@@ -30,11 +40,19 @@
         input {
             width: 50%;
         }
+
+        .icon {
+            right: 780px;
+        }
     }
 
     &.small {
         input {
             width: 30%;
+        }
+
+        .icon {
+            right: 1100px;
         }
     }
 }
