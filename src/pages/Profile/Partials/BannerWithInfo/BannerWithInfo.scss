@@ -1,0 +1,11 @@
+@use '../../../../styles/scss/flex-grid' as *;
+.banner-with-info {
+  figure {
+    figcaption {
+      .user-header {
+        .action {
+        }
+      }
+    }
+  }
+}
