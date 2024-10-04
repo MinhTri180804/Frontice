@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   required?: boolean;
   status?: 'default' | 'error' | 'success' | 'loading';
+  message?: string;
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
     placeholder = 'placeholder content',
     required,
     Icon,
+    message,
     status = 'default',
   } = props;
 
@@ -42,6 +44,7 @@ const Input: React.FC<InputProps> = ({ ...props }) => {
           </div>
         )}
       </div>
+      {message && <div className={`message ${status}`}> message</div>}
     </div>
   );
 };

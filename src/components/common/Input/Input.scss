@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  height: 100%;
+  width: 100%;
   position: relative;
   &.success {
     & > .input__component-container {
@@ -30,13 +32,25 @@
     }
   }
 
+  &.loading {
+    & > .input__component-container {
+      border-color: $FIELD-stroke-loading;
+
+      & > .icon {
+        & > svg {
+          fill: $FIELD-stroke-loading;
+        }
+      }
+    }
+  }
+
   & > label {
     @include typography_field_title();
     color: $FIELD-title;
     text-transform: capitalize;
   }
 
-  .input__component-container {
+  & > .input__component-container {
     cursor: text;
     position: relative;
     width: 100%;
@@ -93,6 +107,26 @@
       right: 16px;
       height: 24px;
       width: 24px;
+    }
+  }
+
+  & > .message {
+    @include typography_field_description();
+    width: fit-content;
+    height: fit-content;
+    color: $FIELD-description;
+    transition: color $input_transition_time_duration ease-in-out;
+
+    &.error {
+      color: $FIELD-stroke-error;
+    }
+
+    &.success {
+      color: $FILED-stroke-success;
+    }
+
+    &.loading {
+      color: $FIELD-stroke-loading;
     }
   }
 }
