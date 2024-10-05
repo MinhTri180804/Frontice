@@ -31,6 +31,7 @@
 
   & > .content {
     width: 100%;
+    // TODO: Implement mixin flex scss in here
     display: flex;
     justify-content: center;
     align-items: start;
@@ -39,6 +40,7 @@
 
     & > .method__social {
       width: 100%;
+      // TODO: Implement mixin flex scss in here
       display: flex;
       justify-content: center;
       align-items: center;
@@ -47,6 +49,7 @@
 
     & > .or {
       width: 100%;
+      // TODO: Implement mixin flex scss in here
       display: flex;
       justify-content: center;
       align-items: center;
@@ -55,13 +58,56 @@
       @include typography_BVNPro-desktop-body-3();
     }
 
-    & > .form {
+    & > .main__content {
+      width: 100%;
       display: flex;
-      justify-content: flex-start;
-      align-items: start;
+      justify-content: start;
+      align-items: center;
       flex-direction: column;
       gap: 16px;
-      width: 100%;
+      & > .form {
+        // TODO: Implement mixin flex scss in here
+        display: flex;
+        justify-content: flex-start;
+        align-items: start;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+
+        & > .options {
+          // TODO: Implement mixin flex scss in here
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-transform: capitalize;
+          text-decoration: underline;
+
+          & > .forgot-password {
+            @include typography_BVNPro-desktop-body-3();
+            color: $TEXT-black;
+          }
+        }
+      }
+
+      & > .other {
+        // TODO: implement mixin flex scss in here
+
+        & > span {
+          @include typography_BVNPro-desktop-body-3();
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          gap: 4px;
+          color: $TEXT-black;
+
+          & > a {
+            color: $TEXT-black;
+            text-decoration: underline;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }

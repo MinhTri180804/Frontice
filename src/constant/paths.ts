@@ -11,6 +11,7 @@ const instance: PathType = {
   auth: '/auth',
   login: 'login',
   register: 'register',
+  forgotPassword: 'forgot-password',
 
   // protected path
   profile: '/profile',
