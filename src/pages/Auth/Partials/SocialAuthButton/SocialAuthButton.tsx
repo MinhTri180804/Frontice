@@ -1,15 +1,28 @@
 import { FC } from 'react';
+import './socialAuthButton.scss';
+import { GithubLogo, GoogleLogo } from '../../../../assets/images';
 
 interface ISocialAuthButtonProps {
-  mock: string;
+  social: 'github' | 'google';
+  eventClick: () => void;
 }
 
-const SocialAuthButton: FC<ISocialAuthButtonProps> = ({ mock }) => {
-  console.log(mock);
+const SocialAuthButton: FC<ISocialAuthButtonProps> = ({
+  social,
+  eventClick,
+}) => {
+  const handleClick: () => void = () => {
+    eventClick();
+  };
+
   return (
-    <div>
-      <div>This is button social auth button</div>
-    </div>
+    <button className="social__auth-button" onClick={handleClick}>
+      <div className="logo">
+        {social === 'github' && <img src={GithubLogo} />}
+        {social === 'google' && <img src={GoogleLogo} />}
+      </div>
+      <div className="name">{social}</div>
+    </button>
   );
 };
 

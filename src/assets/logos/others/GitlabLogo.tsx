@@ -22,4 +22,4 @@ const GitlabLogo: FC<GitlabLogoPropsType> = ({ width = 24, height = 24 }) => {
   );
 };
 
-export { GitlabLogo };
+export default GitlabLogo;

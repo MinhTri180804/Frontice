@@ -31,4 +31,4 @@ const GoogleLogo: FC<GoogleLogoPropsType> = ({ width = 24, height = 24 }) => {
   );
 };
 
-export { GoogleLogo };
+export default GoogleLogo;

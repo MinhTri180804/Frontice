@@ -18,4 +18,5 @@ const CodesandboxLogo: FC<CodesandboxLogoPropsType> = ({
     </svg>
   );
 };
-export { CodesandboxLogo };
+
+export default CodesandboxLogo;
