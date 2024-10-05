@@ -16,4 +16,4 @@ const LinkedinLogo: FC<LinkedinLogoPropsType> = ({ width, height }) => {
   );
 };
 
-export { LinkedinLogo };
+export default LinkedinLogo;

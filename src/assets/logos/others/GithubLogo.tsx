@@ -14,4 +14,4 @@ const GithubLogo: FC<GithubLogoPropsType> = ({ width = 24, height = 24 }) => {
   );
 };
 
-export { GithubLogo };
+export default GithubLogo;

@@ -1,0 +1,19 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 600px;
+  margin: 0 auto;
+
+  &-col {
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 12px;
+    width: 600px;
+    margin: 0 auto;
+  }
+}

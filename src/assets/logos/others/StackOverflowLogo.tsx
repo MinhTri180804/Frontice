@@ -46,4 +46,4 @@ const StackOverflowLogo: FC<StackOverflowLogoPropsType> = ({
   );
 };
 
-export { StackOverflowLogo };
+export default StackOverflowLogo;

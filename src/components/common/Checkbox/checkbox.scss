@@ -7,7 +7,7 @@
 .checkbox-wrapper-4 {
   & > .cbx span {
     &:last-child {
-      @include typography_BVNPro-mobile-body-2();
+      @include typography_BVNPro-desktop-body-3();
       color: $TEXT-black;
     }
 
@@ -54,7 +54,10 @@
   border-radius: 6px;
   overflow: hidden;
   transition: all 0.2s ease;
-  display: inline-block;
+  // TODO: Implement mixin flex scss in here
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .checkbox-wrapper-4 .cbx:not(:last-child) {
   margin-right: 6px;
@@ -69,8 +72,8 @@
 }
 .checkbox-wrapper-4 .cbx span:first-child {
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   border-radius: 4px;
   transform: scale(1);
   border: 1px solid #cccfdb;
@@ -79,8 +82,8 @@
 }
 .checkbox-wrapper-4 .cbx span:first-child svg {
   position: absolute;
-  top: 3px;
-  left: 2px;
+  top: 6px;
+  left: 5px;
   fill: none;
   stroke: #fff;
   stroke-width: 2;

@@ -1,18 +1,20 @@
 type PathType = {
-    [key: string]: string;
+  [key: string]: string;
 };
 
 const instance: PathType = {
-    // default path
-    default: "/",
-    home: "/home",
+  // default path
+  default: '/',
+  home: '/home',
 
-    // auth path
-    login: "/login",
-    register: "/register",
+  // auth path
+  auth: '/auth',
+  login: 'login',
+  register: 'register',
+  forgotPassword: 'forgot-password',
 
-    // protected path
-    profile: "/profile"
+  // protected path
+  profile: '/profile',
 };
 
 export default instance;
