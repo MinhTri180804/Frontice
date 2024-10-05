@@ -26,4 +26,4 @@ const SocialAuthButton: FC<ISocialAuthButtonProps> = ({
   );
 };
 
-export { SocialAuthButton };
+export default SocialAuthButton;
