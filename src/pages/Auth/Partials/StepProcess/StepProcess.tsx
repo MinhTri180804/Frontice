@@ -6,14 +6,14 @@ interface IStepProcessProps {
   stepNumber: string | number;
   stepContent: string;
   isActive: boolean;
-  eventClick: () => void;
+  eventClick?: () => void;
 }
 
 const StepProcess: FC<IStepProcessProps> = ({
   stepContent,
   stepNumber,
   isActive,
-  eventClick,
+  eventClick = () => {},
 }) => {
   // Define className condition for component
   const stepProcessClass = classNames({

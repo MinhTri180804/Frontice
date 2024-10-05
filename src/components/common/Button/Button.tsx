@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
           <Icon />
         </div>
       )}
-      <div>{label}</div>
+      <div className="label">{label}</div>
       {iconPosition == 'right' && Icon && (
         <div className="icon">
           <Icon />

@@ -1,0 +1,67 @@
+@use '../../../styles/scss/utils' as *;
+
+.login__page-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-direction: column;
+
+  & > .heading {
+    width: 100%;
+    // TODO: implement mixin flex in here
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    & > .title {
+      @include typography_BVNPro-desktop-h4();
+      color: $TEXT-black;
+      text-align: center;
+    }
+
+    & > .sub-title {
+      @include typography_BVNPro-desktop-body-2();
+      color: $TEXT-black;
+      text-align: center;
+    }
+  }
+
+  & > .content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    flex-direction: column;
+
+    & > .method__social {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    & > .or {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      @include typography_BVNPro-desktop-body-3();
+    }
+
+    & > .form {
+      display: flex;
+      justify-content: flex-start;
+      align-items: start;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+  }
+}
