@@ -3,36 +3,48 @@ import './Input.scss';
 
 interface InputProps {
   label?: string;
-  size?: 'small' | 'medium' | 'large';
-  type: string;
+  type?: string;
   placeholder?: string;
   required?: boolean;
+  status?: 'default' | 'error' | 'success' | 'loading';
+  message?: string;
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 const Input: React.FC<InputProps> = ({ ...props }) => {
   const idInput = useId();
 
-  const { label, type, placeholder, required, size, Icon } = props;
+  const {
+    label,
+    type = 'text',
+    placeholder = 'placeholder content',
+    required,
+    Icon,
+    message,
+    status = 'default',
+  } = props;
 
   return (
-    <div className={`input-container ${size}`}>
+    <div className={`input__component ${status} `}>
       {label && (
         <label htmlFor={idInput}>
           {label} {required && <span style={{ color: 'red' }}>*</span>}
         </label>
       )}
-      <input
-        id={idInput}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-      />
-      {Icon && (
-        <div className="icon">
-          <Icon />
-        </div>
-      )}
+      <div className="input__component-container">
+        <input
+          id={idInput}
+          type={type}
+          placeholder={placeholder}
+          required={required}
+        />
+        {Icon && (
+          <div className="icon">
+            <Icon />
+          </div>
+        )}
+      </div>
+      {message && <div className={`message ${status}`}> message</div>}
     </div>
   );
 };
