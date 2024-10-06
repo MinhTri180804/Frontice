@@ -5,6 +5,7 @@ import { AppLayout } from '../components/layout/app';
 import React from 'react';
 import { AuthLayout } from '../components/layout/auth';
 import { OtpPage } from '../pages/Auth/OTP';
+import ForgotPasswordPage from '../pages/Auth/ForgotPassword/ForgotPasswordPage';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
 
@@ -31,6 +32,7 @@ const extendedRoutesAuth: RouteObject[] = [
     element: <RegisterPage />,
   },
   { path: paths.otp, element: <OtpPage /> },
+  { path: paths.forgotPassword, element: <ForgotPasswordPage /> },
 ];
 
 const routes: RouteObject[] = [
