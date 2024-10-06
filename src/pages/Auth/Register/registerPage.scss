@@ -102,7 +102,7 @@
         // TODO: implement mixin flex scss in here
 
         & > span {
-          @include typography_BVNPro-desktop-body-3();
+          @include typography_BVNPro-desktop-body-2();
           display: flex;
           justify-content: start;
           align-items: center;

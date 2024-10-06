@@ -4,6 +4,7 @@ import { paths } from '../constant';
 import { AppLayout } from '../components/layout/app';
 import React from 'react';
 import { AuthLayout } from '../components/layout/auth';
+import { OtpPage } from '../pages/Auth/OTP';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
 
@@ -29,6 +30,7 @@ const extendedRoutesAuth: RouteObject[] = [
     path: paths.register,
     element: <RegisterPage />,
   },
+  { path: paths.otp, element: <OtpPage /> },
 ];
 
 const routes: RouteObject[] = [
