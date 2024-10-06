@@ -13,6 +13,7 @@ const instance: PathType = {
   register: 'register',
   forgotPassword: 'forgot-password',
   otp: 'otp',
+  resetPassword: 'reset-password',
 
   // protected path
   profile: '/profile',
