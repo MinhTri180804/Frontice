@@ -1,0 +1,51 @@
+@use '../../../styles/scss/utils/variables/'as *;
+
+.layout-container {
+    display   : flex;
+    background: #FFF;
+
+    aside {
+        position  : relative;
+        width     : 292px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: width 0.3s;
+        height    : 100vh;
+
+        &.collapsed {
+            width: 20px;
+        }
+
+        .toggle-button {
+            position        : absolute;
+            right           : -12px;
+            top             : 160px;
+            color           : $white;
+            background-color: #5250F7;
+            width           : 24px;
+            height          : 24px;
+            border-radius   : 100px;
+            line-height     : 24px;
+            border-color    : transparent;
+            cursor          : pointer;
+        }
+    }
+
+    .site-layout {
+        flex          : 1;
+        display       : flex;
+        flex-direction: column;
+
+        header {
+            background-color: #007bff;
+            color           : #fff;
+            padding         : 15px;
+            box-shadow      : 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            flex      : 1;
+            padding   : 20px;
+            overflow-y: auto;
+        }
+    }
+}
