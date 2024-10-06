@@ -7,7 +7,7 @@
 .checkbox-wrapper-4 {
   & > .cbx span {
     &:last-child {
-      @include typography_BVNPro-desktop-body-3();
+      @include typography_BVNPro-desktop-body-2();
       color: $TEXT-black;
     }
 
