@@ -1,11 +1,13 @@
+import { ChevronLeftIcon } from '@heroicons/react/24/solid';
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Input } from '../../../components/common';
 import './forgotPassword.scss';
-import { FC } from 'react';
-import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
 const ForgotPasswordPage: FC = () => {
-  const handlePrevPage: () => void = () => {
-    console.log('handle prev page');
+  const navigate = useNavigate();
+  const handlePrevPage = () => {
+    return navigate(-1);
   };
   return (
     <div className="forgot__password__page-container">
