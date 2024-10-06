@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.scss';
 import { BrandColorLogo } from "../../../../../assets/logos/locals"
-import { menuItem } from '../../../../../configs'; // Import menu items
+import { menuItem } from '../../../../../configs';
 
 const Sidebar: React.FC = () => {
     return (
@@ -23,6 +23,7 @@ const Sidebar: React.FC = () => {
                                         to={child.path}
                                         className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                                     >
+                                        {child.icon && <child.icon width={24} height={24} />}
                                         <span>{child.label}</span>
                                     </NavLink>
                                 ))}
@@ -32,6 +33,7 @@ const Sidebar: React.FC = () => {
                                 to={item.path}
                                 className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                             >
+                                {item.icon && <item.icon width={24} height={24} />}
                                 <span>{item.label}</span>
                             </NavLink>
                         )}
