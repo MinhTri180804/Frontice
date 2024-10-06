@@ -1,4 +1,4 @@
-import { SocialAuthButton } from '../Auth/Partials/SocialAuthButton';
+import { OtpInput } from '../Auth/Partials/OtpInput';
 import { StepProcess } from '../Auth/Partials/StepProcess';
 import './homePage.scss';
 
@@ -11,8 +11,9 @@ const Home: React.FC = () => {
       <h1>Home Page</h1>
 
       <div className="flex">
-        <SocialAuthButton social="google" eventClick={testing} />
-        <SocialAuthButton social="github" eventClick={testing} />
+        <OtpInput isSuccess />
+        <OtpInput isSuccess />
+        <OtpInput isSuccess />
       </div>
 
       <div className="flex-col">
