@@ -1,78 +1,77 @@
-@use '../../../../../styles/scss/utils/variables/'as *;
+@use '../../../../../styles/scss/utils/variables/' as *;
 
 .sidebar-container {
-    display       : flex;
-    padding       : 10px 40px;
-    flex-direction: column;
-    background    : #FFF;
-    box-shadow    : 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
-    gap           : 32px;
-
-    .sidebar-logo {
-
-        img {
-            width : 160px;
-            height: 60px;
-        }
+  display: flex;
+  padding: 10px 40px;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+  gap: 32px;
+  &::-webkit-scrollbar {
+    display: hidden;
+  }
+  .sidebar-logo {
+    img {
+      width: 160px;
+      height: 60px;
     }
+  }
 
-    .sidebar-menu {
+  .sidebar-menu {
+    li {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
 
-        li {
-            margin-bottom : 24px;
-            display       : flex;
-            flex-direction: column;
-            gap           : 12px;
+      .sidebar-title {
+        font-family: $font-BeVietNamPro;
+        color: $satinDeepBlack-tints-300;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
 
-            .sidebar-title {
-                font-family: $font-BeVietNamPro;
-                color      : $satinDeepBlack-tints-300;
-                font-size  : 16px;
-                font-style : normal;
-                font-weight: 400;
-                line-height: 150%;
-            }
+      .sidebar-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        align-self: stretch;
+        padding: 12px;
+        align-items: center;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
 
-            .sidebar-item {
-                display        : flex;
-                align-items    : center;
-                gap            : 14px;
-                align-self     : stretch;
-                padding        : 12px;
-                align-items    : center;
-                border-radius  : 8px;
-                text-decoration: none;
-                transition     : background-color 0.3s ease;
-
-                &:hover {
-                    background-color: #f5f5f5;
-                }
-
-                span {
-                    color      : $satinDeepBlack-tints-300;
-                    font-family: $font-BeVietNamPro;
-                    font-size  : 14px;
-                }
-
-                &.active {
-                    background-color: #5250F7;
-                    color           : $white;
-
-                    span {
-                        color: $white;
-                    }
-                }
-            }
+        &:hover {
+          background-color: #f5f5f5;
         }
-    }
 
-    .sidebar-footer {
-
-        .sidebar-image-placeholder {
-            width           : 100%;
-            height          : 100px;
-            background-color: #d3d3d3;
-            border-radius   : 5px;
+        span {
+          color: $satinDeepBlack-tints-300;
+          font-family: $font-BeVietNamPro;
+          font-size: 14px;
         }
+
+        &.active {
+          background-color: #5250f7;
+          color: $white;
+
+          span {
+            color: $white;
+          }
+        }
+      }
     }
+  }
+
+  .sidebar-footer {
+    .sidebar-image-placeholder {
+      width: 100%;
+      height: 100px;
+      background-color: #d3d3d3;
+      border-radius: 5px;
+    }
+  }
 }

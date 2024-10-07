@@ -21,7 +21,6 @@
     }
     & > .desc-solution-item {
       padding: 24px 12px;
-
       & > .time-solution {
         color: $satinDeepBlack-tints-300;
         @include typography_BVNPro-custom(300, 12px);
@@ -52,6 +51,7 @@
       }
       & > .interaction-panel {
         display: flex;
+        flex-wrap: wrap;
         @include typography_BVNPro-desktop-body-3;
         justify-content: space-evenly;
         & > .action-like,
