@@ -13,6 +13,7 @@ import { LeftIcon } from './LeftIcon';
 import { RightIcon } from './RightIcon';
 import { UpIcon } from './UpIcon';
 import { DownIcon } from './DownIcon';
+import { UpAndDownIcon } from './UpAndDownIcon';
 export {
   CloseIcon,
   WarningIcon,
@@ -29,4 +30,5 @@ export {
   LeftIcon,
   UpIcon,
   DownIcon,
+  UpAndDownIcon,
 };
