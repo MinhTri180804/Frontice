@@ -1,2 +1,3 @@
 import BrandWhiteLogo from './brand-white.png';
-export { BrandWhiteLogo };
+import BrandColorLogo from './brand-color.png'
+export { BrandWhiteLogo, BrandColorLogo };

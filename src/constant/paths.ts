@@ -1,8 +1,4 @@
-type PathType = {
-  [key: string]: string;
-};
-
-const instance: PathType = {
+const instance = {
   // default path
   default: '/',
   home: '/home',
@@ -16,7 +12,12 @@ const instance: PathType = {
   resetPassword: 'reset-password',
 
   // protected path
+  challengesSystem: '/challenges-system',
+  challengesRecruiter: '/challenges-recruiter',
+  solutions: '/solutions',
+  mySolutions: '/my-solutions',
   profile: '/profile',
+  setting: '/setting',
 };
 
 export default instance;
