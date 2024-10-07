@@ -35,7 +35,7 @@ const Input = forwardRef((props: IInputProps, ref: Ref<HTMLInputElement>) => {
           </div>
         )}
       </div>
-      {message && <div className={`message ${status}`}> message</div>}
+      {message && <div className={`message ${status}`}> {message}</div>}
     </div>
   );
 });
