@@ -1,7 +1,14 @@
+import "./Header.scss"
+import {
+    SearchBar,
+    UserProfile,
+} from "./partials"
+
 const Header: React.FC = () => {
     return (
         <div className="header-container">
-            <h1>Header</h1>
+            <SearchBar />
+            <UserProfile />
         </div>
     );
 };

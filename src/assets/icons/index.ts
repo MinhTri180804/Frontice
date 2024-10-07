@@ -9,6 +9,10 @@ import { ProfileIcon } from './ProfileIcon';
 import { SearchIcon } from './SearchIcon';
 import { SettingIcon } from './SettingIcon';
 import { SolutionIcon } from './SolutionIcon';
+import { LeftIcon } from './LeftIcon';
+import { RightIcon } from './RightIcon';
+import { UpIcon } from './UpIcon';
+import { DownIcon } from './DownIcon';
 export {
   CloseIcon,
   WarningIcon,
@@ -21,4 +25,8 @@ export {
   SearchIcon,
   SettingIcon,
   SolutionIcon,
+  RightIcon,
+  LeftIcon,
+  UpIcon,
+  DownIcon,
 };

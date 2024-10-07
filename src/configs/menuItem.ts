@@ -7,22 +7,17 @@ import {
     ProfileIcon,
     SettingIcon
 } from "../assets/icons"
-
-interface IconProps {
-    width?: number;
-    height?: number;
-}
 interface MenuItem {
     label: string;
     path: string;
-    icon?: React.ComponentType<IconProps>;
+    icon?: React.FC<React.SVGProps<SVGSVGElement>>;
     children?: MenuItem[];
 }
 
 function getItem(
     label: string,
     path: string,
-    icon?: React.ComponentType,
+    icon?: React.FC<React.SVGProps<SVGSVGElement>>,
     children?: MenuItem[]
 ): MenuItem {
     return {

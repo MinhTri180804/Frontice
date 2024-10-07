@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { IIconEntity } from '../../types/entity/icon';
 
 type SearchIconPropsType = IIconEntity;
-const SearchIcon: FC<SearchIconPropsType> = ({ width = 10, height = 8 }) => {
+const SearchIcon: FC<SearchIconPropsType> = ({ width = 24, height = 24 }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
