@@ -1,0 +1,121 @@
+@use '../../../styles/scss/utils' as *;
+
+.register__page-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-direction: column;
+
+  & > .heading {
+    width: 100%;
+    // TODO: implement mixin flex in here
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    & > .title {
+      @include typography_BVNPro-desktop-h4();
+      color: $TEXT-black;
+      text-align: center;
+    }
+
+    & > .sub-title {
+      @include typography_BVNPro-desktop-body-2();
+      color: $TEXT-black;
+      text-align: center;
+    }
+  }
+
+  & > .content {
+    width: 100%;
+    // TODO: Implement mixin flex scss in here
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    flex-direction: column;
+
+    & > .method__social {
+      width: 100%;
+      // TODO: Implement mixin flex scss in here
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    & > .or {
+      width: 100%;
+      // TODO: Implement mixin flex scss in here
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      @include typography_BVNPro-desktop-body-3();
+    }
+
+    & > .main__content {
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+      & > .form {
+        // TODO: Implement mixin flex scss in here
+        display: flex;
+        justify-content: flex-start;
+        align-items: start;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+
+        & > .input-group {
+          // Implement mixin flex scss in here
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          gap: 12px;
+          width: 100%;
+        }
+        & > .options {
+          // TODO: Implement mixin flex scss in here
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-transform: capitalize;
+          text-decoration: underline;
+
+          & > .forgot-password {
+            @include typography_BVNPro-desktop-body-3();
+            color: $TEXT-black;
+          }
+        }
+      }
+
+      & > .other {
+        // TODO: implement mixin flex scss in here
+
+        & > span {
+          @include typography_BVNPro-desktop-body-2();
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          gap: 4px;
+          color: $TEXT-black;
+
+          & > a {
+            color: $TEXT-black;
+            text-decoration: underline;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

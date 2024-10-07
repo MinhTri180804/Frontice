@@ -1,18 +1,23 @@
-type PathType = {
-    [key: string]: string;
-};
+const instance = {
+  // default path
+  default: '/',
+  home: '/home',
 
-const instance: PathType = {
-    // default path
-    default: "/",
-    home: "/home",
+  // auth path
+  auth: '/auth',
+  login: 'login',
+  register: 'register',
+  forgotPassword: 'forgot-password',
+  otp: 'otp',
+  resetPassword: 'reset-password',
 
-    // auth path
-    login: "/login",
-    register: "/register",
-
-    // protected path
-    profile: "/profile"
+  // protected path
+  challengesSystem: '/challenges-system',
+  challengesRecruiter: '/challenges-recruiter',
+  solutions: '/solutions',
+  mySolutions: '/my-solutions',
+  profile: '/profile',
+  setting: '/setting',
 };
 
 export default instance;
