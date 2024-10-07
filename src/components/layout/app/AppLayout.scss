@@ -2,6 +2,7 @@
 
 .layout-container {
     display: flex;
+    height : 100vh;
 
     aside {
         position  : relative;
@@ -12,7 +13,7 @@
         height    : 100vh;
 
         &.collapsed {
-            width: 20px;
+            width: 117px;
         }
 
         .toggle-button {
@@ -20,7 +21,10 @@
             z-index         : 1001;
             right           : -12px;
             top             : 160px;
-            color           : $white;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            flex-shrink     : 0;
             background-color: #5250F7;
             width           : 24px;
             height          : 24px;
@@ -40,16 +44,15 @@
             background-color: #FFF;
             box-shadow      : 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
             padding         : 24px 40px;
-            position        : sticky;
-            top             : 0;
-            width           : 100%;
-            z-index         : 1000;
         }
 
         main {
-            flex      : 1;
-            padding   : 20px;
-            overflow-y: auto;
+            flex           : 1;
+            margin         : 20px;
+            height         : 100vh;
+            overflow-y     : scroll;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
         }
     }
 }

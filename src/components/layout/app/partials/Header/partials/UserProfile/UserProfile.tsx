@@ -1,5 +1,6 @@
 import "./UserProfile.scss"
-import { NotificationIcon, UpIcon, DownIcon } from "../../../../../../../assets/icons";
+import { NotificationIcon, UpAndDownIcon } from "../../../../../../../assets/icons";
+import { DefaultAvatar } from "../../../../../../../assets/images";
 
 const UserProfile: React.FC = () => {
     return (
@@ -9,7 +10,7 @@ const UserProfile: React.FC = () => {
             </div>
             <div className="user-profile">
                 <div className="user-avatar">
-                    {/* render avatar here */}
+                    <img src={DefaultAvatar} alt="avatar" />
                 </div>
                 <div className="user-info">
                     <div className="user-name">
@@ -22,8 +23,7 @@ const UserProfile: React.FC = () => {
                 <div
                     className="drop-down"
                 >
-                    <UpIcon width={16} height={16} />
-                    <DownIcon width={16} height={16} />
+                    <UpAndDownIcon width={24} height={24} stroke="black" />
                 </div>
             </div>
         </div>
