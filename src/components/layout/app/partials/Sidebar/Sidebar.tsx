@@ -4,7 +4,11 @@ import './Sidebar.scss';
 import { BrandColorLogo } from "../../../../../assets/logos/locals"
 import { menuItem } from '../../../../../configs';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+    isCollapsed: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     const [activeItem, setActiveItem] = useState('');
 
     // handle active color of icon when reload page
@@ -21,7 +25,7 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="sidebar-container">
+        <div className={`sidebar-container ${isCollapsed ? 'collapsed' : ''}`}>
             <div className="sidebar-logo">
                 <img src={BrandColorLogo} alt="logo" />
             </div>
@@ -31,7 +35,7 @@ const Sidebar: React.FC = () => {
                     <li key={item.path} className="sidebar-section">
                         {item.children ? (
                             <>
-                                <span className="sidebar-title">{item.label}</span>
+                                {!isCollapsed && <span className="sidebar-title">{item.label}</span>}
                                 {item.children.map((child) => (
                                     <NavLink
                                         key={child.path}
@@ -40,7 +44,7 @@ const Sidebar: React.FC = () => {
                                         onClick={() => handleItemClick(child.path)}
                                     >
                                         {child.icon && <child.icon width={24} height={24} stroke={child.path === activeItem ? "#fff" : "#A4A5A6"} />}
-                                        <span>{child.label}</span>
+                                        {!isCollapsed && <span>{child.label}</span>}
                                     </NavLink>
                                 ))}
                             </>
@@ -51,16 +55,18 @@ const Sidebar: React.FC = () => {
                                 onClick={() => handleItemClick(item.path)}
                             >
                                 {item.icon && <item.icon width={24} height={24} stroke={item.path === activeItem ? "#fff" : "#A4A5A6"} />}
-                                <span>{item.label}</span>
+                                {!isCollapsed && <span>{item.label}</span>}
                             </NavLink>
                         )}
                     </li>
                 ))}
             </ul>
 
-            <div className="sidebar-footer">
-                <div className="sidebar-image-placeholder"></div>
-            </div>
+            {!isCollapsed && (
+                <div className="sidebar-footer">
+                    <div className="sidebar-image-placeholder"></div>
+                </div>
+            )}
         </div>
     );
 };

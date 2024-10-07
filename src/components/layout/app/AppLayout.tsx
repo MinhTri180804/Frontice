@@ -17,7 +17,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <div className="layout-container">
       <aside className={isCollapsed ? 'collapsed' : ''}>
-        {!isCollapsed && <Sidebar />}
+        <Sidebar isCollapsed={isCollapsed} />
         <button onClick={toggleSidebar} className="toggle-button">
           {isCollapsed
             ?
