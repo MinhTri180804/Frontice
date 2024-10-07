@@ -62,11 +62,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                 ))}
             </ul>
 
-            {!isCollapsed && (
+            {!isCollapsed &&
                 <div className="sidebar-footer">
                     <div className="sidebar-image-placeholder"></div>
                 </div>
-            )}
+            }
         </div>
     );
 };
