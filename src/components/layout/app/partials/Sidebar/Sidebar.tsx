@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.scss';
 import { BrandColorLogo } from "../../../../../assets/logos/locals"
 import { menuItem } from '../../../../../configs';
 
 const Sidebar: React.FC = () => {
+    const [activeItem, setActiveItem] = useState('');
+
+    // handle active color of icon when reload page
+    useEffect(() => {
+        const storedActiveItem = localStorage.getItem('activeItem');
+        if (storedActiveItem) {
+            setActiveItem(storedActiveItem);
+        }
+    }, []);
+
+    const handleItemClick = (path: string) => {
+        setActiveItem(path);
+        localStorage.setItem('activeItem', path);
+    };
+
     return (
         <div className="sidebar-container">
             <div className="sidebar-logo">
@@ -22,8 +37,9 @@ const Sidebar: React.FC = () => {
                                         key={child.path}
                                         to={child.path}
                                         className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+                                        onClick={() => handleItemClick(child.path)}
                                     >
-                                        {child.icon && <child.icon width={24} height={24} />}
+                                        {child.icon && <child.icon width={24} height={24} stroke={child.path === activeItem ? "#fff" : "#A4A5A6"} />}
                                         <span>{child.label}</span>
                                     </NavLink>
                                 ))}
@@ -32,8 +48,9 @@ const Sidebar: React.FC = () => {
                             <NavLink
                                 to={item.path}
                                 className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+                                onClick={() => handleItemClick(item.path)}
                             >
-                                {item.icon && <item.icon width={24} height={24} />}
+                                {item.icon && <item.icon width={24} height={24} stroke={item.path === activeItem ? "#fff" : "#A4A5A6"} />}
                                 <span>{item.label}</span>
                             </NavLink>
                         )}
