@@ -23,7 +23,7 @@
       padding: 24px 12px;
       & > .time-solution {
         color: $satinDeepBlack-tints-300;
-        @include typography_BVNPro-custom(300, 12px);
+        @include typography_BVNPro-custom(300, 12px, 120%);
         padding-bottom: 4px;
       }
       & > .name-solution {
