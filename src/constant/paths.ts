@@ -1,4 +1,4 @@
-const instance = {
+const paths = {
   // default path
   default: '/',
   home: '/home',
@@ -18,6 +18,7 @@ const instance = {
   mySolutions: '/my-solutions',
   profile: '/profile',
   setting: '/setting',
+  statistic: '/statistic'
 };
 
-export default instance;
+export default paths;
