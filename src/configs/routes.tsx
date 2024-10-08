@@ -1,11 +1,5 @@
 import { RouteObject, Outlet } from 'react-router-dom';
-import {
-  NotFoundPage,
-  LoginPage,
-  RegisterPage,
-  HomePage,
-  SolutionDetailsPage,
-} from '../pages';
+import { NotFoundPage, LoginPage, RegisterPage, HomePage } from '../pages';
 import { paths } from '../constant';
 import { AppLayout } from '../components/layout/app';
 import React from 'react';
@@ -15,7 +9,10 @@ import { ForgotPasswordPage } from '../pages/Auth/ForgotPassword';
 import { ResetPasswordPage } from '../pages/Auth/ResetPassword';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
-
+const SolutionPage = React.lazy(() => import('../pages/Statistic'));
+const SolutionDetailsPage = React.lazy(
+  () => import('../pages/SolutionDetails'),
+);
 const extendedRoutes: RouteObject[] = [
   {
     index: true,
@@ -29,6 +26,10 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.solutionDetails,
     element: <SolutionDetailsPage />,
+  },
+  {
+    path: paths.statistic,
+    element: <SolutionPage />,
   },
 ];
 
