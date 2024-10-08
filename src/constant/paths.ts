@@ -17,6 +17,7 @@ const instance = {
   solutions: '/solutions',
   mySolutions: '/my-solutions',
   profile: '/profile',
+  solutionDetails: '/solutionDetails',
   setting: '/setting',
 };
 

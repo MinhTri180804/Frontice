@@ -1,5 +1,11 @@
 import { RouteObject, Outlet } from 'react-router-dom';
-import { NotFoundPage, LoginPage, RegisterPage, HomePage } from '../pages';
+import {
+  NotFoundPage,
+  LoginPage,
+  RegisterPage,
+  HomePage,
+  SolutionDetailsPage,
+} from '../pages';
 import { paths } from '../constant';
 import { AppLayout } from '../components/layout/app';
 import React from 'react';
@@ -19,6 +25,10 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.profile,
     element: <ProfilePage />,
+  },
+  {
+    path: paths.solutionDetails,
+    element: <SolutionDetailsPage />,
   },
 ];
 

@@ -3,7 +3,7 @@ import BannerWithInfo from './Partials/BannerWithInfo';
 import Solution from './Partials/Solution';
 import image from '../../asset/images/solution.png';
 import './ProfilePage.scss';
-
+import userAvatar from '../../asset/images/avatar.png';
 interface DataItem {
   time: string;
   name: string;
@@ -44,6 +44,7 @@ const Profile: React.FC = () => {
             name={solutionItem.name}
             time={solutionItem.time}
             tech={solutionItem.tech}
+            userAvatar={userAvatar}
           />
         ))}
       </div>
