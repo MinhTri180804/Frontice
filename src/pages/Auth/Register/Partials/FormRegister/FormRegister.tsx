@@ -12,21 +12,23 @@ import { IRegisterRequest } from '../../../../../types/request/register';
 const FormRegister: FC = () => {
   const {
     register,
+    getValues,
+    control,
     formState: { errors },
-  } = useForm<Omit<IRegisterRequest, 'role'>>();
+  } = useForm<IRegisterRequest>();
 
   const handleRegister: FormSubmitHandler<IRegisterRequest> = async (data) => {
     console.log(data);
   };
 
-  const ruleOfFirstName: RegisterOptions<IRegisterRequest> = {
+  const ruleOfFirstName: RegisterOptions<IRegisterRequest, 'firstName'> = {
     required: {
       value: true,
       message: 'First name is not empty',
     },
   };
 
-  const ruleOfLastName: RegisterOptions<IRegisterRequest> = {
+  const ruleOfLastName: RegisterOptions<IRegisterRequest, 'lastName'> = {
     required: {
       value: true,
       message: 'Last name is not empty',
@@ -53,8 +55,8 @@ const FormRegister: FC = () => {
     },
 
     minLength: {
-      value: 6,
-      message: 'Length password less than 6',
+      value: 8,
+      message: 'Length password less than 8',
     },
   };
 
@@ -66,10 +68,22 @@ const FormRegister: FC = () => {
       value: true,
       message: 'Password confirm is not empty',
     },
+
+    minLength: {
+      value: 8,
+      message: 'Length password less than 8',
+    },
+    validate: (value) => {
+      return value === getValues('password') || 'Passwords do not match';
+    },
   };
 
   return (
-    <Form onSubmit={handleRegister}>
+    <Form
+      className="form__register"
+      control={control}
+      onSubmit={handleRegister}
+    >
       <div className="input-group">
         <Input
           {...register('firstName', ruleOfFirstName)}
@@ -79,14 +93,36 @@ const FormRegister: FC = () => {
           placeholder="Enter your first name..."
         />
         {/* TODO: implement input password component in here */}
-        <Input label="last name" placeholder="Enter your last name..." />
-        {/* TODO: update status disabled and event click of button component */}
+        <Input
+          {...register('lastName', ruleOfLastName)}
+          status={errors.lastName && 'error'}
+          message={errors.lastName?.message}
+          label="last name"
+          placeholder="Enter your last name..."
+        />
       </div>
-      <Input label="Email" placeholder="Enter your email..." />
-      <Input label="password" placeholder="Enter your password..." />
       <Input
+        {...register('email', ruleOfEmail)}
+        status={errors.email && 'error'}
+        message={errors.email?.message}
+        label="Email"
+        placeholder="Enter your email..."
+      />
+      <Input
+        {...register('password', ruleOfPassword)}
+        status={errors.password && 'error'}
+        message={errors.password?.message}
+        label="password"
+        placeholder="Enter your password..."
+        type="password"
+      />
+      <Input
+        {...register('confirmPassword', ruleOfConfirmPassword)}
+        status={errors.confirmPassword && 'error'}
+        message={errors.confirmPassword?.message}
         label="password confirm"
         placeholder="Enter your password confirm..."
+        type="password"
       />
 
       <Button type="primary" label="Register" size="medium" />
