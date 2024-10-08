@@ -5,7 +5,8 @@ import {
     ChallengeIcon,
     SolutionIcon,
     ProfileIcon,
-    SettingIcon
+    SettingIcon,
+    StatisticIcon,
 } from "../assets/icons"
 interface MenuItem {
     label: string;
@@ -30,6 +31,7 @@ function getItem(
 
 const items: MenuItem[] = [
     getItem('Home', paths.home, HomeIcon),
+    getItem('Statistic', paths.statistic, StatisticIcon),
 
     getItem('Challenge', 'challenge', undefined, [
         getItem('Challenges system', paths.challengesSystem, ChallengeIcon),
