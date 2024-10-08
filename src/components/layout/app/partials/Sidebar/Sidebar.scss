@@ -1,91 +1,112 @@
 @use '../../../../../styles/scss/utils/variables/'as *;
 
 .sidebar-container {
-    display        : flex;
-    flex-direction : column;
-    padding        : 10px 40px;
-    background     : #FFF;
-    box-shadow     : 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
-    gap            : 32px;
-    height         : 100vh;
-    overflow-y     : scroll;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    display       : flex;
+    flex-direction: column;
+    padding       : 10px 40px;
+    background    : #FFF;
+    box-shadow    : 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+    gap           : 12px;
+    height        : 100vh;
 
     .sidebar-logo {
+        display        : flex;
+        height         : 92px;
+        padding        : 10px;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+        gap            : 24px;
+        flex-shrink    : 0;
+        align-self     : stretch;
 
         img {
-            width : 160px;
-            height: 60px;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+            flex           : 1 0 0;
+            align-self     : stretch;
         }
     }
 
-    .sidebar-menu {
-        display        : flex;
-        flex-direction : column;
-        justify-content: center;
-        align-items    : flex-start;
-        gap            : 24px;
-        align-self     : stretch;
+    .sidebar-body {
+        display       : flex;
+        flex-direction: column;
+        gap           : 32px;
+        height        : 100vh;
+        overflow-y    : scroll;
 
-        li {
-            display       : flex;
-            flex-direction: column;
-            gap           : 12px;
-            width         : 100%;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
 
-            .sidebar-title {
-                font-family: $font-BeVietNamPro;
-                color      : $satinDeepBlack-tints-300;
-                font-size  : 16px;
-                font-style : normal;
-                font-weight: 400;
-                line-height: 150%;
-            }
+        .sidebar-menu {
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            align-items    : flex-start;
+            gap            : 24px;
+            align-self     : stretch;
 
-            .sidebar-item {
-                display        : flex;
-                align-items    : center;
-                align-self     : stretch;
-                gap            : 14px;
-                padding        : 12px;
-                border-radius  : 8px;
-                text-decoration: none;
-                transition     : background-color 0.3s ease;
+            li {
+                display       : flex;
+                flex-direction: column;
+                gap           : 12px;
+                width         : 100%;
 
-                svg {
-                    flex-shrink: 0;
-                }
-
-                span {
-                    color      : $satinDeepBlack-tints-300;
+                .sidebar-title {
                     font-family: $font-BeVietNamPro;
-                    font-size  : 14px;
+                    color      : $satinDeepBlack-tints-300;
+                    font-size  : 16px;
+                    font-style : normal;
+                    font-weight: 400;
+                    line-height: 150%;
                 }
 
-                &:hover {
-                    background-color: #f5f5f5;
-                }
+                .sidebar-item {
+                    display        : flex;
+                    align-items    : center;
+                    align-self     : stretch;
+                    gap            : 14px;
+                    padding        : 12px;
+                    border-radius  : 8px;
+                    text-decoration: none;
+                    transition     : background-color 0.3s ease;
 
-                &.active {
-                    background-color: #5250F7;
-                    color           : $white;
+                    svg {
+                        flex-shrink: 0;
+                    }
 
                     span {
-                        color: $white;
+                        color      : $satinDeepBlack-tints-300;
+                        font-family: $font-BeVietNamPro;
+                        font-size  : 14px;
+                    }
+
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
+
+                    &.active {
+                        background-color: #5250F7;
+                        color           : $white;
+
+                        span {
+                            color: $white;
+                        }
                     }
                 }
             }
         }
-    }
 
-    .sidebar-footer {
+        .sidebar-footer {
 
-        .sidebar-image-placeholder {
-            width           : 100%;
-            height          : 100px;
-            background-color: #d3d3d3;
-            border-radius   : 5px;
+            .sidebar-image-placeholder {
+                width           : 100%;
+                height          : 100px;
+                background-color: #d3d3d3;
+                border-radius   : 5px;
+            }
         }
     }
 
@@ -94,39 +115,36 @@
         position: relative;
 
         .sidebar-logo {
-            box-sizing   : border-box;
-            margin-bottom: 66px;
-
-            img {
-                position       : absolute;
-                left           : 12px;
-                display        : flex;
-                width          : 91px;
-                height         : 66px;
-                justify-content: center;
-                align-items    : center;
-            }
+            position: absolute;
+            left    : 8px;
+            width   : 91px;
+            height  : 66px;
+            padding : 0;
         }
 
-        .sidebar-menu {
-            display        : flex;
-            flex-direction : column;
-            justify-content: center;
-            align-items    : center;
-            gap            : 24px;
-            align-self     : stretch;
+        .sidebar-body {
+            margin-top: 100px;
 
-            li {
+            .sidebar-menu {
                 display        : flex;
                 flex-direction : column;
-                align-items    : center;
                 justify-content: center;
-                gap            : 14px;
+                align-items    : center;
+                gap            : 24px;
+                align-self     : stretch;
 
-                .sidebar-item {
+                li {
                     display        : flex;
+                    flex-direction : column;
                     align-items    : center;
                     justify-content: center;
+                    gap            : 14px;
+
+                    .sidebar-item {
+                        display        : flex;
+                        align-items    : center;
+                        justify-content: center;
+                    }
                 }
             }
         }

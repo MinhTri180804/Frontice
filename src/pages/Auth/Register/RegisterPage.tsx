@@ -4,6 +4,7 @@ import { Line } from '../../../components/common/Line';
 import { paths } from '../../../constant';
 import { SocialAuthButton } from '../Partials/SocialAuthButton';
 import './registerPage.scss';
+import { FormRegister } from './Partials/FormRegister';
 
 const Register: React.FC = () => {
   const handleRegisterGoogle = () => {
@@ -38,25 +39,7 @@ const Register: React.FC = () => {
 
         {/*TODO: Create then implement form component in here */}
         <div className="main__content">
-          <div className="form">
-            <div className="input-group">
-              <Input
-                label="first name"
-                placeholder="Enter your first name..."
-              />
-              {/* TODO: implement input password component in here */}
-              <Input label="last name" placeholder="Enter your last name..." />
-              {/* TODO: update status disabled and event click of button component */}
-            </div>
-            <Input label="Email" placeholder="Enter your email..." />
-            <Input label="password" placeholder="Enter your password..." />
-            <Input
-              label="password confirm"
-              placeholder="Enter your password confirm..."
-            />
-
-            <Button type="primary" label="Register" size="medium" />
-          </div>
+          <FormRegister />
 
           <div className="other">
             <span>

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import './otpPage.scss';
-import { Button } from '../../../components/common';
-import { OtpList } from './Partials/OTPList';
+import { OTPForm } from './Partials/OTPForm';
 
 const OtpPage: FC = () => {
   //   TODO: Implement logic resend code
@@ -19,13 +18,8 @@ const OtpPage: FC = () => {
       </div>
 
       <div className="content">
-        {/*TODO: Create then implement form component in here */}
         <div className="main__content">
-          <div className="form">
-            {/* TODO: update status disabled and event click of button component */}
-            <OtpList length={6} />
-            <Button type="primary" label="Verify OTP" size="medium" />
-          </div>
+          <OTPForm />
 
           <div className="other">
             <span>

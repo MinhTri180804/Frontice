@@ -1,4 +1,4 @@
-const instance = {
+const paths = {
   // default path
   default: '/',
   home: '/home',
@@ -33,6 +33,7 @@ const instance = {
       verify_forgot_password_otp: 'verify-forgot-password-otp',
     },
   },
+  statistic: '/statistic',
 };
 
-export default instance;
+export default paths;
