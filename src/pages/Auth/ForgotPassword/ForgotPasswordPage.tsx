@@ -1,8 +1,8 @@
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { FC } from 'react';
-import { Button, Input } from '../../../components/common';
 import { usePreviousPage } from '../../../hooks';
 import './forgotPassword.scss';
+import { ForgotPasswordForm } from './Partials/ForgotPasswordForm';
 
 const ForgotPasswordPage: FC = () => {
   const previousPage = usePreviousPage();
@@ -20,11 +20,7 @@ const ForgotPasswordPage: FC = () => {
       <div className="content">
         {/*TODO: Create then implement form component in here */}
         <div className="main__content">
-          <div className="form">
-            {/* TODO: update status disabled and event click of button component */}
-            <Input label="email" type="email" />
-            <Button type="primary" label="Forgot password" size="medium" />
-          </div>
+          <ForgotPasswordForm />
 
           <div className="other">
             <div onClick={handlePrevPage} className="prev-page">
