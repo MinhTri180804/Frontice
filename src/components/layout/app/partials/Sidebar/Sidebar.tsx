@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './Sidebar.scss';
 import { BrandColorLogo } from "../../../../../assets/logos/locals"
 import { menuItem } from '../../../../../configs';
+import { paths } from '../../../../../constant';
 
 interface SidebarProps {
     isCollapsed: boolean;
@@ -11,11 +12,15 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     const [activeItem, setActiveItem] = useState('');
 
-    // handle active color of icon when reload page
+    // Handle active color of icon when reload page
     useEffect(() => {
         const storedActiveItem = localStorage.getItem('activeItem');
         if (storedActiveItem) {
             setActiveItem(storedActiveItem);
+        } else {
+            // Set default activeItem for the first time
+            setActiveItem(paths.home);
+            localStorage.setItem('activeItem', paths.home);
         }
     }, []);
 

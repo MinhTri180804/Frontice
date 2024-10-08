@@ -16,10 +16,15 @@ export interface RouterProps {
 
 export function Routes(props: RouterProps) {
   const { defaultRoute } = props;
+
+  // Check for stored path in localStorage
+  const storedPath = localStorage.getItem('activeItem');
+  const redirectPath = storedPath ? storedPath : defaultRoute;
+
   const defaultRouteObject: RouteObject = {
     index: true,
     path: '/',
-    element: <Navigate to={defaultRoute} />,
+    element: <Navigate to={redirectPath} />,
   };
 
   const defaultRouteAuthObject: RouteObject = {
