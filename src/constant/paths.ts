@@ -18,6 +18,21 @@ const instance = {
   mySolutions: '/my-solutions',
   profile: '/profile',
   setting: '/setting',
+
+  API: {
+    root: 'api/v1',
+    AUTH: {
+      root: '/auth',
+      login: `/login`,
+      register: '/signup',
+      logout: '/logout',
+      forgot_password: 'forgot-password',
+      reset_password: 'reset-password',
+      send_otp: 'send-otp',
+      verify_email: 'verify-email',
+      verify_forgot_password_otp: 'verify-forgot-password-otp',
+    },
+  },
 };
 
 export default instance;
