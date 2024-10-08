@@ -11,7 +11,7 @@ interface Solution {
   time: string;
   name: string;
   tech: string[];
-  userAvatar: string;
+  userAvatar?: string;
   titleSolution?: string;
   descriptionSolution?: string;
   isShowDesc?: boolean;
@@ -23,9 +23,10 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
     time,
     name,
     tech,
-    userAvatar,
+    userAvatar = '',
     titleSolution = 'Title of the solution',
     descriptionSolution = ' Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias cum optio aspernatur! Omnis inventore ipsum impedit corporis dolorum, debitis pariatur reprehenderit, praesentium unde placeat deleniti distinctio. Obcaecati, recusandae vitae.',
+    isShowDesc = false,
   } = props;
   return (
     <>
@@ -46,16 +47,21 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
               <div className="score-solution">123 score</div>
               <div className="rank-level">Diamon</div>
             </div>
-            <DescUser
-              userAvatar={userAvatar}
-              userId="#123"
-              userName="user name"
-              userRank="Gold"
-            />
-            <DescSolution
-              titleSolutioon={titleSolution}
-              descriptionSolution={descriptionSolution}
-            />
+            {isShowDesc && (
+              <DescUser
+                userAvatar={userAvatar}
+                userId="#123"
+                userName="user name"
+                userRank="Gold"
+              />
+            )}
+
+            {isShowDesc && (
+              <DescSolution
+                titleSolutioon={titleSolution}
+                descriptionSolution={descriptionSolution}
+              />
+            )}
             <div className="interaction-panel">
               <div className="action-like">
                 <HandThumbUpIcon />

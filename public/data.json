@@ -46,53 +46,5 @@
     "name": "name 8",
     "tech": ["HTM", "CSS"],
     "id": "8"
-  },
-  {
-    "time": "time 9",
-    "name": "name 9",
-    "tech": ["HTM", "CSS"],
-    "id": "9"
-  },
-  {
-    "time": "time 10",
-    "name": "name 10",
-    "tech": ["HTM", "CSS"],
-    "id": "10"
-  },
-  {
-    "time": "time 11",
-    "name": "name 11",
-    "tech": ["HTM", "CSS"],
-    "id": "11"
-  },
-  {
-    "time": "time 12",
-    "name": "name 12",
-    "tech": ["HTM", "CSS"],
-    "id": "12"
-  },
-  {
-    "time": "time 13",
-    "name": "name 13",
-    "tech": ["HTM", "CSS"],
-    "id": "13"
-  },
-  {
-    "time": "time 14",
-    "name": "name 14",
-    "tech": ["HTM", "CSS"],
-    "id": "14"
-  },
-  {
-    "time": "time 15",
-    "name": "name 15",
-    "tech": ["HTM", "CSS"],
-    "id": "15"
-  },
-  {
-    "time": "time 16",
-    "name": "name 16",
-    "tech": ["HTM", "CSS"],
-    "id": "16"
   }
 ]
