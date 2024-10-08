@@ -1,0 +1,16 @@
+@use '../../styles/scss/utils/mixin/typography' as *;
+@use '../../styles/scss/utils/variables/colors' as *;
+.container-filter-wrapper {
+  width: 328px;
+  background-color: rgb(228, 228, 243);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+  & > .title-filter {
+    text-align: center;
+    padding: 6px 0px 12px 0px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid $satinDeepBlack-tints-200;
+    @include typography_BVNPro-desktop-h5;
+  }
+}

@@ -1,0 +1,21 @@
+@use '../../../styles/scss/utils/mixin/typography' as *;
+@use '../../../styles/scss/utils/variables/colors' as *;
+.container-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  & .title {
+    @include typography_BVNPro-desktop-body-2;
+    color: $satinDeepBlack-main;
+  }
+  & > .input {
+    height: 41px;
+
+    & input {
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
