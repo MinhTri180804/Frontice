@@ -43,17 +43,19 @@ const authService = {
 
   sendOTP: (data: ISendOtpRequest) => {
     return axiosClient.post<IBaseResponse<string>>(
-      `${BASE_URL}${paths.API.AUTH.send_otp}`,
-      data,
+      `${BASE_URL}${paths.API.AUTH.send_otp}?gmail=${data.gmail}`,
     );
   },
 
   verifyEmailSignup: (data: IVerifyEmailRequest) => {
-    return axiosClient.post(`${BASE_URL}${paths.API.AUTH.verify_email}`, data);
+    return axiosClient.post<IBaseResponse<string>>(
+      `${BASE_URL}${paths.API.AUTH.verify_email}`,
+      data,
+    );
   },
 
   verifyForgotPasswordOTP: (data: IVerifyForgotPassword) => {
-    return axiosClient.post(
+    return axiosClient.post<IBaseResponse<string>>(
       `${BASE_URL}${paths.API.AUTH.verify_forgot_password_otp}`,
       data,
     );

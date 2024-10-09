@@ -8,8 +8,16 @@ import {
 } from 'react-hook-form';
 import { Button, Input } from '../../../../../components/common';
 import { IResetPasswordRequest } from '../../../../../types/request/resetPassword';
+import authService from '../../../../../services/authServices';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../../../../constant';
 
-const ResetPasswordForm: FC = () => {
+interface IResetPasswordFromProps {
+  resetToken: string;
+}
+
+const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
   const {
     register,
     formState: { errors },
@@ -19,18 +27,35 @@ const ResetPasswordForm: FC = () => {
     defaultValues: { resetToken: '123123' },
   });
 
-  const handleResetPasswordSuccess = () => {
-    console.log('success');
-  };
-
-  const handleResetPasswordError = () => {
-    console.log('Error');
-  };
+  const navigate = useNavigate();
 
   const handleResetPassword: FormSubmitHandler<IResetPasswordRequest> = (
     data,
   ) => {
-    console.log(data);
+    const formData: IResetPasswordRequest = {
+      ...data.data,
+      resetToken: resetToken,
+    };
+
+    toast.promise(
+      authService
+        .resetPassword(formData)
+        .then((response) => {
+          if (response.data.status === 200) {
+            navigate(`${paths.auth}/${paths.login}`);
+          } else {
+            throw new Error(response.data.messageVN);
+          }
+        })
+        .catch((error) => {
+          throw error.message;
+        }),
+      {
+        pending: 'Đang thực hiện reset mật khẩu',
+        success: 'Đổi mật khẩu thành công',
+        error: 'Đổi mật khẩu thất bại',
+      },
+    );
   };
 
   const ruleOfNewPassword: RegisterOptions<
@@ -61,8 +86,6 @@ const ResetPasswordForm: FC = () => {
     <Form
       className="reset__password-form"
       control={control}
-      onSuccess={handleResetPasswordSuccess}
-      onError={handleResetPasswordError}
       onSubmit={handleResetPassword}
     >
       <Input
