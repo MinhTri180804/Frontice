@@ -1,4 +1,5 @@
 import image from '../../../asset/images/solution.png';
+import Action from './Action/Action';
 import './SolutionDetails.scss';
 interface ChallengeDetails {
   technical: string[];
@@ -24,10 +25,7 @@ const SolutionDetails: React.FC<ChallengeDetails> = ({ ...props }) => {
           </header>
           <main>
             <div className="short-description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              repellat repudiandae quaerat vel saepe ipsam incidunt sit ad
-              tempora at nihil, voluptas ea perspiciatis ex assumenda, quos
-              asperiores doloremque neque.
+              <Action />
             </div>
             <div className="notion">
               <div className="quantity-join">12</div>
