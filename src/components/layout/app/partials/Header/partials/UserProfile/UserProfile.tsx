@@ -4,7 +4,7 @@ import { DefaultAvatar } from "../../../../../../../assets/images";
 import { useTranslation } from "react-i18next";
 
 const UserProfile: React.FC = () => {
-    const { t } = useTranslation('layout')
+    const { t } = useTranslation()
 
     return (
         <div className="user-profile-container">
@@ -13,11 +13,11 @@ const UserProfile: React.FC = () => {
             </div>
             <div className="user-profile">
                 <div className="user-avatar">
-                    <img src={DefaultAvatar} alt="avatar" />
+                    <img src={DefaultAvatar} alt={t('Layout.Header.UserProfile.avatar')} />
                 </div>
                 <div className="user-info">
                     <div className="user-name">
-                        {t('header.name')}
+                        {t('Layout.Header.UserProfile.userName')}
                     </div>
                     <div className="user-id">
                         #id
