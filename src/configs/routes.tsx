@@ -9,7 +9,7 @@ import { ForgotPasswordPage } from '../pages/Auth/ForgotPassword';
 import { ResetPasswordPage } from '../pages/Auth/ResetPassword';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
-const SolutionPage = React.lazy(() => import('../pages/Statistic'))
+const StatisticPage = React.lazy(() => import('../pages/Statistic'))
 
 const extendedRoutes: RouteObject[] = [
   {
@@ -23,7 +23,7 @@ const extendedRoutes: RouteObject[] = [
   },
   {
     path: paths.statistic,
-    element: <SolutionPage />,
+    element: <StatisticPage />,
   },
 ];
 
