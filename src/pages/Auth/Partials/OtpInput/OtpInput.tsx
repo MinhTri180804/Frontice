@@ -5,20 +5,22 @@ import classNames from 'classnames';
 interface IOtpInputProps {
   isError?: boolean;
   isSuccess?: boolean;
+  index: number;
+  onChangeValue: (index: number, value: number) => void;
 }
 
 const OtpInput: FC<IOtpInputProps> = ({
   isError = false,
   isSuccess = false,
+  index,
+  onChangeValue,
 }) => {
-  console.log(isError);
   const [otpValue, setOtpValue] = useState<number | null>(null);
-  const [error, setError] = useState<boolean>(isError);
   const [success] = useState<boolean>(isSuccess);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('handle change input otp');
-    setOtpValue(Number(e.target.value));
-    setError(false);
+    const value = Number(e.target.value);
+    setOtpValue(value);
+    onChangeValue(index, value);
   };
 
   const handleKeyDown = () => {
@@ -28,7 +30,7 @@ const OtpInput: FC<IOtpInputProps> = ({
   const otpInputClass = classNames({
     'otp__input-component': true,
     'has-value': otpValue !== null,
-    error: error,
+    error: isError,
     success: success,
   });
   return (

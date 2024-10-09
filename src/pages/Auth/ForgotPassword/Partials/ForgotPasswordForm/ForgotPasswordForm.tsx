@@ -1,4 +1,3 @@
-import './forgotPasswordForm.scss';
 import { FC } from 'react';
 import {
   Form,
@@ -6,8 +5,13 @@ import {
   RegisterOptions,
   useForm,
 } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Button, Input } from '../../../../../components/common';
+import { paths } from '../../../../../constant';
+import authService from '../../../../../services/authServices';
 import { IForgotPasswordRequest } from '../../../../../types/request/forgotPassword';
+import './forgotPasswordForm.scss';
 
 const ForgotPasswordForm: FC = () => {
   const {
@@ -15,18 +19,34 @@ const ForgotPasswordForm: FC = () => {
     formState: { errors },
     control,
   } = useForm<IForgotPasswordRequest>();
+  const navigate = useNavigate();
   const handleForgotPassword: FormSubmitHandler<IForgotPasswordRequest> = (
     data,
   ) => {
-    console.log(data);
-  };
-
-  const handleForgotPasswordSuccess = () => {
-    console.log('forgot password success');
-  };
-
-  const handleForgotPasswordError = () => {
-    console.log('forgot password error');
+    const { email } = data.data;
+    toast.promise(
+      authService
+        .forgotPassword({ email: email })
+        .then((response) => {
+          if (response.data.status === 200) {
+            navigate(`${paths.auth}/${paths.otp}`, {
+              state: {
+                emailForgotPassword: email,
+              },
+            });
+          } else {
+            throw new Error('Verify email forgot password fail');
+          }
+        })
+        .catch((error) => {
+          throw error;
+        }),
+      {
+        pending: 'Đang xác thực email và gửi mã OTP',
+        success: 'Gửi mã otp thành công',
+        error: 'Xác thực email và gửi mã OTP thất bại',
+      },
+    );
   };
 
   const ruleOfEmail: RegisterOptions<IForgotPasswordRequest, 'email'> = {
@@ -46,8 +66,6 @@ const ForgotPasswordForm: FC = () => {
     <Form
       className="forgot__password-form"
       control={control}
-      onSuccess={handleForgotPasswordSuccess}
-      onError={handleForgotPasswordError}
       onSubmit={handleForgotPassword}
     >
       <Input

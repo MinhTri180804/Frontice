@@ -18,7 +18,29 @@ const paths = {
   mySolutions: '/my-solutions',
   profile: '/profile',
   setting: '/setting',
-  statistic: '/statistic'
+
+  API: {
+    root: 'api/v1',
+    AUTH: {
+      root: '/auth',
+      login: `/login`,
+      register: '/signup',
+      logout: '/logout',
+      forgot_password: '/forgot-password',
+      reset_password: '/reset-password',
+      send_otp: '/send-otp',
+      verify_email: '/verify-email',
+      verify_forgot_password_otp: '/verify-forgot-password-otp',
+    },
+  },
+  LOCAL_STORAGE: {
+    emailRegister: 'emailRegister',
+    accessToken: 'accessToken',
+    refreshToken: 'refreshToken',
+    account: 'accountInformation',
+    emailForgotPassword: 'emailForgotPassword',
+  },
+  statistic: '/statistic',
 };
 
 export default paths;
