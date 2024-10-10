@@ -3,10 +3,14 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import { AppLayout } from '../components/layout/app';
 import { AuthLayout } from '../components/layout/auth';
 import { paths } from '../constant';
-import { HomePage, LoginPage, NotFoundPage, RegisterPage } from '../pages';
-import { ForgotPasswordPage } from '../pages/Auth/ForgotPassword';
-import { OtpPage } from '../pages/Auth/OTP';
-import { ResetPasswordPage } from '../pages/Auth/ResetPassword';
+import { HomePage, NotFoundPage } from '../pages';
+import OtpPage from '../pages/Auth/OTP/OtpPage';
+import {
+  ForgotPasswordPage,
+  LoginPage,
+  RegisterPage,
+  ResetPasswordPage,
+} from '../pages/Auth';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
 const SolutionDetailsPage = React.lazy(

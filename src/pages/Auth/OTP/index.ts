@@ -1,1 +1,1 @@
-export { default as OtpPage } from './OtpPage';
+export { default  } from './OtpPage';
