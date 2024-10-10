@@ -1,11 +1,3 @@
-import { default as enLayout } from "./layout.json"
-import { default as enHome } from "./home.json"
-import { default as enProfile } from "./profile.json"
-import { default as enSettings } from "./settings.json"
+import { default as enCommon } from './common.json'
 
-export {
-    enLayout,
-    enHome,
-    enProfile,
-    enSettings,
-}
+export { enCommon } 

@@ -2,14 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import {
-    enLayout,
-    enHome,
-    enProfile,
-    enSettings,
-    viLayout,
-    viHome,
-    viProfile,
-    viSettings,
+    enCommon,
+    viCommon,
 } from "../locales"
 
 i18n
@@ -18,16 +12,10 @@ i18n
     .init({
         resources: {
             en: {
-                layout: enLayout,
-                home: enHome,
-                profile: enProfile,
-                settings: enSettings,
+                common: enCommon,
             },
             vi: {
-                layout: viLayout,
-                home: viHome,
-                profile: viProfile,
-                settings: viSettings,
+                common: viCommon,
             },
         },
         fallbackLng: 'en',
@@ -35,6 +23,7 @@ i18n
             escapeValue: false,
         },
         debug: true,
+        defaultNS: 'common', // Set default namespace for common translations
     });
 
 export default i18n;
