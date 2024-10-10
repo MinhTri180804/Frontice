@@ -1,0 +1,163 @@
+@use '../../../../styles/scss/flex-grid' as *;
+@use '../../../../styles/scss/utils/mixin/typography' as *;
+@use '../../../../styles/scss/utils/variables/colors' as *;
+.banner-with-info {
+  // figure {
+  //   & .banner {
+  //     object-fit: cover;
+  //     height: 254px;
+  //   }
+  //   & img {
+  //     width: 100%;
+  //   }
+  //   & .icon {
+  //     width: 24px;
+  //   }
+  // }
+  // figure {
+  //   &.user {
+  //     display: flex;
+  //     gap: 24px;
+  //   }
+  //   & .avatar {
+  //     padding: 6px;
+  //     border: 1px solid black;
+  //     border-radius: 14px;
+  //     height: 182px;
+  //     img {
+  //       width: 100%;
+  //       height: 100%;
+  //       border-radius: 8px;
+  //     }
+  //   }
+  //   figcaption {
+  //     & > div {
+  //       margin-bottom: 16px;
+  //     }
+  //     .user-header {
+  //       display: flex;
+  //       justify-content: space-between;
+
+  //       .action {
+  //         display: flex;
+  //         justify-content: space-evenly;
+  //         gap: 24px;
+  //       }
+  //       h1 {
+  //         @include typography_BVNPro-desktop-body-1;
+  //       }
+  //       h2 {
+  //         @include typography_BVNPro-desktop-body-3;
+  //       }
+  //     }
+  //     .user-info {
+  //       .container-contact {
+  //         display: grid;
+  //         grid-template-columns: auto auto;
+
+  //         .contact {
+  //           display: flex;
+  //           gap: 8px;
+  //           align-items: center;
+  //           @include typography_BVNPro-desktop-body-2;
+  //         }
+  //       }
+  //     }
+  //     .user-info-icon {
+  //       display: flex;
+  //       gap: 10px;
+  //       .icon {
+  //         width: 24px;
+  //       }
+  //     }
+  //   }
+  // }
+  & > .banner {
+    object-fit: cover;
+    height: 254px;
+    padding-bottom: 18px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  & > .user {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 24px;
+    & > .avatar {
+      height: 182px;
+      border: solid 2px #0084ff;
+      border-radius: 14px;
+      padding: 6px;
+
+      & > img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+    }
+    & > figcaption {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      & > .user-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        & > .user-name {
+          & > h1 {
+            @include typography_BVNPro-desktop-body-1;
+            text-transform: capitalize;
+          }
+          & > h2 {
+            @include typography_BVNPro-desktop-body-3;
+            color: $benthicBlack-tints-300;
+          }
+        }
+        & > .action {
+          display: flex;
+          gap: 24px;
+          align-items: center;
+          @include typography_BVNPro-desktop-body-2;
+        }
+      }
+      & > .user-info {
+        & > .container-contact {
+          display: grid;
+          grid-template-columns: auto auto;
+          gap: 8px;
+          & > .contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            @include typography_BVNPro-desktop-body-2;
+            & > .icon {
+              & > svg {
+                width: 24px;
+                height: 24px;
+              }
+            }
+          }
+        }
+      }
+      & > .user-info-icon {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        @include typography_BVNPro-desktop-body-2;
+        & > .icon {
+          & > svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      & > p {
+        @include typography_BVNPro-custom(400, 14px);
+      }
+    }
+  }
+}
