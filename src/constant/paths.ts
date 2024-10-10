@@ -19,6 +19,8 @@ const paths = {
   profile: '/profile',
   solutionDetails: '/solutionDetails',
   setting: '/setting',
+  statistic: '/statistic',
+  recruiterCompany: '/recruiter-company',
 
   API: {
     root: 'api/v1',
@@ -41,7 +43,6 @@ const paths = {
     account: 'accountInformation',
     emailForgotPassword: 'emailForgotPassword',
   },
-  statistic: '/statistic',
 };
 
 export default paths;

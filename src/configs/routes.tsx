@@ -17,6 +17,7 @@ const SolutionDetailsPage = React.lazy(
   () => import('../pages/SolutionDetails'),
 );
 const StatisticPage = React.lazy(() => import('../pages/Statistic'));
+const RecruiterCompanyPage = React.lazy(() => import('../pages/RecruiterCompany'))
 
 const extendedRoutes: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.statistic,
     element: <StatisticPage />,
+  },
+  {
+    path: paths.recruiterCompany,
+    element: <RecruiterCompanyPage />,
   },
 ];
 
