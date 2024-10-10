@@ -1,5 +1,6 @@
 @use '../../../styles/scss/utils/variables' as *;
 .button-container {
+  width: 100%;
   display: flex;
   justify-items: center;
   align-items: center;

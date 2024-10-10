@@ -23,9 +23,7 @@ const OtpInput: FC<IOtpInputProps> = ({
     onChangeValue(index, value);
   };
 
-  const handleKeyDown = () => {
-    console.log('handle key down otp input');
-  };
+  const handleKeyDown = () => {};
 
   const otpInputClass = classNames({
     'otp__input-component': true,
@@ -33,6 +31,7 @@ const OtpInput: FC<IOtpInputProps> = ({
     error: isError,
     success: success,
   });
+
   return (
     <input
       type="text"
@@ -40,7 +39,7 @@ const OtpInput: FC<IOtpInputProps> = ({
       onChange={handleChange}
       className={otpInputClass}
       maxLength={1}
-      value={otpValue || ''}
+      value={otpValue ?? ''}
     />
   );
 };
