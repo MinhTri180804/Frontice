@@ -3,9 +3,18 @@ import { FC } from 'react';
 import { usePreviousPage } from '../../../hooks';
 import './resetPassword.scss';
 import { ResetPasswordForm } from './Partials/ResetPasswordForm';
+import { Navigate, useLocation } from 'react-router-dom';
+import { paths } from '../../../constant';
 
 const ResetPasswordPage: FC = () => {
   const previousPage = usePreviousPage();
+  const location = useLocation();
+  console.log('location: ', location);
+  const resetToken = location.state?.resetToken ?? null;
+
+  if (!resetToken) {
+    return <Navigate to={`${paths.auth}/${paths.login}`} />;
+  }
 
   const handlePrevPage = () => {
     // TODO: Implement handle open popup warning if checkout reset password page
@@ -24,7 +33,7 @@ const ResetPasswordPage: FC = () => {
       <div className="content">
         {/*TODO: Create then implement form component in here */}
         <div className="main__content">
-          <ResetPasswordForm />
+          <ResetPasswordForm resetToken={resetToken} />
 
           <div className="other">
             <div onClick={handlePrevPage} className="prev-page">
