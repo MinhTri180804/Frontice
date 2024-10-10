@@ -4,15 +4,30 @@ import {
   ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
 import './Solution.scss';
+import DescUser from './Partials/User';
+import DescSolution from './Partials/Solutions';
 interface Solution {
   image: string;
   time: string;
   name: string;
   tech: string[];
+  userAvatar?: string;
+  titleSolution?: string;
+  descriptionSolution?: string;
+  isShowDesc?: boolean;
 }
 
 const Solution: React.FC<Solution> = ({ ...props }) => {
-  const { image, time, name, tech } = props;
+  const {
+    image,
+    time,
+    name,
+    tech,
+    userAvatar = '',
+    titleSolution = 'Title of the solution',
+    descriptionSolution = ' Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias cum optio aspernatur! Omnis inventore ipsum impedit corporis dolorum, debitis pariatur reprehenderit, praesentium unde placeat deleniti distinctio. Obcaecati, recusandae vitae.',
+    isShowDesc = false,
+  } = props;
   return (
     <>
       <div className="container-solution">
@@ -32,6 +47,21 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
               <div className="score-solution">123 score</div>
               <div className="rank-level">Diamon</div>
             </div>
+            {isShowDesc && (
+              <DescUser
+                userAvatar={userAvatar}
+                userId="#123"
+                userName="user name"
+                userRank="Gold"
+              />
+            )}
+
+            {isShowDesc && (
+              <DescSolution
+                titleSolutioon={titleSolution}
+                descriptionSolution={descriptionSolution}
+              />
+            )}
             <div className="interaction-panel">
               <div className="action-like">
                 <HandThumbUpIcon />

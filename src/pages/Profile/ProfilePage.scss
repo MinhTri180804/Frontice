@@ -1,17 +1,41 @@
 @use '../../styles/scss/utils/mixin/typography' as *;
+
 .profile-container {
-  & > div {
+  & .banner-with-info {
     margin-bottom: 64px;
+  }
+  & .title-tag {
+    margin-bottom: 32px;
   }
   & > h4 {
     @include typography_BVNPro-desktop-h4;
     margin-bottom: 22px;
   }
+  & .title-tag {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    & > svg {
+      width: 29px;
+      height: 26px;
+    }
+  }
+
   & > .list-solution {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
-    & div {
+    margin-bottom: 64px;
+    & .container-solution {
+      grid-column: span 3;
+    }
+  }
+  & > .list-company {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+    & .container-company-follow {
       grid-column: span 3;
     }
   }
