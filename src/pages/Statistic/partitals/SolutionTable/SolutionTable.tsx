@@ -5,8 +5,20 @@ import { SolutionRow } from "./SolutionRow";
 const SolutionTable: React.FC = () => {
     return (
         <div className="solution-table-container">
-            Solution table
-            <SolutionRow />
+            <div className="solution-table-title">Section title</div>
+
+            <div className="solution-table-body">
+                <div className="solution-table-header">
+                    <span>Nội dung</span>
+                    <span>Số điểm</span>
+                    <span>Tương tác</span>
+                    <span>Thời gian</span>
+                </div>
+                <SolutionRow />
+                <SolutionRow />
+                <SolutionRow />
+                <SolutionRow />
+            </div>
         </div>
     )
 };
