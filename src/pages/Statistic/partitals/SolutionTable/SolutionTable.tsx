@@ -1,6 +1,6 @@
 import React from "react";
 import "./SolutionTable.scss"
-import { SolutionRow } from "./SolutionRow";
+import { SolutionRow } from "./partials/";
 
 const SolutionTable: React.FC = () => {
     return (
