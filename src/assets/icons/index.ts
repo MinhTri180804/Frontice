@@ -15,6 +15,9 @@ import { UpIcon } from './UpIcon';
 import { DownIcon } from './DownIcon';
 import { UpAndDownIcon } from './UpAndDownIcon';
 import { StatisticIcon } from './StatisticIcon';
+import { AddressIcon } from './AddressIcon';
+import { ListIcon } from './ListIcon';
+import { PlusIcon } from './PlusIcon';
 export {
   CloseIcon,
   WarningIcon,
@@ -33,4 +36,7 @@ export {
   DownIcon,
   UpAndDownIcon,
   StatisticIcon,
+  AddressIcon,
+  ListIcon,
+  PlusIcon,
 };
