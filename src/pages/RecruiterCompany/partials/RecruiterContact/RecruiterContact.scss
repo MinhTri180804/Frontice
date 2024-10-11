@@ -1,0 +1,75 @@
+.recruiter-contact-container {
+    display       : flex;
+    padding       : 24px;
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 24px;
+    align-self    : stretch;
+    border-radius : 4px;
+    background    : #FFF;
+    box-shadow    : 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+
+    .recruiter-contact-title {
+        display       : flex;
+        padding-bottom: 12px;
+        align-items   : center;
+        gap           : 10px;
+        align-self    : stretch;
+        border-bottom : 1px solid #A4A5A6;
+
+        span {
+            color      : #1B1D21;
+            font-size  : 24px;
+            font-style : normal;
+            font-weight: 700;
+            line-height: 140%;
+        }
+    }
+
+    .recruiter-contact-body {
+        display       : flex;
+        flex-direction: column;
+        align-items   : flex-start;
+        gap           : 24px;
+        align-self    : stretch;
+
+        .contact-item {
+            display       : flex;
+            flex-direction: column;
+            align-items   : flex-start;
+            gap           : 4px;
+            align-self    : stretch;
+
+            .contact-label {
+                display    : flex;
+                align-items: center;
+                gap        : 10px;
+                align-self : stretch;
+
+                span {
+                    color      : #494A4D;
+                    font-size  : 16px;
+                    font-style : normal;
+                    font-weight: 400;
+                    line-height: 150%;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color          : #1B1D21;
+                font-size      : 18px;
+                font-style     : normal;
+                font-weight    : 400;
+                line-height    : 160%;
+                transition     : color 0.3s ease;
+                width          : 100%;
+                word-wrap      : break-word;
+            }
+
+            a:hover {
+                color: #5250F7;
+            }
+        }
+    }
+}

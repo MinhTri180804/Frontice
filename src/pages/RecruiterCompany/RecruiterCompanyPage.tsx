@@ -3,6 +3,7 @@ import {
   RecruiterProfile,
   RecruiterInfo,
   RecruiterDescription,
+  RecruiterContact,
 } from "./partials"
 
 const RecruiterCompanyPage: React.FC = () => {
@@ -16,6 +17,7 @@ const RecruiterCompanyPage: React.FC = () => {
           <RecruiterDescription />
         </div>
         <div className="right-column">
+          <RecruiterContact />
         </div>
       </div>
       <div className='challenge-list-component'>
