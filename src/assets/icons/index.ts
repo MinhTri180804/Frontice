@@ -18,6 +18,7 @@ import { StatisticIcon } from './StatisticIcon';
 import { AddressIcon } from './AddressIcon';
 import { ListIcon } from './ListIcon';
 import { PlusIcon } from './PlusIcon';
+import { StatisticCardIcon } from './StatisticCardIcon';
 export {
   CloseIcon,
   WarningIcon,
@@ -39,4 +40,5 @@ export {
   AddressIcon,
   ListIcon,
   PlusIcon,
+  StatisticCardIcon,
 };
