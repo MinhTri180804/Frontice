@@ -18,7 +18,6 @@ const ForgotPasswordPage: FC = () => {
       </div>
 
       <div className="content">
-        {/*TODO: Create then implement form component in here */}
         <div className="main__content">
           <ForgotPasswordForm />
 

@@ -1,12 +1,11 @@
 @use '../../../../styles/scss/utils' as *;
+@use '../../../../styles/scss/flex-grid' as *;
 
 .recruiter-description-container {
   width: 100%;
 
   .recruiter-description-paragraph {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    @include flex-column(8px);
 
     & > p {
       color: $satinDeepBlack-main;

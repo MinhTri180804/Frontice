@@ -1,3 +1,4 @@
+@use '../../../../../styles/scss/flex-grid' as *;
 @use '../../../../../styles/scss/utils' as *;
 
 .auth__welcome-container {
@@ -5,25 +6,15 @@
   height: 100%;
   border-radius: 24px;
   background: linear-gradient(180deg, #5250f7 0%, #1e1e1e 100%);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  @include flex-row(none, center, flex-end);
 
   & > .content {
     margin-bottom: 62px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 32px;
+    @include flex-column(32px, center, center);
 
     & > .heading {
-      //   TODO: add mixin flex in here
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      justify-content: center;
-      align-items: center;
+      @include flex-column(16px, center, center);
+
       & > .logo {
         width: 152px;
         height: auto;
@@ -36,12 +27,7 @@
       }
 
       & > .content {
-        //   TODO: add mixin flex in here
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 12px;
+        @include flex-column(12px, center, center);
 
         & > .title {
           @include typography_BVNPro-desktop-h3();
@@ -63,10 +49,8 @@
     }
 
     & > .steps {
-      display: flex;
-      flex-direction: column;
+      @include flex-column(14px);
       width: 100%;
-      gap: 14px;
     }
   }
 }

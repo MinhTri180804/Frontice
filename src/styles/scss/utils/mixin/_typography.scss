@@ -42,7 +42,11 @@
 }
 
 @mixin typography_BVNPro-desktop-body-3() {
-  @include typography_BVNPro-custom(400, 14px, auto);
+  @include typography_BVNPro-custom(400, 14px, 120%);
+}
+
+@mixin typography_BVNPro-desktop-body-4() {
+  @include typography_BVNPro-custom(400, 12px, auto);
 }
 
 // -- for tablet screen

@@ -1,18 +1,13 @@
+@use '../../styles/scss/flex-grid' as *;
+
 .flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  @include flex(center, center, 12px);
   width: 600px;
   margin: 0 auto;
 
   &-col {
     padding-top: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: start;
-    gap: 12px;
+    @include flex(column, flex-start, start, 12px);
     width: 600px;
     margin: 0 auto;
   }

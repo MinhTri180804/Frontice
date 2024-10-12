@@ -1,11 +1,8 @@
 @use '../../../../../../styles/scss/utils' as *;
+@use '../../../../../../styles/scss/flex-grid' as *;
 .recruiter-model-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: flex-start;
-  gap: 8px;
+  @include flex-column(8px, flex-start, column);
 
   .recruiter-model-company {
     color: $satinDeepBlack-tints-300;
