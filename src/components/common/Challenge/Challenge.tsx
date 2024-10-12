@@ -1,6 +1,7 @@
 import './challenge.scss';
 import { FC } from 'react';
 import Button from '../Button';
+import { TagChallenge } from './Partials';
 
 interface IChallengeProps {
   bannerUrl: string;
@@ -10,6 +11,9 @@ interface IChallengeProps {
   level: string;
   difficulty: string;
   description: string;
+  tags: {
+    value: 'premium' | 'free' | 'free++' | 'new';
+  }[];
 }
 
 const Challenge: FC<IChallengeProps> = ({
@@ -20,11 +24,17 @@ const Challenge: FC<IChallengeProps> = ({
   level,
   difficulty,
   description,
+  tags,
 }) => {
   return (
     <div className="challenge__component-container">
       <div className="banner">
         <img src={bannerUrl} alt="" />
+        <div className="tag__challenge-list">
+          {tags.map((tag, index) => (
+            <TagChallenge key={`${tag.value}-${index}`} type={tag.value} />
+          ))}
+        </div>
       </div>
 
       <div className="content">
