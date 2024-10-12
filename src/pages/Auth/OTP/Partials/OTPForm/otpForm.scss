@@ -1,17 +1,11 @@
+@use '../../../../../styles/scss/flex-grid' as *;
+
 form.otp__form {
-  // TODO: Implement mixin flex scss in here
-  display: flex;
-  justify-content: flex-start;
-  align-items: start;
-  flex-direction: column;
-  gap: 16px;
+  @include flex-column(16px, flex-start, start);
   width: 100%;
 
   & > .otp__list-component {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 8px;
+    @include flex-row(8px, flex-start, center);
     width: 100%;
 
     & > input {

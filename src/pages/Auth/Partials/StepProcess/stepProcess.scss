@@ -1,14 +1,10 @@
-@use '../../../../styles/scss/utils/variables' as *;
-@use '../../../../styles/scss/utils/mixin' as *;
+@use '../../../../styles/scss/utils' as *;
+@use '../../../../styles/scss/flex-grid' as *;
 
-// TODO: Define mixin for flex, border-radius, spacing and modified in here
 .step__process-component {
   width: 100%;
   padding: 16px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
+  @include flex-row(12px, flex-start, center);
   background-color: $benthicBlack-tints-200;
   border-radius: 8px;
   transition:
@@ -26,9 +22,7 @@
   & > .step-number {
     width: 24px;
     height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-row(0, center, center);
     color: $white;
     @include typography_BVNPro-desktop-body-2();
     background-color: $satinDeepBlack-tints-300;
