@@ -1,38 +1,14 @@
 .recruiter-info-container {
-    display       : flex;
-    padding       : 24px;
-    flex-direction: column;
-    align-items   : flex-start;
-    gap           : 24px;
-    border-radius : 4px;
-    background    : #FFF;
-    box-shadow    : 1px 4px 24.5px 0px rgba(0, 0, 0, 0.08);
+  width: 100%;
 
-    .recruiter-info-title {
-        display       : flex;
-        padding-bottom: 12px;
-        align-items   : center;
-        gap           : 10px;
-        align-self    : stretch;
-        border-bottom : 1px solid #D1D2D3;
-
-        span {
-            color      : #1B1D21;
-            text-align : center;
-            font-size  : 24px;
-            font-style : normal;
-            font-weight: 700;
-            line-height: 140%;
-        }
+  .recruiter-info-models {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    gap: 24px;
+    & > div {
+      grid-column: span 3;
+      width: 100%;
     }
-
-    .recruiter-info-model {
-        display      : flex;
-        align-items  : center;
-        align-content: center;
-        gap          : 24px;
-        align-self   : stretch;
-        flex-wrap    : wrap;
-        width        : 100%;
-    }
+  }
 }

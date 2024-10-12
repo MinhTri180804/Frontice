@@ -1,6 +1,10 @@
 import './RecruiterProfile.scss';
 import { RecruiterLogo } from '../../../../assets/images';
-import { ListIcon, AddressIcon, PlusIcon } from '../../../../assets/icons';
+import {
+  MapPinIcon,
+  ClipboardDocumentListIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import { Button } from '../../../../components/common';
 
 const RecruiterProfile: React.FC = () => {
@@ -12,20 +16,21 @@ const RecruiterProfile: React.FC = () => {
           <div className="recruiter-name">NAB Innovation Centre Vietnam</div>
           <div className="recruiter-detail">
             <div className="recruiter-address">
-              <AddressIcon width={24} height={24} stroke="#fff" />
+              <MapPinIcon width={24} height={24} stroke="#fff" />
               <span>Thành phố Hồ Chí Minh, Việt Nam</span>
             </div>
             <div className="recruiter-challenge-numbers">
-              <ListIcon width={24} height={24} stroke="#fff" />
+              <ClipboardDocumentListIcon width={24} height={24} stroke="#fff" />
               <span>Có 11 challenge</span>
             </div>
           </div>
         </div>
         <div className="recruiter-btn-container">
           <Button
-            label="Challenges"
+            label="Go to challenges"
             styleType="secondary"
             buttonSize="medium"
+            className="custom-color"
           />
           <Button
             label="Theo dõi"

@@ -18,13 +18,14 @@ const Button: React.FC<ButtonProps> = ({ ...props }) => {
     Icon,
     disabled = false,
     type,
+    className,
     ...others
   } = props;
 
   return (
     <button
       type={type as 'button' | 'submit' | 'reset'}
-      className={`button-container  ${buttonSize} ${styleType}`}
+      className={`button-container ${className}  ${buttonSize} ${styleType}`}
       disabled={disabled}
       {...others}
     >
