@@ -6,7 +6,7 @@ interface IOtpInputProps {
   isError?: boolean;
   isSuccess?: boolean;
   index: number;
-  onChangeValue: (index: number, value: number) => void;
+  onChangeValue: (index: number, value: number | string) => void;
 }
 
 const OtpInput: FC<IOtpInputProps> = ({
@@ -15,10 +15,10 @@ const OtpInput: FC<IOtpInputProps> = ({
   index,
   onChangeValue,
 }) => {
-  const [otpValue, setOtpValue] = useState<number | null>(null);
+  const [otpValue, setOtpValue] = useState<number | string | null>(null);
   const [success] = useState<boolean>(isSuccess);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
+    const value = e.target.value;
     setOtpValue(value);
     onChangeValue(index, value);
   };
@@ -39,7 +39,7 @@ const OtpInput: FC<IOtpInputProps> = ({
       onChange={handleChange}
       className={otpInputClass}
       maxLength={1}
-      value={otpValue ?? ''}
+      value={otpValue || ''}
     />
   );
 };
