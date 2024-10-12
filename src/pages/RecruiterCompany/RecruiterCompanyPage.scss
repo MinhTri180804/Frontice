@@ -1,44 +1,44 @@
 .recruiter-company-container {
-    display       : flex;
-    padding       : 12px 40px;
-    flex-direction: column;
-    align-items   : flex-start;
-    gap           : 32px;
-    flex          : 1 0 0;
-    align-self    : stretch;
+  display: flex;
+  padding: 12px 40px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  align-self: stretch;
 
-    .recruiter-company-title {
-        color      : #000;
-        font-size  : 32px;
-        font-style : normal;
-        font-weight: 700;
-        line-height: 135%;
-    }
+  .recruiter-company-title {
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%;
+  }
 
-    .recruiter-company-content {
-        display    : flex;
-        align-items: flex-start;
-        gap        : 24px;
-        align-self : stretch;
-        width      : 100%;
+  .recruiter-company-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
 
-        .left-column {
-            flex          : 1 0 0;
-            max-width     : calc(8 / 12 * 100%);
-            display       : flex;
-            flex-direction: column;
-            align-items   : flex-start;
-            gap           : 32px;
+    & > .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+      gap: 32px;
+      &.left-column {
+        grid-column: span 8;
+      }
+
+      &.right-column {
+        grid-column: span 4;
+
+        & > .section__recruiter-contact {
+          position: sticky;
+          top: 0;
         }
-
-        .right-column {
-            flex           : 1 0 0;
-            max-width      : calc(4 / 12 * 100%);
-            display        : flex;
-            flex-direction : column;
-            justify-content: center;
-            align-items    : flex-start;
-            gap            : 32px;
-        }
+      }
     }
+  }
 }

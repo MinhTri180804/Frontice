@@ -1,94 +1,71 @@
 .recruiter-profile-container {
-    display      : flex;
-    padding      : 24px;
-    align-items  : flex-start;
-    gap          : 24px;
-    align-self   : stretch;
-    border-radius: 4px;
-    background   : linear-gradient(87deg, #212063 24.96%, #4341C9 90.36%);
+  display: flex;
+  padding: 24px;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: linear-gradient(87deg, #212063 24.96%, #4341c9 90.36%);
 
-    .left-content {
-        width        : 170px;
-        height       : 170px;
-        border-radius: 8px;
-        object-fit   : cover;
+  .left-content {
+    width: 170px;
+    height: 170px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    flex: 1 0 0;
+
+    .recruiter-profile-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      align-self: stretch;
+      color: #fff;
+
+      .recruiter-name {
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 135%;
+      }
+
+      .recruiter-detail {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .recruiter-address,
+        .recruiter-challenge-numbers {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          span {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+          }
+        }
+      }
     }
 
-    .right-content {
-        display       : flex;
-        flex-direction: column;
-        align-items   : flex-start;
-        gap           : 24px;
-        flex          : 1 0 0;
+    .recruiter-btn-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
-        .recruiter-profile-info {
-            display       : flex;
-            flex-direction: column;
-            align-items   : flex-start;
-            gap           : 12px;
-            align-self    : stretch;
-            color         : #fff;
-
-            .recruiter-name {
-                font-size  : 32px;
-                font-style : normal;
-                font-weight: 700;
-                line-height: 135%;
-            }
-
-            .recruiter-detail {
-                display    : flex;
-                align-items: center;
-                gap        : 24px;
-
-                .recruiter-address,
-                .recruiter-challenge-numbers {
-                    display    : flex;
-                    align-items: center;
-                    gap        : 8px;
-
-                    span {
-                        font-size  : 14px;
-                        font-style : normal;
-                        font-weight: 400;
-                        line-height: 120%;
-                    }
-                }
-            }
-        }
-
-        .recruiter-btn-container {
-            display    : flex;
-            align-items: center;
-            gap        : 12px;
-
-            .recruiter-btn {
-                button {
-                    display        : flex;
-                    padding        : 14px 32px;
-                    justify-content: center;
-                    align-items    : center;
-                    gap            : 10px;
-                    border-radius  : 8px;
-                    border         : 1px solid #fff;
-                }
-
-                &.active {
-                    button {
-                        background: #5250F7;
-                        border    : none;
-                    }
-                }
-
-                .label {
-                    color      : #fff;
-                    text-align : center;
-                    font-size  : 16px;
-                    font-style : normal;
-                    font-weight: 400;
-                    line-height: 20px;
-                }
-            }
-        }
+      & > .custom-color {
+        border-color: white;
+        color: white;
+      }
     }
+  }
 }

@@ -110,7 +110,7 @@ const FormLogin: FC = () => {
         </Link>
       </div>
       {/* TODO: update status disabled and event click of button component */}
-      <Button type="primary" label="Login" size="medium" />
+      <Button styleType="primary" label="Login" buttonSize="medium" />
     </Form>
   );
 };

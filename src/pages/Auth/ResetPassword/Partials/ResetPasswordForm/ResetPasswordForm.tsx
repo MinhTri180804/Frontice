@@ -104,7 +104,7 @@ const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
       />
 
       {/* TODO: update status disabled and event click of button component */}
-      <Button type="primary" label="Reset password" size="medium" />
+      <Button styleType="primary" label="Reset password" buttonSize="medium" />
     </Form>
   );
 };
