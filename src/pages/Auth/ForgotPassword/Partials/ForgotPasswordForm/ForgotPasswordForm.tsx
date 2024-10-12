@@ -75,7 +75,7 @@ const ForgotPasswordForm: FC = () => {
         label="email"
         type="email"
       />
-      <Button type="primary" label="Forgot password" size="medium" />
+      <Button styleType="primary" label="Forgot password" buttonSize="medium" />
     </Form>
   );
 };

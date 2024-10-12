@@ -129,7 +129,7 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
             />
           ))}
       </div>
-      <Button type="primary" label="Verify OTP" size="medium" />
+      <Button styleType="primary" label="Verify OTP" buttonSize="medium" />
     </Form>
   );
 };

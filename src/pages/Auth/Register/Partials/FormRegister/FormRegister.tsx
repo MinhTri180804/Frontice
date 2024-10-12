@@ -157,7 +157,7 @@ const FormRegister: FC = () => {
         type="password"
       />
 
-      <Button type="primary" label="Register" size="medium" />
+      <Button styleType="primary" label="Register" buttonSize="medium" />
     </Form>
   );
 };
