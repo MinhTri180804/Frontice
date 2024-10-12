@@ -9,9 +9,19 @@
   transition: background-color $background_transition_time_duration ease-in-out;
 
   border-radius: 8px;
-  & > .label {
-    width: 100%;
+  &:disabled {
+    cursor: not-allowed;
   }
+  & > .label {
+    flex-grow: 1;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  & > .icon {
+    flex-shrink: 0;
+  }
+
   &.large {
     padding: 20px 32px;
     font-size: 20px;
