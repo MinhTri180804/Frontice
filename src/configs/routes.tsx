@@ -17,6 +17,7 @@ const SolutionDetailsPage = React.lazy(
   () => import('../pages/SolutionDetails'),
 );
 const Challeges = React.lazy(() => import('../pages/Challenges'));
+const Solutions = React.lazy(() => import('../pages/Solutions'));
 const StatisticPage = React.lazy(() => import('../pages/Statistic'));
 const RecruiterCompanyPage = React.lazy(
   () => import('../pages/RecruiterCompany'),
@@ -39,6 +40,10 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.challenges,
     element: <Challeges />,
+  },
+  {
+    path: paths.solutions,
+    element: <Solutions />,
   },
   {
     path: paths.statistic,
