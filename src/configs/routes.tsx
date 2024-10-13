@@ -3,14 +3,19 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import { AppLayout } from '../components/layout/app';
 import { AuthLayout } from '../components/layout/auth';
 import { paths } from '../constant';
-import { HomePage, NotFoundPage, SubmitSolutionPage } from '../pages';
-import OtpPage from '../pages/Auth/OTP/OtpPage';
+import {
+  ChallengeDetailsPage,
+  HomePage,
+  NotFoundPage,
+  SubmitSolutionPage,
+} from '../pages';
 import {
   ForgotPasswordPage,
   LoginPage,
   RegisterPage,
   ResetPasswordPage,
 } from '../pages/Auth';
+import OtpPage from '../pages/Auth/OTP/OtpPage';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
 const SolutionDetailsPage = React.lazy(
@@ -53,6 +58,8 @@ const extendedRoutes: RouteObject[] = [
     path: paths.submitSolution,
     element: <SubmitSolutionPage />,
   },
+
+  { path: paths.challengeDetails, element: <ChallengeDetailsPage /> },
 ];
 
 const extendedRoutesAuth: RouteObject[] = [
