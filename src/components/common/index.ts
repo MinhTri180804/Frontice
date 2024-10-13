@@ -5,3 +5,4 @@ export { default as Challenge } from './Challenge';
 export { default as TagChallenge } from './TagChallenge';
 export { default as ChallengeTechnical } from './ChallengeTechnical';
 export { default as ChallengeLevelDifficulty } from './ChallengeLevelDifficulty';
+export { default as ChallengeOverview } from './ChallengeOverview';

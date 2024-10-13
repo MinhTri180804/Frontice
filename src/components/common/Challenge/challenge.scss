@@ -75,10 +75,7 @@
       & > span {
         @include typography_BVNPro-desktop-body-3();
         color: $satinDeepBlack-tints-400;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        @include max-line-clamp(3);
       }
     }
   }
