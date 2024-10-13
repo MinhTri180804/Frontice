@@ -10,7 +10,7 @@ import {
 } from '../../asset/images/solution.png';
 import BannerWithInfo from './Partials/BannerWithInfo';
 import CompanyFollow from './Partials/CompanyFollow/CompanyFollow';
-import Solution from './Partials/Solution';
+import Solution from '../../components/common/Solution';
 import './ProfilePage.scss';
 interface DataItemSolution {
   time: string;
