@@ -23,6 +23,7 @@ const paths = {
   statistic: '/statistic',
   recruiterCompany: '/recruiter-company',
   submitSolution: '/submit-solution',
+  challengeDetails: '/challenge-details',
 
   API: {
     root: 'api/v1',
