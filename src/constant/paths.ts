@@ -21,6 +21,7 @@ const paths = {
   setting: '/setting',
   statistic: '/statistic',
   recruiterCompany: '/recruiter-company',
+  submitSolution: '/submit-solution',
 
   API: {
     root: 'api/v1',

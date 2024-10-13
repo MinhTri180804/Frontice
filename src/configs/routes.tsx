@@ -3,7 +3,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import { AppLayout } from '../components/layout/app';
 import { AuthLayout } from '../components/layout/auth';
 import { paths } from '../constant';
-import { HomePage, NotFoundPage } from '../pages';
+import { HomePage, NotFoundPage, SubmitSolutionPage } from '../pages';
 import OtpPage from '../pages/Auth/OTP/OtpPage';
 import {
   ForgotPasswordPage,
@@ -17,7 +17,9 @@ const SolutionDetailsPage = React.lazy(
   () => import('../pages/SolutionDetails'),
 );
 const StatisticPage = React.lazy(() => import('../pages/Statistic'));
-const RecruiterCompanyPage = React.lazy(() => import('../pages/RecruiterCompany'))
+const RecruiterCompanyPage = React.lazy(
+  () => import('../pages/RecruiterCompany'),
+);
 
 const extendedRoutes: RouteObject[] = [
   {
@@ -40,6 +42,11 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.recruiterCompany,
     element: <RecruiterCompanyPage />,
+  },
+
+  {
+    path: paths.submitSolution,
+    element: <SubmitSolutionPage />,
   },
 ];
 
