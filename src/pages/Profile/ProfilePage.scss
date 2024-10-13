@@ -22,6 +22,7 @@
 
   & > .list-solution {
     @include grid(12, none, 24px);
+    margin-bottom: 62px;
     & .container-solution {
       grid-column: span 3;
     }

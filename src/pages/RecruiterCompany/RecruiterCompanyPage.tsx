@@ -1,3 +1,4 @@
+import { Challenge } from '../../components/common';
 import './RecruiterCompanyPage.scss';
 import {
   RecruiterContact,
@@ -41,8 +42,26 @@ const RecruiterCompanyPage: React.FC = () => {
           </SectionAbout>
         </div>
       </div>
-      <SectionAbout title="Danh sách thử thách">
-        <div></div>
+      <SectionAbout className="challenge__list" title="Danh sách thử thách">
+        <div className="challenge__list-content">
+          {Array.from({ length: 10 }).map(() => (
+            <Challenge
+              name="Frontend Quiz app"
+              bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
+              description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"
+              level="Diamond"
+              difficulty="High"
+              technicalList={['html', 'css', 'javascript']}
+              score={120}
+              tags={[
+                {
+                  value: 'premium',
+                },
+                { value: 'new' },
+              ]}
+            />
+          ))}
+        </div>
       </SectionAbout>
     </div>
   );

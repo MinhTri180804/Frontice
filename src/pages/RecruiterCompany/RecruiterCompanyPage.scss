@@ -7,12 +7,12 @@
   flex: 1 0 0;
   align-self: stretch;
 
-  .recruiter-company-title {
+  & > .recruiter-company-title {
     @include typography_BVNPro-desktop-h3();
     color: $benthicBlack-main;
   }
 
-  .recruiter-company-content {
+  & > .recruiter-company-content {
     width: 100%;
     @include grid(12, none, 24px);
 
@@ -29,6 +29,17 @@
           position: sticky;
           top: 0;
         }
+      }
+    }
+  }
+
+  & > .challenge__list {
+    .challenge__list-content {
+      @include grid(12, none, 24px, flex-start, stretch);
+
+      & > div {
+        width: 100%;
+        grid-column: span 3;
       }
     }
   }

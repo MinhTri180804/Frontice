@@ -81,6 +81,19 @@ const Solutions: React.FC = () => {
               />
             ))}
           </div>
+          <div className="cols">
+            {dataSolution.map((solutionItem) => (
+              <Solution
+                key={solutionItem.id}
+                image={image} // Hình ảnh mặc định
+                name={solutionItem.name}
+                time={solutionItem.time}
+                tech={solutionItem.tech}
+                userAvatar={userAvatar}
+                isShowDesc
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

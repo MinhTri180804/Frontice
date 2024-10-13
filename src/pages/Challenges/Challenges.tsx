@@ -17,7 +17,7 @@ const Challenges: React.FC = () => {
           />
         </div>
         <div className="challenges-list">
-          {Array.from({ length: 10 }).map((value, index) => (
+          {Array.from({ length: 10 }).map(() => (
             <Challenge
               name="Frontend Quiz app"
               bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"

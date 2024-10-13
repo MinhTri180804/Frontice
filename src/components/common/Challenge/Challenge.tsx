@@ -4,6 +4,8 @@ import Button from '../Button';
 import TagChallenge from '../TagChallenge';
 import ChallengeTechnical from '../ChallengeTechnical';
 import ChallengeLevelDifficulty from '../ChallengeLevelDifficulty';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../../constant';
 
 interface IChallengeProps {
   bannerUrl: string;
@@ -28,6 +30,11 @@ const Challenge: FC<IChallengeProps> = ({
   description,
   tags,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClickViewDetails = () => {
+    navigate(paths.challengeDetails);
+  };
   return (
     <div className="challenge__component-container">
       <div className="banner">
@@ -65,7 +72,12 @@ const Challenge: FC<IChallengeProps> = ({
         </div>
       </div>
 
-      <Button label="View Details" buttonSize="small" styleType="secondary" />
+      <Button
+        onClick={handleClickViewDetails}
+        label="View Details"
+        buttonSize="small"
+        styleType="secondary"
+      />
     </div>
   );
 };

@@ -2,14 +2,12 @@
 @use '../../../styles/scss/utils' as *;
 
 .challenge__component-container {
-  min-width: 272px;
-  max-width: 372px;
   width: 100%;
   padding: 12px;
   border-radius: 8px;
   transition: box-shadow $shadow_transition_time_duration ease-in-out;
   background-color: $BG-white;
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   @include flex-column(12px, flex-start, start);
   &:hover {
@@ -18,7 +16,8 @@
 
   & > .banner {
     border-radius: 4px;
-    height: 124px;
+    min-height: 124px;
+    max-height: 224px;
     width: 100%;
     position: relative;
     & > img {
