@@ -1,5 +1,4 @@
-@use '../../../../../../styles/scss/utils/mixin/typography' as *;
-@use '../../../../../../styles/scss/utils/variables/colors' as *;
+@use '../../../../../styles/scss/utils/variables/colors' as *;
 .desc-user {
   display: flex;
   border-top: 1px solid $FIELD-stroke;

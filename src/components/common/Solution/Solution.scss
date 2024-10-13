@@ -1,6 +1,6 @@
-@use '../../../../styles/scss/flex-grid' as *;
-@use '../../../../styles/scss/utils/mixin/typography' as *;
-@use '../../../../styles/scss/utils/variables/colors' as *;
+@use '../../../styles/scss/flex-grid' as *;
+@use '../../../styles/scss/utils/mixin/typography' as *;
+@use '../../../styles/scss/utils/variables/colors' as *;
 
 .container-solution {
   & > .solution {
