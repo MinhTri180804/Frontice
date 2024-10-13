@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import BannerWithInfo from './Partials/BannerWithInfo';
-import Solution from './Partials/Solution';
-import image from '../../asset/images/solution.png';
-import imageCompany from '../../asset/images/solution.png';
-import './ProfilePage.scss';
-import userAvatar from '../../asset/images/avatar.png';
-import CompanyFollow from './Partials/CompanyFollow/CompanyFollow';
 import {
-  CommandLineIcon,
   BuildingOfficeIcon,
+  CommandLineIcon,
 } from '@heroicons/react/24/outline';
+import React, { useEffect, useState } from 'react';
+import userAvatar from '../../asset/images/avatar.png';
+import {
+  default as image,
+  default as imageCompany,
+} from '../../asset/images/solution.png';
+import BannerWithInfo from './Partials/BannerWithInfo';
+import CompanyFollow from './Partials/CompanyFollow/CompanyFollow';
+import Solution from './Partials/Solution';
+import './ProfilePage.scss';
 interface DataItemSolution {
   time: string;
   name: string;

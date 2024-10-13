@@ -1,7 +1,9 @@
 import './challenge.scss';
 import { FC } from 'react';
 import Button from '../Button';
-import { TagChallenge } from './Partials';
+import TagChallenge from '../TagChallenge';
+import ChallengeTechnical from '../ChallengeTechnical';
+import ChallengeLevelDifficulty from '../ChallengeLevelDifficulty';
 
 interface IChallengeProps {
   bannerUrl: string;
@@ -42,9 +44,10 @@ const Challenge: FC<IChallengeProps> = ({
           <div className="heading-name">{name}</div>
           <div className="heading-technical">
             {technicalList.map((technical, index) => (
-              <div className="value" key={`${technical}-${index}`}>
-                {technical}
-              </div>
+              <ChallengeTechnical
+                technicalValue={technical}
+                key={`${technical}-${index}`}
+              />
             ))}
           </div>
         </div>
@@ -52,12 +55,9 @@ const Challenge: FC<IChallengeProps> = ({
         <div className="overview">
           <div className="score">
             <span className="value">{score}</span>
-            Score
+            <span className="label">Score</span>
           </div>
-          <div className="level-difficulty">
-            <div className="difficulty">{difficulty}</div>
-            <div className="level">{level}</div>
-          </div>
+          <ChallengeLevelDifficulty level={level} difficulty={difficulty} />
         </div>
 
         <div className="description">
