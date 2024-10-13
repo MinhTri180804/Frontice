@@ -17,6 +17,7 @@ const paths = {
   solutions: '/solutions',
   mySolutions: '/my-solutions',
   profile: '/profile',
+  challenges: '/challenges',
   solutionDetails: '/solutionDetails',
   setting: '/setting',
   statistic: '/statistic',
