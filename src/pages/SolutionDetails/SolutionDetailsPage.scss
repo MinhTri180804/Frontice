@@ -1,0 +1,11 @@
+@use '../../styles/scss/utils/mixin/typography' as *;
+@use '../../styles/scss/utils/variables/colors' as *;
+
+.container-solution-details-page {
+  & > .title {
+    & > h1 {
+      @include typography_BVNPro-desktop-h3;
+      margin-bottom: 62px;
+    }
+  }
+}
