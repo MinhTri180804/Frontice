@@ -6,8 +6,8 @@ import {
   ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
 interface Solution {
-  tech: string[];
-  image: string;
+  tech?: string[];
+  image?: string;
 }
 const SolutitonDetails: React.FC<Solution> = ({ ...props }) => {
   const { tech = ['html', 'css', 'js'], image = pathImg } = props;

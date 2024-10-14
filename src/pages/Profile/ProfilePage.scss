@@ -5,21 +5,18 @@
   & .banner-with-info {
     margin-bottom: 64px;
   }
-  & .title-tag {
-    margin-bottom: 32px;
-  }
   & > h4 {
     @include typography_BVNPro-desktop-h4;
     margin-bottom: 22px;
   }
   & .title-tag {
+    margin-bottom: 32px;
     @include flex-row(2px, none, center);
     & > svg {
       width: 29px;
       height: 26px;
     }
   }
-
   & > .list-solution {
     @include grid(12, none, 24px);
     margin-bottom: 62px;

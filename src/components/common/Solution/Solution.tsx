@@ -6,6 +6,7 @@ import {
 import './Solution.scss';
 import DescUser from './Partials/User';
 import DescSolution from './Partials/Solutions';
+import SolutionLevelDifficulty from '../SolutionLevelDifficulty';
 interface Solution {
   image: string;
   time: string;
@@ -45,7 +46,9 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
             </div>
             <div className="point-panel">
               <div className="score-solution">123 score</div>
-              <div className="rank-level">Diamon</div>
+              <div className="rank-level">
+                <SolutionLevelDifficulty level="Diamon" difficulty="High" />
+              </div>
             </div>
             {isShowDesc && (
               <DescUser

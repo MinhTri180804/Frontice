@@ -3,6 +3,7 @@
 @use '../../../../styles/scss/flex-grid' as *;
 
 .container-action {
+  margin-block: 62px;
   & > .list-action {
     @include grid(12, none, 24px);
 
