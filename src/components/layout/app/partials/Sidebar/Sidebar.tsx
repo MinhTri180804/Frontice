@@ -4,6 +4,7 @@ import './Sidebar.scss';
 import { BrandColorLogo } from "../../../../../assets/logos/locals"
 import { menuItem } from '../../../../../configs';
 import { paths } from '../../../../../constant';
+import { Tooltip } from '../../../../common';
 
 interface SidebarProps {
     isCollapsed: boolean;
@@ -11,6 +12,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     const [activeItem, setActiveItem] = useState('');
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
     // Handle active color of icon when reload page
     useEffect(() => {
@@ -27,6 +29,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     const handleItemClick = (path: string) => {
         setActiveItem(path);
         localStorage.setItem('activeItem', path);
+    };
+
+    const handleItemHover = (path: string | null) => {
+        setHoveredItem(path);
     };
 
     return (
@@ -48,9 +54,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                                             to={child.path}
                                             className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                                             onClick={() => handleItemClick(child.path)}
+                                            onMouseEnter={() => handleItemHover(child.path)}
+                                            onMouseLeave={() => handleItemHover(null)}
                                         >
                                             {child.icon && <child.icon width={24} height={24} stroke={child.path === activeItem ? "#fff" : "#A4A5A6"} />}
                                             {!isCollapsed && <span>{child.label}</span>}
+                                            {isCollapsed && (
+                                                <Tooltip
+                                                    text={child.label}
+                                                    isVisible={hoveredItem === child.path}
+                                                />
+                                            )}
                                         </NavLink>
                                     ))}
                                 </>
@@ -59,9 +73,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
                                     to={item.path}
                                     className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
                                     onClick={() => handleItemClick(item.path)}
+                                    onMouseEnter={() => handleItemHover(item.path)}
+                                    onMouseLeave={() => handleItemHover(null)}
                                 >
                                     {item.icon && <item.icon width={24} height={24} stroke={item.path === activeItem ? "#fff" : "#A4A5A6"} />}
                                     {!isCollapsed && <span>{item.label}</span>}
+                                    {isCollapsed && (
+                                        <Tooltip
+                                            text={item.label}
+                                            isVisible={hoveredItem === item.path}
+                                        />
+                                    )}
                                 </NavLink>
                             )}
                         </li>
