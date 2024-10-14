@@ -39,8 +39,9 @@
           & > .like {
             display: flex;
             align-items: center;
+            gap: 12px;
             padding: 12px;
-            border-right: 1px $satinDeepBlack-tints-300;
+            border-right: 1px solid $satinDeepBlack-tints-300;
             & > svg {
               width: 24px;
               height: 24px;
@@ -53,6 +54,7 @@
         & > .action-dislike {
           display: flex;
           align-items: center;
+          gap: 12px;
           border: 1px solid $satinDeepBlack-tints-300;
           border-radius: 4px;
           & > .dislike {
@@ -72,12 +74,14 @@
         & > .action-comment {
           display: flex;
           align-items: center;
+          gap: 12px;
           border: 1px solid $satinDeepBlack-tints-300;
           border-radius: 4px;
           & > .comment {
             display: flex;
             align-items: center;
             padding: 12px;
+            gap: 12px;
             border-right: 1px solid $satinDeepBlack-tints-300;
             & > svg {
               width: 24px;
