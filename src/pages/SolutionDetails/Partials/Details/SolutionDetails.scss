@@ -54,12 +54,13 @@
         & > .action-dislike {
           display: flex;
           align-items: center;
-          gap: 12px;
+
           border: 1px solid $satinDeepBlack-tints-300;
           border-radius: 4px;
           & > .dislike {
             display: flex;
             align-items: center;
+            gap: 12px;
             padding: 12px;
             border-right: 1px solid $satinDeepBlack-tints-300;
             & > svg {
