@@ -1,0 +1,13 @@
+{
+    "Layout": {
+        "Header": {
+            "SearchBar": {},
+            "UserProfile": {
+                "avatar": "ảnh đại diện",
+                "userName": "họ tên"
+            }
+        },
+        "Sidebar": {},
+        "Main": {}
+    }
+}

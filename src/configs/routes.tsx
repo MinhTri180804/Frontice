@@ -1,18 +1,33 @@
-import { RouteObject, Outlet } from 'react-router-dom';
-import { NotFoundPage, LoginPage, RegisterPage, HomePage } from '../pages';
-import { paths } from '../constant';
-import { AppLayout } from '../components/layout/app';
 import React from 'react';
+import { Outlet, RouteObject } from 'react-router-dom';
+import { AppLayout } from '../components/layout/app';
 import { AuthLayout } from '../components/layout/auth';
-import { OtpPage } from '../pages/Auth/OTP';
-import { ForgotPasswordPage } from '../pages/Auth/ForgotPassword';
-import { ResetPasswordPage } from '../pages/Auth/ResetPassword';
+import { paths } from '../constant';
+import {
+  ChallengeDetailsPage,
+  HomePage,
+  NotFoundPage,
+  SubmitSolutionPage,
+} from '../pages';
+import {
+  ForgotPasswordPage,
+  LoginPage,
+  RegisterPage,
+  ResetPasswordPage,
+} from '../pages/Auth';
+import OtpPage from '../pages/Auth/OTP/OtpPage';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
-const SolutionPage = React.lazy(() => import('../pages/Statistic'));
 const SolutionDetailsPage = React.lazy(
   () => import('../pages/SolutionDetails'),
 );
+const Challeges = React.lazy(() => import('../pages/Challenges'));
+const Solutions = React.lazy(() => import('../pages/Solutions'));
+const StatisticPage = React.lazy(() => import('../pages/Statistic'));
+const RecruiterCompanyPage = React.lazy(
+  () => import('../pages/RecruiterCompany'),
+);
+
 const extendedRoutes: RouteObject[] = [
   {
     index: true,
@@ -28,9 +43,28 @@ const extendedRoutes: RouteObject[] = [
     element: <SolutionDetailsPage />,
   },
   {
-    path: paths.statistic,
-    element: <SolutionPage />,
+    path: paths.challenges,
+    element: <Challeges />,
   },
+  {
+    path: paths.solutions,
+    element: <Solutions />,
+  },
+  {
+    path: paths.statistic,
+    element: <StatisticPage />,
+  },
+  {
+    path: paths.recruiterCompany,
+    element: <RecruiterCompanyPage />,
+  },
+
+  {
+    path: paths.submitSolution,
+    element: <SubmitSolutionPage />,
+  },
+
+  { path: paths.challengeDetails, element: <ChallengeDetailsPage /> },
 ];
 
 const extendedRoutesAuth: RouteObject[] = [

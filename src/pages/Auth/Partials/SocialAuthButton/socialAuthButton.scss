@@ -1,13 +1,10 @@
-@use '../../../../styles/scss/utils/mixin' as *;
-@use '../../../../styles/scss/utils/variables' as *;
+@use '../../../../styles/scss/utils' as *;
+@use '../../../../styles/scss/flex-grid' as *;
 
 .social__auth-button {
   width: 100%;
   padding: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+  @include flex-row(12px, center, center);
   background-color: $BG-white;
   border-radius: 8px;
   border: 1px solid $satinDeepBlack-tints-300;

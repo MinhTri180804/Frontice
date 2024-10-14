@@ -6,6 +6,7 @@ import {
 } from './components/wrapper';
 import { paths } from './constant';
 import './app.scss';
+import "./configs/i18n"
 
 const App: React.FC = () => {
   return (

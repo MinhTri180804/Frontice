@@ -1,0 +1,41 @@
+.solution-table-container {
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 12px;
+    align-self    : stretch;
+
+    .solution-table-title {
+        color      : #000;
+        font-size  : 24px;
+        font-style : normal;
+        font-weight: 700;
+        line-height: 140%;
+    }
+
+    .solution-table-body {
+        display       : flex;
+        flex-direction: column;
+        align-items   : flex-start;
+        gap           : 12px;
+        align-self    : stretch;
+
+        .solution-table-header {
+            display       : flex;
+            padding-bottom: 16px;
+            align-items   : center;
+            gap           : 70px;
+            align-self    : stretch;
+            border-bottom : 1px solid #D1D2D3;
+
+            span {
+                flex       : 1 0 0;
+                color      : #9999A1;
+                font-size  : 16px;
+                font-style : normal;
+                font-weight: 400;
+                line-height: 150%;
+            }
+        }
+    }
+}

@@ -23,17 +23,17 @@ const BannerWithInfo: React.FC = () => {
             </div>
             <div className="action">
               <Button
-                type="secondary"
+                styleType="secondary"
                 label="View CV"
                 iconPosition="left"
-                size="small"
+                buttonSize="small"
                 Icon={() => <PlusIcon />}
               />
               <Button
-                type="primary"
+                styleType="primary"
                 label="Follow"
                 iconPosition="right"
-                size="small"
+                buttonSize="small"
                 Icon={() => <PlusIcon />}
               />
             </div>

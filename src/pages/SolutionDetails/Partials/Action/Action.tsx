@@ -13,8 +13,8 @@ const Action: React.FC = () => {
           <div className="view-source-code">
             <Button
               label="View Source Code"
-              size="large"
-              type="secondary"
+              buttonSize="large"
+              styleType="secondary"
               Icon={() => <CodeBracketSquareIcon />}
               iconPosition="left"
             />
@@ -22,8 +22,8 @@ const Action: React.FC = () => {
           <div className="view-preview-demo">
             <Button
               label="View Preview Demo"
-              size="large"
-              type="primary"
+              buttonSize="large"
+              styleType="primary"
               Icon={() => <ComputerDesktopIcon />}
               iconPosition="left"
             />

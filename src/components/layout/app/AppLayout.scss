@@ -2,7 +2,6 @@
 
 .layout-container {
   display: flex;
-  display: flex;
   height: 100vh;
 
   aside {
@@ -14,7 +13,7 @@
     height: 100vh;
 
     &.collapsed {
-      width: 20px;
+      width: 117px;
     }
     &.collapsed {
       width: 117px;
@@ -53,6 +52,7 @@
     main {
       flex: 1;
       margin: 20px;
+      padding: 12px 40px;
       height: 100vh;
       overflow-y: scroll;
       scrollbar-width: thin;

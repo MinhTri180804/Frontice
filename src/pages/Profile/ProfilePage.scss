@@ -1,4 +1,5 @@
 @use '../../styles/scss/utils/mixin/typography' as *;
+@use '../../styles/scss/flex-grid' as *;
 
 .profile-container {
   & .banner-with-info {
@@ -12,9 +13,7 @@
     margin-bottom: 22px;
   }
   & .title-tag {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+    @include flex-row(2px, none, center);
     & > svg {
       width: 29px;
       height: 26px;
@@ -22,19 +21,14 @@
   }
 
   & > .list-solution {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    margin-bottom: 64px;
+    @include grid(12, none, 24px);
+    margin-bottom: 62px;
     & .container-solution {
       grid-column: span 3;
     }
   }
   & > .list-company {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    margin-bottom: 64px;
+    @include grid(12, none, 24px);
     & .container-company-follow {
       grid-column: span 3;
     }

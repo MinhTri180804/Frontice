@@ -1,16 +1,20 @@
 import { FC } from 'react';
-import './formRegister.scss';
-import { Button, Input } from '../../../../../components/common';
 import {
-  FormSubmitHandler,
-  useForm,
   Form,
+  FormSubmitHandler,
   RegisterOptions,
+  useForm,
 } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Button, Input } from '../../../../../components/common';
+import { paths } from '../../../../../constant';
+import authService from '../../../../../services/authServices';
 import { IRegisterRequest } from '../../../../../types/request/register';
-
+import './formRegister.scss';
 
 const FormRegister: FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     getValues,
@@ -19,9 +23,36 @@ const FormRegister: FC = () => {
   } = useForm<IRegisterRequest>();
 
   const handleRegister: FormSubmitHandler<IRegisterRequest> = async (data) => {
-    console.log(data);
-  };
+    const formData: IRegisterRequest = {
+      ...data.data,
+      role: 'CHALLENGER',
+    };
 
+    toast.promise(
+      authService
+        .signUp(formData)
+        .then((response) => {
+          if (response.status === 200) {
+            return navigate(`${paths.auth}/${paths.otp}`, {
+              state: {
+                emailSignUp: response.data.data.email,
+              },
+            });
+          } else {
+            throw new Error('Unexpected response');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          throw error;
+        }),
+      {
+        pending: 'Đang xử lí đăng kí',
+        success: 'Đăng kí tài khoản thành công',
+        error: 'Đăng kí tài khoản thất bại',
+      },
+    );
+  };
   const ruleOfFirstName: RegisterOptions<IRegisterRequest, 'firstName'> = {
     required: {
       value: true,
@@ -126,7 +157,7 @@ const FormRegister: FC = () => {
         type="password"
       />
 
-      <Button type="primary" label="Register" size="medium" />
+      <Button styleType="primary" label="Register" buttonSize="medium" />
     </Form>
   );
 };

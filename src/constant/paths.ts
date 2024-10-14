@@ -17,9 +17,35 @@ const paths = {
   solutions: '/solutions',
   mySolutions: '/my-solutions',
   profile: '/profile',
+  challenges: '/challenges',
   solutionDetails: '/solutionDetails',
   setting: '/setting',
-  statistic: '/statistic'
+  statistic: '/statistic',
+  recruiterCompany: '/recruiter-company',
+  submitSolution: '/submit-solution',
+  challengeDetails: '/challenge-details',
+
+  API: {
+    root: 'api/v1',
+    AUTH: {
+      root: '/auth',
+      login: `/login`,
+      register: '/signup',
+      logout: '/logout',
+      forgot_password: '/forgot-password',
+      reset_password: '/reset-password',
+      send_otp: '/otp-sending',
+      verify_email: '/email-verification',
+      verify_forgot_password_otp: '/verify-forgot-password-otp',
+    },
+  },
+  LOCAL_STORAGE: {
+    emailRegister: 'emailRegister',
+    accessToken: 'accessToken',
+    refreshToken: 'refreshToken',
+    account: 'accountInformation',
+    emailForgotPassword: 'emailForgotPassword',
+  },
 };
 
 export default paths;

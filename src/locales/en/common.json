@@ -1,0 +1,13 @@
+{
+    "Layout": {
+        "Header": {
+            "SearchBar": {},
+            "UserProfile": {
+                "avatar": "avatar",
+                "userName": "username"
+            }
+        },
+        "Sidebar": {},
+        "Main": {}
+    }
+}

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Button, Input } from '../../../components/common';
 import { Line } from '../../../components/common/Line';
 import { paths } from '../../../constant';
 import { SocialAuthButton } from '../Partials/SocialAuthButton';
-import './registerPage.scss';
 import { FormRegister } from './Partials/FormRegister';
+import './registerPage.scss';
 
 const Register: React.FC = () => {
   const handleRegisterGoogle = () => {

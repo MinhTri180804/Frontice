@@ -1,4 +1,3 @@
-import './formLogin.scss';
 import { FC } from 'react';
 import {
   Form,
@@ -6,13 +5,22 @@ import {
   RegisterOptions,
   useForm,
 } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Button, Input } from '../../../../../components/common';
 import { Checkbox } from '../../../../../components/common/Checkbox';
 import { paths } from '../../../../../constant';
+import authService from '../../../../../services/authServices';
 import { ILoginRequest } from '../../../../../types/request/login';
+import {
+  saveAccessToken,
+  saveAccount,
+  saveRefreshToken,
+} from '../../../../../utils/localstorage';
+import './formLogin.scss';
 
 const FormLogin: FC = () => {
+  const navigate = useNavigate();
   const {
     control,
     register,
@@ -23,16 +31,26 @@ const FormLogin: FC = () => {
     console.log('Remember account');
   };
 
-  const handleLoginSuccess = () => {
-    console.log('login success: ');
-  };
-
-  const handleLoginError = () => {
-    console.log('login error: ');
-  };
-
-  const handleLogin: FormSubmitHandler<ILoginRequest> = async (data) => {
-    console.log(data);
+  const handleLogin: FormSubmitHandler<ILoginRequest> = (data) => {
+    toast.promise(
+      authService.login(data.data).then((response) => {
+        if (response.data.status === 200) {
+          const { accessToken, account } = response.data.data;
+          saveAccessToken(accessToken);
+          saveRefreshToken(account.refreshToken);
+          saveAccount(account);
+          // TODO: Implement default page before login success
+          navigate('/');
+        } else {
+          throw new Error('Login is fail');
+        }
+      }),
+      {
+        pending: 'Đang thực hiện đăng nhập',
+        success: 'Đăng nhập thành công',
+        error: 'Đăng nhập thất bại',
+      },
+    );
   };
 
   const ruleOfEmail: RegisterOptions<ILoginRequest, 'email'> = {
@@ -61,13 +79,7 @@ const FormLogin: FC = () => {
   };
 
   return (
-    <Form
-      className="login__form"
-      control={control}
-      onSuccess={handleLoginSuccess}
-      onError={handleLoginError}
-      onSubmit={handleLogin}
-    >
+    <Form className="login__form" control={control} onSubmit={handleLogin}>
       <Input
         {...register('email', ruleOfEmail)}
         label="Email"
@@ -98,7 +110,7 @@ const FormLogin: FC = () => {
         </Link>
       </div>
       {/* TODO: update status disabled and event click of button component */}
-      <Button type="primary" label="Login" size="medium" />
+      <Button styleType="primary" label="Login" buttonSize="medium" />
     </Form>
   );
 };
