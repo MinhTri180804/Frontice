@@ -43,5 +43,15 @@
         }
       }
     }
+
+    & > .faq__challenge {
+      width: 100%;
+      @include flex-row(none, center, center);
+
+      & > .list {
+        width: 600px;
+        @include flex-column(24px, flex-start, start);
+      }
+    }
   }
 }
