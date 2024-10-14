@@ -3,6 +3,7 @@
 
 .dropdown-container {
     @include flex-column(0, flex-start);
+    z-index      : 100;
     width        : 167px;
     padding      : 12px;
     position     : absolute;
@@ -26,7 +27,7 @@
         padding   : 14px 24px;
         cursor    : pointer;
         align-self: stretch;
-        transition: background-color $background_transition_time_duration ease, border-radius $background_transition_time_duration ease;
+        transition: background-color $background_transition_time_duration ease;
 
         svg {
             flex-shrink: 0;
@@ -39,13 +40,8 @@
         }
 
         &:hover {
-            background-color: $saturatedSky-main;
+            background-color: #f5f5f5;
             border-radius   : 4px;
-
-            svg,
-            span {
-                color: $white;
-            }
         }
     }
 }
