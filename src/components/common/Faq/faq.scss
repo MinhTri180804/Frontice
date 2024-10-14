@@ -21,7 +21,7 @@
     border-color: $saturatedSky-main;
     box-shadow: 0px 4px 24px 0px rgba(82, 80, 247, 0.12);
     & > .content {
-      max-height: none; // Để tự động mở rộng với chiều cao nội dung
+      max-height: none;
       visibility: visible;
       margin-top: 24px;
       opacity: 1;
@@ -69,7 +69,7 @@
   }
 
   & > .content {
-    max-height: 0; // Khi đóng, chiều cao là 0
+    max-height: 0;
     visibility: hidden;
     transition:
       max-height 0.3s linear,

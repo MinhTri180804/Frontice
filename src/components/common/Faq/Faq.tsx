@@ -25,10 +25,10 @@ const Faq: FC<IFaqProps> = ({ title, description }) => {
 
       if (isOpen) {
         contentElement.style.maxHeight = `${contentElement.scrollHeight}px`;
-        contentElement.style.visibility = 'visible'; // Hiển thị phần tử khi mở
+        contentElement.style.visibility = 'visible';
       } else {
         contentElement.style.maxHeight = '0px';
-        contentElement.style.visibility = 'hidden'; // Ẩn phần tử khi đóng
+        contentElement.style.visibility = 'hidden';
       }
     }
   }, [isOpen]);
