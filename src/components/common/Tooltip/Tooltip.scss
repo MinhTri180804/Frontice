@@ -1,0 +1,27 @@
+@use '../../../styles/scss/utils/'as *;
+@use '../../../styles/scss/flex-grid'as *;
+
+.tooltip-container {
+  position      : absolute;
+  left          : 90%;
+  top           : 17%;
+  pointer-events: none;
+  @include flex-center;
+  padding      : 6px 12px;
+  gap          : 10px;
+  border-radius: 8px;
+  background   : $saturatedSky-main;
+  opacity      : 0;
+  z-index      : 1000;
+  transform    : translateY(-50%);
+  transition   : opacity $input_transition_time_duration ease-in-out;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  span {
+    @include typography_BVNPro-desktop-body-3;
+    color: $white !important;
+  }
+}
