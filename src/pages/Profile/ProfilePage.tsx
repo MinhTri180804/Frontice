@@ -12,6 +12,7 @@ import BannerWithInfo from './Partials/BannerWithInfo';
 import CompanyFollow from './Partials/CompanyFollow/CompanyFollow';
 import Solution from '../../components/common/Solution';
 import './ProfilePage.scss';
+import { Section } from '../../components/common';
 interface DataItemSolution {
   time: string;
   name: string;
@@ -58,40 +59,51 @@ const Profile: React.FC = () => {
 
     fetchDataCompanies();
   }, []);
+
   return (
     <div className="profile-container">
       <h4>Profile Page</h4>
       <BannerWithInfo />
-      <div className="title-tag">
-        <CommandLineIcon />
-        <h4>Solution </h4>
-      </div>
-      <div className="list-solution">
-        {/* ham map looop qua tung solution */}
-        {dataSolution.map((solutionItem) => (
-          <Solution
-            key={solutionItem.id}
-            image={image} // Hình ảnh mặc định
-            name={solutionItem.name}
-            time={solutionItem.time}
-            tech={solutionItem.tech}
-            userAvatar={userAvatar}
-          />
-        ))}
-      </div>
-      <div className="title-tag">
-        <BuildingOfficeIcon />
-        <h4>Company Following </h4>
-      </div>
-      <div className="list-company">
-        {dataCompany.map((companyItem) => (
-          <CompanyFollow
-            image={imageCompany}
-            name={companyItem.name}
-            quantity={companyItem.quantity}
-          />
-        ))}
-      </div>
+
+      <Section
+        title="Solution"
+        titlePosition="left"
+        Icon={() => <CommandLineIcon width={24} height={24} />}
+        iconPosition="left"
+        className="solution__list-section"
+      >
+        <div className="list-solution">
+          {/* ham map looop qua tung solution */}
+          {dataSolution.map((solutionItem) => (
+            <Solution
+              key={solutionItem.id}
+              image={image} // Hình ảnh mặc định
+              name={solutionItem.name}
+              time={solutionItem.time}
+              tech={solutionItem.tech}
+              userAvatar={userAvatar}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        className="company__following-section"
+        titlePosition="left"
+        iconPosition="left"
+        Icon={() => <BuildingOfficeIcon width={24} height={24} />}
+        title="Company Following"
+      >
+        <div className="list-company">
+          {dataCompany.map((companyItem) => (
+            <CompanyFollow
+              image={imageCompany}
+              name={companyItem.name}
+              quantity={companyItem.quantity}
+            />
+          ))}
+        </div>
+      </Section>
     </div>
   );
 };
