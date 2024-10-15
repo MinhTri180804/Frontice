@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed }) => {
     };
 
     return (
-        <div className={`sidebar-container ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className={`sidebar-container ${isCollapsed ? 'collapsed' : 'uncollapsed'}`}>
             <div className="sidebar-logo">
                 <img src={BrandColorLogo} alt="logo" />
             </div>
