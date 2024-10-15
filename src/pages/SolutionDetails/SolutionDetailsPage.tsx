@@ -9,6 +9,8 @@ const SolutionDetails: React.FC = () => {
       <div className="container-solution-details-page">
         <div className="title">
           <h1>Solution Details</h1>
+        </div>
+        <div className="overview-challenge">
           <ChallengeOverview
             name="Mortgage repayment calculator"
             description="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
@@ -45,10 +47,10 @@ const SolutionDetails: React.FC = () => {
               },
             ]}
           />
-          <Action />
-          <SolutitonDetails />
-          <Feedback />
         </div>
+        <Action />
+        <SolutitonDetails />
+        <Feedback />
       </div>
     </>
   );

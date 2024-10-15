@@ -1,43 +1,77 @@
 import './Comments.scss';
-import avatarAuthor from '../../../../asset/images/avatar.png';
 import {
   HandThumbUpIcon,
   HandThumbDownIcon,
   ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
-const Comment: React.FC = () => {
+type BaseComment = {
+  nameAuthor?: string;
+  avatarAuthor?: string;
+  date?: string;
+  content?: string;
+  like?: string;
+  dislike?: string;
+  comment?: string;
+};
+
+interface IComment extends BaseComment {
+  childrenComment?: BaseComment[];
+}
+
+interface ICommentProps extends IComment {
+  reply?: {
+    parentComment: string;
+  };
+}
+
+const Comment: React.FC<IComment> = ({ ...props }) => {
+  const {
+    nameAuthor = '',
+    nameCustomer = 'Incognito',
+    avatarAuthor = '',
+    avatarCustomer = '',
+    date,
+    content,
+    like,
+    dislike,
+    comment,
+    isReply = false,
+  } = props;
+
   return (
-    <div className="container-comment">
-      <div className="info-author">
-        <div className="avatar-author">
-          <img src={avatarAuthor} alt="Author avatar" />
+    <>
+      {isReply && (
+        <div className="container-comment">
+          <div className="info-author reply">
+            <div className="avatar-author">
+              <img src={avatarCustomer} alt="Author avatar" />
+            </div>
+            <div className="name-author">{nameCustomer}</div>
+            <div className="date-comment">Date: {date}</div>
+            <div className="reply-to">
+              Reply to: <p>{nameAuthor}</p>{' '}
+            </div>
+          </div>
+          <div className="content-comment">
+            <p>{content}</p>
+            <div className="interaction-panel">
+              <div className="action-like">
+                <HandThumbUpIcon />
+                <p>{like}</p>
+              </div>
+              <div className="action-dislike">
+                <HandThumbDownIcon />
+                <p>{dislike}</p>
+              </div>
+              <div className="action-comment">
+                <ChatBubbleLeftEllipsisIcon />
+                <p>{comment}</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="name-author">Phan Ngoc Anh</div>
-        <div className="date-comment">Date: 2022-01-01</div>
-      </div>
-      <div className="content-comment">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-          aliquid ipsa praesentium at, illo aspernatur facere pariatur iusto,
-          ipsam sapiente quas eveniet tempore, nam similique. Deserunt
-          repudiandae sed suscipit eum?
-        </p>
-        <div className="interaction-panel">
-          <div className="action-like">
-            <HandThumbUpIcon />
-            <p>12k</p>
-          </div>
-          <div className="action-dislike">
-            <HandThumbDownIcon />
-            <p>12k</p>
-          </div>
-          <div className="action-comment">
-            <ChatBubbleLeftEllipsisIcon />
-            <p>12k</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 export default Comment;

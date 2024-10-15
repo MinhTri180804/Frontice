@@ -23,6 +23,16 @@
       @include typography_BVNPro-desktop-body-3;
       color: $satinDeepBlack-tints-300;
     }
+    & > .reply-to {
+      display: flex;
+      gap: 8px;
+      & > p {
+        color: $saturatedSky-main;
+      }
+    }
+  }
+  & > .reply {
+    padding-left: 32px;
   }
   & > .content-comment {
     border: 1px solid $satinDeepBlack-tints-300;
