@@ -1,20 +1,17 @@
 @use '../../../styles/scss/utils/variables' as *;
+@use '../../../styles/scss/flex-grid' as *;
 .button-container {
   width: 100%;
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  gap: 8px;
   cursor: pointer;
   transition: background-color $background_transition_time_duration ease-in-out;
-
+  @include flex-row(8px, center, center);
   border-radius: 8px;
   &:disabled {
     cursor: not-allowed;
   }
   & > .label {
     flex-grow: 1;
-    width: 100%;
+    max-width: fit-content;
     white-space: nowrap;
   }
 

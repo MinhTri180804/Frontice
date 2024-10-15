@@ -3,6 +3,7 @@
 
 .section__component {
   width: 100%;
+  margin: 62px 0px;
   @include flex-column(32px, flex-start, stretch);
 
   &.icon-reverse {

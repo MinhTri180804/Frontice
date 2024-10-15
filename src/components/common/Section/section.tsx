@@ -6,7 +6,7 @@ interface ISectionProps extends HTMLProps<HTMLDivElement> {
   title?: string;
   titlePosition?: 'left' | 'center' | 'right';
   iconPosition?: 'left' | 'right';
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   children: ReactNode;
 }
 
