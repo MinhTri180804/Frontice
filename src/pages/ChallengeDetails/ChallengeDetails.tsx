@@ -1,4 +1,4 @@
-import { ChallengeOverview, FAQ } from '../../components/common';
+import { ChallengeOverview, FAQ, Section } from '../../components/common';
 import './challengeDetails.scss';
 import { FC, useState } from 'react';
 import {
@@ -82,7 +82,11 @@ const ChallengeDetailsPage: FC = () => {
           </div>
         </section>
 
-        <section className="faq__challenge">
+        <Section
+          title="Challenge FAQS"
+          titlePosition="center"
+          className="faq__challenge-section"
+        >
           <div className="list">
             <FAQ
               title="How do i submit my solution ?"
@@ -101,7 +105,8 @@ const ChallengeDetailsPage: FC = () => {
               description="We recommend reading our complete guide to submitting solutions . If you get stuck and need help, please feel free to ask questions in our Discord server, and we will help you submit your project."
             />
           </div>
-        </section>
+        </Section>
+        <section className="faq__challenge"></section>
       </div>
     </div>
   );

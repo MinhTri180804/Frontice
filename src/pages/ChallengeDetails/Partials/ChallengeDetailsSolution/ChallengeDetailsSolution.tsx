@@ -1,13 +1,14 @@
 import './challengeDetailsSolution.scss';
 import { FC } from 'react';
 import { SolutionOverview } from './Partials';
-import { Button } from '../../../../components/common';
+import { Button, Section } from '../../../../components/common';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Solution from '../../../../components/common/Solution';
 
 const ChallengeDetailsSolution: FC = () => {
   return (
     <div className="challenge__details-solution-tab">
-      <section className="overview__solution">
+      <Section className="overview__solution">
         <SolutionOverview
           className="solution__overview"
           solutionData={{
@@ -58,8 +59,21 @@ const ChallengeDetailsSolution: FC = () => {
             styleType="secondary"
           />
         </div>
-      </section>
-      <section className="community__solution"></section>
+      </Section>
+      <Section title="Community solution" className="community__solution">
+        <div className="solution__list">
+          {Array.from({
+            length: 8,
+          }).map(() => (
+            <Solution
+              image="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/dmfvghaamqjt9lrx43ql.jpg"
+              time="About 5 hours ago"
+              name="Contact form"
+              tech={['Html', 'css', 'javascript']}
+            />
+          ))}
+        </div>
+      </Section>
     </div>
   );
 };

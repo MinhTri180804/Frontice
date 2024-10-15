@@ -15,9 +15,8 @@
     margin-bottom: 32px;
 
     & > .tab__content-wrapper {
-      @include flex-column(32px, flex-start, start);
-
       & > ul.tab__list {
+        margin-bottom: 64px;
         @include flex-row(0, flex-start, start);
         & > li {
           padding-left: 20px;
@@ -44,13 +43,15 @@
       }
     }
 
-    & > .faq__challenge {
-      width: 100%;
-      @include flex-row(none, center, center);
+    & > .faq__challenge-section {
+      & > .content {
+        width: 100%;
+        @include flex-row(none, center, center);
 
-      & > .list {
-        width: 600px;
-        @include flex-column(24px, flex-start, start);
+        & > .list {
+          width: 600px;
+          @include flex-column(24px, flex-start, start);
+        }
       }
     }
   }
