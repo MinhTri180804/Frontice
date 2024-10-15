@@ -1,0 +1,32 @@
+@use '../../../../styles/scss/flex-grid' as *;
+@use '../../../../styles/scss/utils' as *;
+
+.challenge__details-solution-tab {
+  & > section.overview__solution {
+    @include grid(12, none, 24px, none, stretch);
+    width: 100%;
+
+    & > .solution__overview {
+      grid-column: span 6;
+    }
+
+    & > .actions {
+      grid-column: span 6;
+      @include flex-column(24px, flex-start, stretch);
+      height: 100%;
+
+      & > button {
+        height: 100%;
+      }
+
+      & > button.update-solution {
+        .svg {
+          stroke: $saturatedSky-main;
+        }
+      }
+    }
+  }
+
+  & > section.community__solution {
+  }
+}

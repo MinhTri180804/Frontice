@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import {
   ChallengeDetailsDownload,
   ChallengeDetailsInformation,
+  ChallengeDetailsSolution,
 } from './Partials';
 
 const ChallengeDetailsPage: FC = () => {
@@ -77,6 +78,7 @@ const ChallengeDetailsPage: FC = () => {
           <div className="content__of-tab">
             {tabActive === 1 && <ChallengeDetailsInformation />}
             {tabActive === 2 && <ChallengeDetailsDownload />}
+            {tabActive === 3 && <ChallengeDetailsSolution />}
           </div>
         </section>
 
