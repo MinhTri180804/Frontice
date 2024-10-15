@@ -74,6 +74,12 @@
           text-decoration: none;
           transition     : background-color 0.3s ease;
 
+          &.active {
+            svg {
+              color: #fff !important;
+            }
+          }
+
           svg {
             flex-shrink: 0;
           }
