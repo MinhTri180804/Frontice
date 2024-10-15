@@ -2,30 +2,61 @@ import Comment from '../Comments';
 import './Feedback.scss';
 
 const Feedback: React.FC = () => {
-  const dataReply = {
-    avatarCustomer: 'https://www.w3schools.com/html/img_girl.jpg',
-    nameAuthor: 'NgotahnHy',
-    nameCustomer: 'NGuyenminh tri', 
-    like: '12',
-    dislike: '12',
-    comment: '12',
-    date: '15-10-2024',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut imperdiet massa. Nulla facilisi. Sed vel ipsum vitae enim ultricies fermentum.',
-    isReply: true,
-  };
-  const dataComment = {
-    avatarAuthor:
-      'https://i.pinimg.com/564x/41/5e/1d/415e1df3bd4f7432a4b71264375aaa52.jpg',
-    nameAuthor: 'NgotahnHy',
-    like: '12',
-    dislike: '12',
-    comment: '12',
-    date: '15-10-2024',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut imperdiet massa. Nulla facilisi. Sed vel ipsum vitae enim ultricies fermentum.',
+  const commentData = {
+    nameAuthor: 'Ngo Thanh U',
+    avatarAuthor: 'path-to-avatar.jpg',
+    date: '2024-10-15',
+    content: 'This is a comment.',
+    like: 10,
+    dislike: 2,
+    commentCount: 5,
     isReply: false,
+    childrenComment: [
+      {
+        nameAuthor: 'Nguyen Minh Trri',
+        avatarAuthor: 'path-to-avatar2.jpg',
+        date: '2024-10-16',
+        content: 'This is a reply.',
+        like: 3,
+        dislike: 0,
+        commentCount: 0,
+        isReply: false,
+        childrenComment: [
+          {
+            nameAuthor: 'JThay 123',
+            avatarAuthor: 'path-to-avatar2.jpg',
+            date: '2024-10-16',
+            content: 'This is a reply.',
+            like: 3,
+            dislike: 0,
+            commentCount: 0,
+            isReply: true,
+          },
+          {
+            nameAuthor: 'Trn Thanh',
+            avatarAuthor: 'path-to-avatar3.jpg',
+            date: '2024-10-17',
+            content: 'Another reply here.',
+            like: 2,
+            dislike: 1,
+            commentCount: 1,
+            isReply: true,
+          },
+        ],
+      },
+      {
+        nameAuthor: 'Phuc chan',
+        avatarAuthor: 'path-to-avatar3.jpg',
+        date: '2024-10-17',
+        content: 'Another reply here.',
+        like: 2,
+        dislike: 1,
+        commentCount: 1,
+        isReply: true,
+      },
+    ],
   };
+
   return (
     <>
       <div className="container-feedback">
@@ -41,8 +72,7 @@ const Feedback: React.FC = () => {
             <div>Comment</div>
             <textarea name="Feedback" id=""></textarea>
           </div>
-          <Comment data={dataComment} />
-          <Comment data={dataReply} />
+          <Comment data={commentData} />;
         </div>
       </div>
     </>
