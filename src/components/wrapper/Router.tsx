@@ -4,11 +4,13 @@ import {
   useRoutes,
   RouteObject,
   Navigate,
+  useLocation,
 } from 'react-router-dom';
 import { LoadingPage } from '../../pages';
 import routes from '../../configs/routes';
 import { AppLayout } from '../layout/app';
 import { paths } from '../../constant';
+import { useEffect } from 'react';
 
 export interface RouterProps {
   defaultRoute: string;
@@ -16,10 +18,16 @@ export interface RouterProps {
 
 export function Routes(props: RouterProps) {
   const { defaultRoute } = props;
+  const location = useLocation();
 
   // Check for stored path in localStorage
-  const storedPath = localStorage.getItem('activeItem');
+  const storedPath = localStorage.getItem('path');
   const redirectPath = storedPath ? storedPath : defaultRoute;
+
+  useEffect(() => {
+    // Save current path to localStorage whenever it changes
+    localStorage.setItem('path', location.pathname);
+  }, [location.pathname]);
 
   const defaultRouteObject: RouteObject = {
     index: true,
