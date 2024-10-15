@@ -27,7 +27,7 @@
       background-color: $BG-white;
       grid-column: span 6;
       width: 100%;
-      @include flex-column(8px, flex-start, stretch);
+      @include flex-column(12px, flex-start, stretch);
       & > .time-submit {
         width: 100%;
         @include typography_BVNPro-custom(400, 12px, 120%);
@@ -41,7 +41,7 @@
 
       & > .name {
         width: 100%;
-        @include typography_BVNPro-desktop-body-2();
+        @include typography_BVNPro-desktop-body-1();
         color: $satinDeepBlack-main;
       }
 
@@ -52,13 +52,13 @@
         & > .score {
           @include flex-row(4px, flex-start, center);
           & > .value {
-            font-weight: 600;
+            font-weight: 500;
           }
         }
       }
 
       & > .statistic__action-solution {
-        @include flex-row(12px, flex-start, center);
+        @include flex-row(16px, flex-start, center);
         & > .action {
           @include flex-row(8px, flex-start, center);
         }
@@ -69,15 +69,16 @@
   & > .content__description-list {
     @include flex-column(12px, flex-start, stretch);
     & > .content__description {
-      @include flex-column(12px, flex-start, stretch);
+      @include flex-column(8px, flex-start, stretch);
       & > .title {
         @include typography_BVNPro-desktop-body-2();
-        color: $satinDeepBlack-main;
+        color: $benthicBlack-main;
         width: 100%;
+        font-weight: bold;
       }
 
       & > .description {
-        @include typography_BVNPro-custom(300, 14px, 120%);
+        @include typography_BVNPro-custom(300, 14px, 150%);
       }
     }
   }
