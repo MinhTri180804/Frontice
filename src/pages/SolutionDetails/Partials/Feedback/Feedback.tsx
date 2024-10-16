@@ -1,10 +1,11 @@
 import Comment from '../Comments';
 import './Feedback.scss';
-
+import imgPath from '../../../../asset/images/avatar.png';
+import IComment from '../../../../components/common/Comment';
 const Feedback: React.FC = () => {
   const commentData = {
     nameAuthor: 'Ngo Thanh U',
-    avatarAuthor: 'path-to-avatar.jpg',
+    avatarAuthor: imgPath,
     date: '2024-10-15',
     content: 'This is a comment.',
     like: 10,
@@ -70,7 +71,7 @@ const Feedback: React.FC = () => {
         <div className="list-feedback">
           <div className="input-feedback">
             <div>Comment</div>
-            <textarea name="Feedback" id=""></textarea>
+            <IComment />
           </div>
           <Comment data={commentData} />;
         </div>

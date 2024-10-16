@@ -1,7 +1,8 @@
 .solution-row-container {
     display    : flex;
     align-items: center;
-    gap        : 97px;
+    gap        : 91px;
+    align-self : stretch;
 
     .solution-row-content,
     .solution-row-interact {

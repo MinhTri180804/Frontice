@@ -5,6 +5,7 @@ import {
   HandThumbDownIcon,
   ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/24/outline';
+import IComment from '../../../../components/common/Comment';
 
 type BaseComment = {
   nameAuthor?: string;
@@ -55,7 +56,6 @@ const Comment: React.FC<ICommentProps> = ({ data }) => {
           </div>
         )}
       </div>
-
       <div className="content-comment">
         <p>{content}</p>
         <div className="interaction-panel">
@@ -73,6 +73,7 @@ const Comment: React.FC<ICommentProps> = ({ data }) => {
           </div>
         </div>
       </div>
+      {showSelfComment && <IComment />}
       {childrenComment && (
         <div className="replies">
           {childrenComment.map((child, index) => (
