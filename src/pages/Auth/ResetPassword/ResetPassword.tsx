@@ -9,7 +9,6 @@ import { paths } from '../../../constant';
 const ResetPasswordPage: FC = () => {
   const previousPage = usePreviousPage();
   const location = useLocation();
-  console.log('location: ', location);
   const resetToken = location.state?.resetToken ?? null;
 
   if (!resetToken) {

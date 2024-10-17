@@ -1,23 +1,24 @@
 import { FC } from 'react';
-import {
-  Form,
-  FormSubmitHandler,
-  RegisterOptions,
-  useForm,
-} from 'react-hook-form';
+import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContentProps } from 'react-toastify';
 import { Button, Input } from '../../../../../components/common';
 import { Checkbox } from '../../../../../components/common/Checkbox';
 import { paths } from '../../../../../constant';
 import authService from '../../../../../services/authServices';
+import { IBaseResponse } from '../../../../../types/base';
+import { IOptionLanguage } from '../../../../../types/entity';
 import { ILoginRequest } from '../../../../../types/request/login';
 import {
   saveAccessToken,
   saveAccount,
   saveRefreshToken,
 } from '../../../../../utils/localstorage';
+import useFormLogin from './formLogin.hook';
 import './formLogin.scss';
+
+const DEFAULT_PAGE_LOGIN_SUCCESS = paths.home;
 
 const FormLogin: FC = () => {
   const navigate = useNavigate();
@@ -26,79 +27,80 @@ const FormLogin: FC = () => {
     register,
     formState: { errors },
   } = useForm<ILoginRequest>();
-
+  const { aboutOfEmail, aboutOfPassword } = useFormLogin();
+  const { i18n, t } = useTranslation();
+  const i18Language = i18n.language as IOptionLanguage;
   const handleRememberAccount: () => void = () => {
+    // TODO: Implement logic remember account
     console.log('Remember account');
   };
 
   const handleLogin: FormSubmitHandler<ILoginRequest> = (data) => {
     toast.promise(
-      authService.login(data.data).then((response) => {
-        if (response.data.status === 200) {
-          const { accessToken, account } = response.data.data;
+      authService
+        .login(data.data)
+        .then((response) => {
+          const { accessToken, refreshToken, account } = response.data.data;
           saveAccessToken(accessToken);
-          saveRefreshToken(account.refreshToken);
+          saveRefreshToken(refreshToken);
           saveAccount(account);
-          // TODO: Implement default page before login success
-          navigate('/');
-        } else {
-          throw new Error('Login is fail');
-        }
-      }),
+          navigate(DEFAULT_PAGE_LOGIN_SUCCESS);
+
+          const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.Login.success')}`;
+          if (i18Language === paths.LANGUAGE.vietnamese) {
+            return response.data.messageEng || MESSAGE_SUCCESS;
+          }
+
+          if (i18Language === paths.LANGUAGE.english) {
+            return response.data.messageEng || MESSAGE_SUCCESS;
+          }
+        })
+        .catch((error: IBaseResponse<null>) => {
+          const MESSAGE_ERROR = `${t('ToastMessage.Auth.Login.error')}`;
+          if (i18Language === paths.LANGUAGE.english)
+            throw error.messageEng || MESSAGE_ERROR;
+
+          if (i18Language === paths.LANGUAGE.vietnamese)
+            throw error.messageVN || MESSAGE_ERROR;
+        }),
+
       {
-        pending: 'Đang thực hiện đăng nhập',
-        success: 'Đăng nhập thành công',
-        error: 'Đăng nhập thất bại',
+        pending: `${t('ToastMessage.Auth.Login.pending')}`,
+        success: {
+          render: (response) => {
+            return response.data as string;
+          },
+        },
+        error: {
+          render: (response: ToastContentProps<string>) => {
+            return response.data;
+          },
+        },
       },
     );
-  };
-
-  const ruleOfEmail: RegisterOptions<ILoginRequest, 'email'> = {
-    required: {
-      value: true,
-      message: 'Email is not empty',
-    },
-
-    pattern: {
-      // eslint-disable-next-line no-useless-escape
-      value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      message: 'Email is not valid ',
-    },
-  };
-
-  const ruleOfPassword: RegisterOptions<ILoginRequest, 'password'> = {
-    required: {
-      value: true,
-      message: 'Password is not empty',
-    },
-
-    minLength: {
-      value: 6,
-      message: 'Length password less than 6',
-    },
   };
 
   return (
     <Form className="login__form" control={control} onSubmit={handleLogin}>
       <Input
-        {...register('email', ruleOfEmail)}
-        label="Email"
+        {...register('email', aboutOfEmail.rule)}
+        label={aboutOfEmail.name}
         placeholder="Enter your email..."
         status={errors.email && 'error'}
         message={errors.email?.message}
       />
 
       <Input
-        {...register('password', ruleOfPassword)}
+        {...register('password', aboutOfPassword.rule)}
         message={errors.email?.message}
         status={errors.email && 'error'}
-        label="Password"
+        label={aboutOfPassword.name}
         placeholder="Enter your password..."
         type="password"
       />
       <div className="options">
         <Checkbox
-          label="Remember password"
+          label={`${t('Checkbox.RememberAccount')}`}
           eventChecked={handleRememberAccount}
         />
 
@@ -110,7 +112,11 @@ const FormLogin: FC = () => {
         </Link>
       </div>
       {/* TODO: update status disabled and event click of button component */}
-      <Button styleType="primary" label="Login" buttonSize="medium" />
+      <Button
+        styleType="primary"
+        label={`${t('Button.Login')}`}
+        buttonSize="medium"
+      />
     </Form>
   );
 };

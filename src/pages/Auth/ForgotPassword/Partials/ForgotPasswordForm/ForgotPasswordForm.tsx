@@ -1,19 +1,20 @@
 import { FC } from 'react';
-import {
-  Form,
-  FormSubmitHandler,
-  RegisterOptions,
-  useForm,
-} from 'react-hook-form';
+import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContentProps } from 'react-toastify';
 import { Button, Input } from '../../../../../components/common';
 import { paths } from '../../../../../constant';
 import authService from '../../../../../services/authServices';
+import { IBaseResponse } from '../../../../../types/base';
 import { IForgotPasswordRequest } from '../../../../../types/request/forgotPassword';
+import useForgotPasswordForm from './forgotPasswordForm.hook';
 import './forgotPasswordForm.scss';
 
 const ForgotPasswordForm: FC = () => {
+  const { i18n, t } = useTranslation();
+  const i18nLanguage = i18n.language;
+  const { aboutOfEmail } = useForgotPasswordForm();
   const {
     register,
     formState: { errors },
@@ -28,38 +29,39 @@ const ForgotPasswordForm: FC = () => {
       authService
         .forgotPassword({ email: email })
         .then((response) => {
-          if (response.data.status === 200) {
-            navigate(`${paths.auth}/${paths.otp}`, {
-              state: {
-                emailForgotPassword: email,
-              },
-            });
-          } else {
-            throw new Error('Verify email forgot password fail');
-          }
+          navigate(`${paths.auth}/${paths.otp}`, {
+            state: {
+              emailForgotPassword: email,
+            },
+          });
+
+          const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.ForgotPassword.success')}`;
+          if (i18nLanguage === paths.LANGUAGE.english)
+            return response.data.messageEng || MESSAGE_SUCCESS;
+          if (i18nLanguage === paths.LANGUAGE.vietnamese)
+            return response.data.messageVN || MESSAGE_SUCCESS;
         })
-        .catch((error) => {
-          throw error;
+        .catch((error: IBaseResponse<null>) => {
+          const MESSAGE_ERROR = `${t('ToastMessage.Auth.ForgotPassword.error')}`;
+          if (i18nLanguage === paths.LANGUAGE.english)
+            throw error.messageEng || MESSAGE_ERROR;
+          if (i18nLanguage === paths.LANGUAGE.vietnamese)
+            throw error.messageVN || MESSAGE_ERROR;
         }),
       {
-        pending: 'Đang xác thực email và gửi mã OTP',
-        success: 'Gửi mã otp thành công',
-        error: 'Xác thực email và gửi mã OTP thất bại',
+        pending: `${t('ToastMessage.Auth.ForgotPassword.pending')}`,
+        success: {
+          render: (response) => {
+            return response.data as string;
+          },
+        },
+        error: {
+          render: (response: ToastContentProps<string>) => {
+            return response.data as string;
+          },
+        },
       },
     );
-  };
-
-  const ruleOfEmail: RegisterOptions<IForgotPasswordRequest, 'email'> = {
-    required: {
-      value: true,
-      message: 'Email is not empty',
-    },
-
-    pattern: {
-      // eslint-disable-next-line no-useless-escape
-      value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      message: 'Email is not valid',
-    },
   };
 
   return (
@@ -69,13 +71,13 @@ const ForgotPasswordForm: FC = () => {
       onSubmit={handleForgotPassword}
     >
       <Input
-        {...register('email', ruleOfEmail)}
+        {...register('email', aboutOfEmail.rule)}
         status={errors.email && 'error'}
         message={errors.email?.message}
-        label="email"
+        label={aboutOfEmail.name}
         type="email"
       />
-      <Button styleType="primary" label="Forgot password" buttonSize="medium" />
+      <Button styleType="primary" label={t('Button.ForgotPassword')} buttonSize="medium" />
     </Form>
   );
 };

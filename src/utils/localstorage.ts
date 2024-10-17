@@ -1,5 +1,6 @@
 import { paths } from '../constant';
-import { IAccountOfLoginResponse, ILoginResponse } from '../types/response';
+import { IOptionLanguage } from '../types/entity';
+import { IAccountOfLoginResponse } from '../types/response';
 
 // Email before register
 const saveEmailSignUp: (email: string) => void = (email) => {
@@ -91,20 +92,40 @@ const removeEmailForgotPassword: () => void = () => {
   localStorage.removeItem(paths.LOCAL_STORAGE.emailForgotPassword);
 };
 
+const saveLanguageI18: (language: IOptionLanguage) => void = (language) => {
+  localStorage.setItem(paths.LOCAL_STORAGE.i18nLanguage, language);
+};
+
+const getLanguageI18: () => IOptionLanguage | null = () => {
+  const language = localStorage.getItem(
+    paths.LOCAL_STORAGE.i18nLanguage,
+  ) as IOptionLanguage;
+
+  if (language) return language;
+  return null;
+};
+
+const removeLanguageI18: () => void = () => {
+  localStorage.removeItem(paths.LOCAL_STORAGE.i18nLanguage);
+};
+
 export {
-  saveEmailForgotPassword,
-  getEmailForgotPassword,
-  removeEmailForgotPassword,
-  saveEmailSignUp,
-  getEmailSignUp,
-  removeEmailSignUp,
-  saveAccessToken,
-  removeAccessToken,
+  saveLanguageI18,
+  getLanguageI18,
+  removeLanguageI18,
   getAccessToken,
-  saveAccount,
   getAccount,
-  removeAccount,
+  getEmailForgotPassword,
+  getEmailSignUp,
   getRefreshToken,
-  saveRefreshToken,
+  removeAccessToken,
+  removeAccount,
+  removeEmailForgotPassword,
+  removeEmailSignUp,
   removeRefreshToken,
+  saveAccessToken,
+  saveAccount,
+  saveEmailForgotPassword,
+  saveEmailSignUp,
+  saveRefreshToken,
 };
