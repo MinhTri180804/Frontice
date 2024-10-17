@@ -1,0 +1,16 @@
+@use '../../styles/scss/flex-grid' as *;
+.container-settings-profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+.action-submit-preview {
+  @include grid(12, none, 24px, none, none);
+  & > .submit {
+    grid-column: span 8;
+  }
+  & > .preview {
+    grid-column: span 4;
+  }
+}
