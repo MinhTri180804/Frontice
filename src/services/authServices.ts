@@ -1,6 +1,7 @@
-import axiosClient from '../axios/axios';
+import { axiosClient } from '../axios';
 import { paths } from '../constant';
 import { IBaseResponse } from '../types/base';
+import { IRefreshTokenRequest } from '../types/request';
 import { IForgotPasswordRequest } from '../types/request/forgotPassword';
 import { ILoginRequest } from '../types/request/login';
 import { IRegisterRequest } from '../types/request/register';
@@ -8,7 +9,7 @@ import { IResetPasswordRequest } from '../types/request/resetPassword';
 import { ISendOtpRequest } from '../types/request/sendOtp';
 import { IVerifyEmailRequest } from '../types/request/verifyEmail';
 import { IVerifyForgotPassword } from '../types/request/verifyForgotPasswordOtp';
-import { ILoginResponse } from '../types/response';
+import { ILoginResponse, IRefreshTokenResponse } from '../types/response';
 import { ISignUpResponse } from '../types/response/signUp';
 
 const BASE_URL = `${paths.API.root}${paths.API.AUTH.root}`;
@@ -57,6 +58,13 @@ const authService = {
   verifyForgotPasswordOTP: (data: IVerifyForgotPassword) => {
     return axiosClient.post<IBaseResponse<string>>(
       `${BASE_URL}${paths.API.AUTH.verify_forgot_password_otp}`,
+      data,
+    );
+  },
+
+  refreshToken: (data: IRefreshTokenRequest) => {
+    return axiosClient.post<IBaseResponse<IRefreshTokenResponse>>(
+      `${BASE_URL}${paths.API.AUTH.refreshToken}`,
       data,
     );
   },

@@ -1,13 +1,11 @@
 import { IBaseTimestamp, IBaseJWTToken } from '../base';
 
-export interface ILoginResponse extends Pick<IBaseJWTToken, 'accessToken'> {
+export interface ILoginResponse extends IBaseJWTToken {
   account: IAccountOfLoginResponse;
   expiresIn: number;
 }
 
-export interface IAccountOfLoginResponse
-  extends IBaseTimestamp,
-    Pick<IBaseJWTToken, 'refreshToken'> {
+export interface IAccountOfLoginResponse extends IBaseTimestamp {
   id: string;
   isDeleted: number;
   email: string;

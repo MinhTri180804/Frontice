@@ -1,113 +1,84 @@
 import { FC } from 'react';
-import {
-  Form,
-  FormSubmitHandler,
-  RegisterOptions,
-  useForm,
-} from 'react-hook-form';
+import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContentProps } from 'react-toastify';
 import { Button, Input } from '../../../../../components/common';
 import { paths } from '../../../../../constant';
 import authService from '../../../../../services/authServices';
+import { IBaseResponse } from '../../../../../types/base';
+import { IOptionLanguage } from '../../../../../types/entity';
 import { IRegisterRequest } from '../../../../../types/request/register';
 import './formRegister.scss';
+import useFormRegister from './formRegister.hook';
 
 const FormRegister: FC = () => {
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+  const i18nLanguage = i18n.language as IOptionLanguage;
+  const {
+    aboutOfConfirmPassword,
+    aboutOfFirstName,
+    aboutOfLastName,
+    aboutOfEmail,
+    aboutOfPassword,
+  } = useFormRegister();
+
   const {
     register,
-    getValues,
     control,
     formState: { errors },
-  } = useForm<IRegisterRequest>();
+  } = useForm<IRegisterRequest>({
+    defaultValues: {
+      role: 'CHALLENGER',
+    },
+  });
+
+  const { t } = useTranslation();
 
   const handleRegister: FormSubmitHandler<IRegisterRequest> = async (data) => {
     const formData: IRegisterRequest = {
       ...data.data,
-      role: 'CHALLENGER',
     };
 
     toast.promise(
       authService
         .signUp(formData)
         .then((response) => {
-          if (response.status === 200) {
-            return navigate(`${paths.auth}/${paths.otp}`, {
-              state: {
-                emailSignUp: response.data.data.email,
-              },
-            });
-          } else {
-            throw new Error('Unexpected response');
-          }
+          const URL_REDIRECT = `${paths.auth}/${paths.otp}`;
+          navigate(URL_REDIRECT, {
+            state: {
+              emailSignUp: response.data.data.email,
+            },
+          });
+
+          const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.Register.success')}`;
+          if (i18nLanguage === paths.LANGUAGE.english)
+            return response.data.messageVN || MESSAGE_SUCCESS;
+          if (i18nLanguage === paths.LANGUAGE.vietnamese)
+            return response.data.messageEng || MESSAGE_SUCCESS;
         })
-        .catch((error) => {
-          console.log(error);
-          throw error;
+        .catch((error: IBaseResponse<null>) => {
+          const MESSAGE_ERROR = `${t('ToastMessage.Auth.Register.error')}`;
+          if (i18nLanguage === paths.LANGUAGE.vietnamese)
+            throw error.messageVN || MESSAGE_ERROR;
+          if (i18nLanguage === paths.LANGUAGE.english)
+            throw error.messageEng || MESSAGE_ERROR;
         }),
       {
-        pending: 'Đang xử lí đăng kí',
-        success: 'Đăng kí tài khoản thành công',
-        error: 'Đăng kí tài khoản thất bại',
+        pending: `${t('ToastMessage.Auth.Register.pending')}`,
+        success: {
+          render: (response) => {
+            return response.data as string;
+          },
+        },
+        error: {
+          render: (response: ToastContentProps<string>) => {
+            return response.data;
+          },
+        },
       },
     );
-  };
-  const ruleOfFirstName: RegisterOptions<IRegisterRequest, 'firstName'> = {
-    required: {
-      value: true,
-      message: 'First name is not empty',
-    },
-  };
-
-  const ruleOfLastName: RegisterOptions<IRegisterRequest, 'lastName'> = {
-    required: {
-      value: true,
-      message: 'Last name is not empty',
-    },
-  };
-
-  const ruleOfEmail: RegisterOptions<IRegisterRequest, 'email'> = {
-    required: {
-      value: true,
-      message: 'Email is not empty',
-    },
-
-    pattern: {
-      // eslint-disable-next-line no-useless-escape
-      value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      message: 'Email is not valid',
-    },
-  };
-
-  const ruleOfPassword: RegisterOptions<IRegisterRequest, 'password'> = {
-    required: {
-      value: true,
-      message: 'Password is not empty',
-    },
-
-    minLength: {
-      value: 8,
-      message: 'Length password less than 8',
-    },
-  };
-
-  const ruleOfConfirmPassword: RegisterOptions<
-    IRegisterRequest,
-    'confirmPassword'
-  > = {
-    required: {
-      value: true,
-      message: 'Password confirm is not empty',
-    },
-
-    minLength: {
-      value: 8,
-      message: 'Length password less than 8',
-    },
-    validate: (value) => {
-      return value === getValues('password') || 'Passwords do not match';
-    },
   };
 
   return (
@@ -118,46 +89,50 @@ const FormRegister: FC = () => {
     >
       <div className="input-group">
         <Input
-          {...register('firstName', ruleOfFirstName)}
+          {...register('firstName', aboutOfFirstName.rule)}
           status={errors.firstName && 'error'}
           message={errors.firstName?.message}
-          label="first name"
+          label={aboutOfFirstName.name}
           placeholder="Enter your first name..."
         />
         {/* TODO: implement input password component in here */}
         <Input
-          {...register('lastName', ruleOfLastName)}
+          {...register('lastName', aboutOfLastName.rule)}
           status={errors.lastName && 'error'}
           message={errors.lastName?.message}
-          label="last name"
+          label={aboutOfLastName.name}
           placeholder="Enter your last name..."
         />
       </div>
       <Input
-        {...register('email', ruleOfEmail)}
+        {...register('email', aboutOfEmail.rule)}
         status={errors.email && 'error'}
         message={errors.email?.message}
-        label="Email"
+        label={aboutOfEmail.name}
         placeholder="Enter your email..."
       />
       <Input
-        {...register('password', ruleOfPassword)}
+        {...register('password', aboutOfPassword.rule)}
         status={errors.password && 'error'}
         message={errors.password?.message}
-        label="password"
+        label={`${aboutOfPassword.name}`}
         placeholder="Enter your password..."
         type="password"
       />
       <Input
-        {...register('confirmPassword', ruleOfConfirmPassword)}
+        {...register('confirmPassword', aboutOfConfirmPassword.rule)}
         status={errors.confirmPassword && 'error'}
         message={errors.confirmPassword?.message}
-        label="password confirm"
+        label={`${aboutOfConfirmPassword.name}`}
         placeholder="Enter your password confirm..."
         type="password"
       />
 
-      <Button styleType="primary" label="Register" buttonSize="medium" />
+      <Button
+        styleType="primary"
+        label={`${t('Button.Register')}`}
+        buttonSize="medium"
+      />
     </Form>
   );
 };

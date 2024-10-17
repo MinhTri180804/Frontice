@@ -1,30 +1,38 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './LanguageSwitcher.scss';
+import { IOptionLanguage } from '../../../../../../../types/entity';
+import { paths } from '../../../../../../../constant';
 
 const LanguageSwitcher: React.FC = () => {
-    const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
-    };
+  const changeLanguage = (language: IOptionLanguage) => {
+    i18n.changeLanguage(language);
+  };
 
-    return (
-        <div className="language-switcher">
-            <button
-                className={i18n.language === 'en' ? 'active' : ''}
-                onClick={() => changeLanguage('en')}
-            >
-                EN
-            </button>
-            <button
-                className={i18n.language === 'vi' ? 'active' : ''}
-                onClick={() => changeLanguage('vi')}
-            >
-                VI
-            </button>
-        </div>
-    );
+  const i18Language = i18n.language as IOptionLanguage;
+
+  return (
+    <div className="language-switcher">
+      <button
+        className={i18Language === paths.LANGUAGE.english ? 'active' : ''}
+        onClick={() =>
+          changeLanguage(paths.LANGUAGE.english as IOptionLanguage)
+        }
+      >
+        EN
+      </button>
+      <button
+        className={i18Language === paths.LANGUAGE.vietnamese ? 'active' : ''}
+        onClick={() =>
+          changeLanguage(paths.LANGUAGE.vietnamese as IOptionLanguage)
+        }
+      >
+        VI
+      </button>
+    </div>
+  );
 };
 
 export default LanguageSwitcher;
