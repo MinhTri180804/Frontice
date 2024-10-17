@@ -17,7 +17,6 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
       <div className="title-component">Personal Information</div>
 
       <div className="container-input">
-        {/* Row for First Name and Last Name */}
         <div className="row">
           <div className="first">
             <Input
