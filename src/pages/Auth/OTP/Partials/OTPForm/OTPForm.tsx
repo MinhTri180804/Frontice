@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContentProps } from 'react-toastify';
 import { Button } from '../../../../../components/common';
 import { paths } from '../../../../../constant';
 import authService from '../../../../../services/authServices';
@@ -9,6 +9,9 @@ import { IVerifyEmailRequest } from '../../../../../types/request/verifyEmail';
 import { IVerifyForgotPassword } from '../../../../../types/request/verifyForgotPasswordOtp';
 import { OtpInput } from '../../../Partials/OtpInput';
 import './otpForm.scss';
+import { useTranslation } from 'react-i18next';
+import { IBaseResponse } from '../../../../../types/base';
+import { IOptionLanguage } from '../../../../../types/entity';
 
 interface IOTPFormProps {
   lengthOTP: number;
@@ -18,6 +21,8 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
   const location = useLocation();
   const emailSignUp = location.state?.emailSignUp;
   const emailForgotPassword = location.state?.emailForgotPassword;
+  const { i18n, t } = useTranslation();
+  const i18nLanguage = i18n.language as IOptionLanguage;
   const [OTPValues, setOTPValues] = useState<number[]>(
     Array(lengthOTP).fill(null),
   );
@@ -40,7 +45,7 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
 
     if (stateOTPReport.includes(true)) {
       setStateOTP(stateOTPReport);
-      toast.error('OTP Code is not empty');
+      toast.error(`${t('Validation.Field.Otp.Require')}`);
       return;
     }
 
@@ -54,19 +59,32 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
             otp: OTPString,
           })
           .then((response) => {
-            if (response.data.status === 200) {
-              navigate(`${paths.auth}/${paths.login}`);
-            } else {
-              throw new Error('Verify OTP code fail');
-            }
+            navigate(`${paths.auth}/${paths.login}`);
+            const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.OTP.success')}`;
+            if (i18nLanguage === paths.LANGUAGE.english)
+              return response.data.messageEng || MESSAGE_SUCCESS;
+            if (i18nLanguage === paths.LANGUAGE.vietnamese)
+              return response.data.messageVN || MESSAGE_SUCCESS;
           })
-          .catch((error) => {
-            throw error;
+          .catch((error: IBaseResponse<null>) => {
+            const MESSAGE_ERROR = `${t('ToastMessage.Auth.OTP.error')}`;
+            if (i18nLanguage === paths.LANGUAGE.english)
+              throw error.messageEng || MESSAGE_ERROR;
+            if (i18nLanguage === paths.LANGUAGE.vietnamese)
+              throw error.messageVN || MESSAGE_ERROR;
           }),
         {
-          pending: 'Đang thực hiện xác thực OTP',
-          success: 'Xác thực OTP thành công',
-          error: 'Mã OTP không chính xác',
+          pending: `${t('ToastMessage.Auth.OTP.pending')}`,
+          success: {
+            render: (response) => {
+              return response.data as string;
+            },
+          },
+          error: {
+            render: (response) => {
+              return response.data as string;
+            },
+          },
         },
       );
     }
@@ -79,37 +97,57 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
             otp: OTPString,
           })
           .then((response) => {
-            if (response.data.status === 200) {
-              const { data: resetToken } = response.data;
-              navigate(`${paths.auth}/${paths.resetPassword}`, {
-                state: {
-                  resetToken: resetToken,
-                },
-              });
-            } else {
-              throw new Error('Verify otp forgot password fail');
+            const { data: resetToken } = response.data;
+            navigate(`${paths.auth}/${paths.resetPassword}`, {
+              state: {
+                resetToken: resetToken,
+              },
+            });
+
+            const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.OTP.success')}`;
+            if (i18nLanguage === paths.LANGUAGE.english) {
+              return response.data.messageEng || MESSAGE_SUCCESS;
+            }
+
+            if (i18nLanguage === paths.LANGUAGE.vietnamese) {
+              return response.data.messageVN || MESSAGE_SUCCESS;
             }
           })
-          .catch((error) => {
-            throw error;
+          .catch((error: IBaseResponse<null>) => {
+            const MESSAGE_ERROR = `${t('ToastMessage.Auth.OTP.error')}`;
+            if (i18nLanguage === paths.LANGUAGE.english) {
+              return error.messageEng || MESSAGE_ERROR;
+            }
+
+            if (i18nLanguage === paths.LANGUAGE.vietnamese) {
+              return error.messageVN || MESSAGE_ERROR;
+            }
           }),
         {
-          pending: 'Đang thực hiện xác thực OTP',
-          success: 'Thực hiện xác thực OTP quên mật khẩu thành công',
-          error: 'OTP không đúng',
+          pending: `${t('ToastMessage.Auth.OTP.pending')}`,
+          success: {
+            render: (response) => {
+              return response.data as string;
+            },
+          },
+          error: {
+            render: (response: ToastContentProps<string>) => {
+              return response.data as string;
+            },
+          },
         },
       );
     }
   };
 
-  const handleChangeValueOtp: (index: number, value: number) => void = (
-    index,
-    value,
-  ) => {
+  const handleChangeValueOtp: (
+    index: number,
+    value: string | number,
+  ) => void = (index, value) => {
     const newOTPValues = OTPValues.map((otpValue, indexOrigin) => {
       if (indexOrigin !== index) return otpValue;
 
-      return value;
+      return value as number;
     });
 
     setOTPValues(newOTPValues);
@@ -129,7 +167,11 @@ const OTPForm: FC<IOTPFormProps> = ({ lengthOTP }) => {
             />
           ))}
       </div>
-      <Button styleType="primary" label="Verify OTP" buttonSize="medium" />
+      <Button
+        styleType="primary"
+        label={`${t('Button.VerifyOtp')}`}
+        buttonSize="medium"
+      />
     </Form>
   );
 };

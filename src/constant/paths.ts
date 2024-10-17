@@ -38,14 +38,22 @@ const paths = {
       send_otp: '/otp-sending',
       verify_email: '/email-verification',
       verify_forgot_password_otp: '/verify-forgot-password-otp',
+      refreshToken: '/refresh-token',
     },
   },
+
   LOCAL_STORAGE: {
     emailRegister: 'emailRegister',
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     account: 'accountInformation',
     emailForgotPassword: 'emailForgotPassword',
+    i18nLanguage: 'i18nextLng',
+  },
+
+  LANGUAGE: {
+    english: 'en',
+    vietnamese: 'vi',
   },
 };
 

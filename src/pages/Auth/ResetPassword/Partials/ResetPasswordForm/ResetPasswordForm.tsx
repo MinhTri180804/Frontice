@@ -1,30 +1,31 @@
-import './resetPasswordForm.scss';
 import { FC } from 'react';
-import {
-  Form,
-  FormSubmitHandler,
-  RegisterOptions,
-  useForm,
-} from 'react-hook-form';
-import { Button, Input } from '../../../../../components/common';
-import { IResetPasswordRequest } from '../../../../../types/request/resetPassword';
-import authService from '../../../../../services/authServices';
-import { toast } from 'react-toastify';
+import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Button, Input } from '../../../../../components/common';
 import { paths } from '../../../../../constant';
+import authService from '../../../../../services/authServices';
+import { IBaseResponse } from '../../../../../types/base';
+import { IResetPasswordRequest } from '../../../../../types/request/resetPassword';
+import useResetPasswordForm from './resetPasswordForm.hook';
+import './resetPasswordForm.scss';
 
 interface IResetPasswordFromProps {
   resetToken: string;
 }
 
 const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
+  const { i18n, t } = useTranslation();
+  const i18Language = i18n.language;
+
+  const { aboutOfConfirmPassword, aboutOfNewPassword } = useResetPasswordForm();
   const {
     register,
     formState: { errors },
     control,
-    getValues,
   } = useForm<IResetPasswordRequest>({
-    defaultValues: { resetToken: '123123' },
+    defaultValues: { resetToken },
   });
 
   const navigate = useNavigate();
@@ -34,52 +35,45 @@ const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
   ) => {
     const formData: IResetPasswordRequest = {
       ...data.data,
-      resetToken: resetToken,
+      resetToken,
     };
 
     toast.promise(
       authService
         .resetPassword(formData)
         .then((response) => {
-          if (response.data.status === 200) {
-            navigate(`${paths.auth}/${paths.login}`);
-          } else {
-            throw new Error(response.data.messageVN);
-          }
+          const URL_NAVIGATE = `${paths.auth}/${paths.login}`;
+          navigate(URL_NAVIGATE);
+
+          const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.ResetPassword.success')}`;
+          if (i18Language === paths.LANGUAGE.english)
+            return response.data.messageEng || MESSAGE_SUCCESS;
+
+          if (i18Language === paths.LANGUAGE.vietnamese)
+            return response.data.messageVN || MESSAGE_SUCCESS;
         })
-        .catch((error) => {
-          throw error.message;
+        .catch((error: IBaseResponse<null>) => {
+          const MESSAGE_ERROR = `${t('ToastMessage.Auth.ResetPassword.error')}`;
+          if (i18Language === paths.LANGUAGE.english)
+            return error.messageEng || MESSAGE_ERROR;
+
+          if (i18Language === paths.LANGUAGE.vietnamese)
+            return error.messageVN || MESSAGE_ERROR;
         }),
       {
-        pending: 'Đang thực hiện reset mật khẩu',
-        success: 'Đổi mật khẩu thành công',
-        error: 'Đổi mật khẩu thất bại',
+        pending: `${t('ToastMessage.Auth.ResetPassword.pending')}`,
+        success: {
+          render: (response) => {
+            return response.data as string;
+          },
+        },
+        error: {
+          render: (response) => {
+            return response.data as string;
+          },
+        },
       },
     );
-  };
-
-  const ruleOfNewPassword: RegisterOptions<
-    IResetPasswordRequest,
-    'newPassword'
-  > = {
-    required: {
-      value: true,
-      message: 'Password is not empty',
-    },
-
-    minLength: {
-      value: 8,
-      message: 'Length password less than 8',
-    },
-  };
-
-  const ruleOfConfirmPassword: RegisterOptions<
-    IResetPasswordRequest,
-    'confirmPassword'
-  > = {
-    ...ruleOfNewPassword,
-    validate: (value) =>
-      value === getValues('newPassword') || 'Passwords do not match',
   };
 
   return (
@@ -89,22 +83,26 @@ const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
       onSubmit={handleResetPassword}
     >
       <Input
-        {...register('newPassword', ruleOfNewPassword)}
+        {...register('newPassword', aboutOfNewPassword.rule)}
         status={errors.newPassword && 'error'}
         message={errors.newPassword?.message}
-        label="new password "
+        label={aboutOfNewPassword.name}
         type="password"
       />
       <Input
-        {...register('confirmPassword', ruleOfConfirmPassword)}
+        {...register('confirmPassword', aboutOfConfirmPassword.rule)}
         status={errors.confirmPassword && 'error'}
         message={errors.confirmPassword?.message}
-        label="confirm password"
+        label={aboutOfConfirmPassword.name}
         type="password"
       />
 
       {/* TODO: update status disabled and event click of button component */}
-      <Button styleType="primary" label="Reset password" buttonSize="medium" />
+      <Button
+        styleType="primary"
+        label={t('Button.ResetPassword')}
+        buttonSize="medium"
+      />
     </Form>
   );
 };
