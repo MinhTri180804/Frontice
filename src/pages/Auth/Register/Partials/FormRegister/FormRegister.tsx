@@ -18,9 +18,9 @@ const FormRegister: FC = () => {
   const i18nLanguage = i18n.language as IOptionLanguage;
   const {
     aboutOfConfirmPassword,
+    aboutOfEmail,
     aboutOfFirstName,
     aboutOfLastName,
-    aboutOfEmail,
     aboutOfPassword,
   } = useFormRegister();
 
@@ -28,6 +28,7 @@ const FormRegister: FC = () => {
     register,
     control,
     formState: { errors },
+    getValues,
   } = useForm<IRegisterRequest>({
     defaultValues: {
       role: 'CHALLENGER',
@@ -119,8 +120,17 @@ const FormRegister: FC = () => {
         placeholder="Enter your password..."
         type="password"
       />
+
       <Input
-        {...register('confirmPassword', aboutOfConfirmPassword.rule)}
+        {...register('confirmPassword', {
+          ...aboutOfConfirmPassword.rule,
+          validate: (value) => {
+            return (
+              value === getValues('password') ||
+              `${t('Validation.Field.PasswordConfirm.Match')}`
+            );
+          },
+        })}
         status={errors.confirmPassword && 'error'}
         message={errors.confirmPassword?.message}
         label={`${aboutOfConfirmPassword.name}`}
