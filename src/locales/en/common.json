@@ -96,7 +96,10 @@
     "ForgotPassword": "Forgot password",
     "Login": "Log in",
     "Register": "Register",
-    "VerifyOtp": "Verify OTP code"
+    "VerifyOtp": "Verify OTP code",
+    "Authentication": {
+      "BackPrevious": "Go back"
+    }
   },
   "Checkbox": {
     "RememberAccount": "Remember account"

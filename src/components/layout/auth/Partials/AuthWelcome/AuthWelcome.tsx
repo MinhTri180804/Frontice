@@ -1,10 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { BrandWhiteLogo } from '../../../../../assets/logos/locals';
 import { StepProcess } from '../../../../../pages/Auth/Partials/StepProcess';
+import { Button } from '../../../../common';
+import { ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/outline';
 import './authWelcome.scss';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthWelcome: FC = () => {
   // TODO: add feature render title, message, and step based on route url
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const handlePreviousPage = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="auth__welcome-container">
@@ -31,6 +41,26 @@ const AuthWelcome: FC = () => {
             stepNumber={2}
             stepContent="Go to application"
             isActive={false}
+          />
+        </div>
+      </div>
+
+      <div className="actions">
+        <div className="back__previous-page">
+          <Button
+            className="btn__previous-page--custom"
+            label={t('Button.Authentication.BackPrevious')}
+            iconPosition="left"
+            Icon={() => (
+              <ArrowLeftEndOnRectangleIcon
+                width={16}
+                height={16}
+                color="#5250F7"
+              />
+            )}
+            styleType="primary"
+            buttonSize="medium"
+            onClick={handlePreviousPage}
           />
         </div>
       </div>
