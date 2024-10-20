@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TableContents.scss';
 
 interface Subsection {
@@ -17,19 +17,46 @@ interface TableOfContentsProps {
 }
 
 const TableContents: React.FC<TableOfContentsProps> = ({ sections }) => {
+  const [activeSectionIndex, setActiveSectionIndex] = useState<number | null>(
+    null,
+  );
+  const [activeSubIndex, setActiveSubIndex] = useState<number | null>(null);
+
+  const handleSectionClick = (index: number) => {
+    setActiveSectionIndex(index);
+    setActiveSubIndex(null);
+  };
+
+  const handleSubClick =
+    (subIndex: number, sectionIndex: number) => (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setActiveSubIndex(subIndex);
+      setActiveSectionIndex(sectionIndex);
+    };
+
   return (
-    <div className="toc">
-      <h3 id="toc-title">Table of Contents</h3>
+    <div className="container-table-of-content">
+      <div className="title-table-of-contents" id="toc-title">
+        Table of Contents
+      </div>
       <ul>
-        {sections.map((section, index) => (
-          <li className="section" key={index}>
+        {sections.map((section, sectionIndex) => (
+          <li
+            className={`section ${activeSectionIndex === sectionIndex ? 'active' : ''}`}
+            key={sectionIndex}
+            onClick={() => handleSectionClick(sectionIndex)}
+          >
             <a href={section.href} className="section-title">
               {section.title}
             </a>
             {section.subsections && section.subsections.length > 0 && (
               <ul>
                 {section.subsections.map((sub, subIndex) => (
-                  <li className="sub-section" key={subIndex}>
+                  <li
+                    className={`sub-section ${activeSubIndex === subIndex && activeSectionIndex === sectionIndex ? 'active' : ''}`}
+                    key={subIndex}
+                    onClick={handleSubClick(subIndex, sectionIndex)}
+                  >
                     <a href={sub.href}>{sub.title}</a>
                   </li>
                 ))}

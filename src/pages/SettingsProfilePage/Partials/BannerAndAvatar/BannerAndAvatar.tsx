@@ -6,9 +6,11 @@ import { Input } from '../../../../components/common';
 
 const BannerAndAvatar: React.FC = () => {
   return (
-    <div className="container-banner-avatar">
+    <div className="container-banner-avatar" id="banner-avatar-section">
       <div className="title-component">Banner &amp; Avatar</div>
-      <div className="title-banner">Banner</div>
+      <div className="title-banner" id="banner">
+        Banner
+      </div>
       <div className="container-banner">
         <div className="image">
           <img src={BannerPathImage} alt="" />
@@ -26,7 +28,9 @@ const BannerAndAvatar: React.FC = () => {
           </label>
         </div>
       </div>
-      <div className="title-avatar">Avatar</div>
+      <div className="title-avatar" id="avatar">
+        Avatar
+      </div>
       <div className="container-avatar">
         <div className="image-action">
           <div className="image">

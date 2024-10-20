@@ -84,7 +84,7 @@ const SettingsProfilePage: React.FC = () => {
             </div>
           </div>
         </form>
-        <div className="fillter">
+        <div className="filter">
           <TableContents sections={sectionsData} />
         </div>
       </div>

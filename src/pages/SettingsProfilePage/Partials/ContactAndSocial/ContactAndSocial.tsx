@@ -11,9 +11,11 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
 }) => {
   return (
     <div className="container-contact-social">
-      <div className="title-component">Contact & Social</div>
+      <div className="title-component" id="contact-social-section">
+        Contact & Social
+      </div>
       <div className="container-input">
-        <div className="codepen">
+        <div className="codepen" id="codepen">
           <Input
             label="Codepen"
             type="text"
@@ -23,7 +25,7 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             message={errors.codepen?.message || 'errrors'}
           />
         </div>
-        <div className="gitlab">
+        <div className="gitlab" id="gitlab">
           <Input
             label="Gitlab"
             type="text"
@@ -34,7 +36,7 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             <span className="error">{errors.gitlab.message}</span>
           )}
         </div>
-        <div className="linkedin">
+        <div className="linkedin" id="linkedin">
           <Input
             label="Linkedin"
             type="text"
@@ -45,10 +47,11 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             <span className="error">{errors.linkedin.message}</span>
           )}
         </div>
-        <div className="stack-overflow">
+        <div className="stack-overflow" id="stackoverflow">
           <Input
             label="Stack Overflow"
             type="text"
+            id="stackoverflow"
             placeholder="Enter your link StackOverFlow..."
             {...register('stackOverflow', {
               required: 'stackOverflow name is required',

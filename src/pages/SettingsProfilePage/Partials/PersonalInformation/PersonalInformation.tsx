@@ -13,12 +13,12 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
   errors,
 }) => {
   return (
-    <div className="container-personal-informations">
+    <div className="container-personal-informations" id="personal-info-section">
       <div className="title-component">Personal Information</div>
 
       <div className="container-input">
         <div className="row">
-          <div className="first">
+          <div className="first" id="name">
             <Input
               label="First Name"
               placeholder="Enter your first name"
@@ -42,7 +42,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
 
         {/* Row for Date of Birth and Gender */}
         <div className="row">
-          <div className="first">
+          <div className="first" id="dob-gender">
             <Input
               label="Date of Birth"
               Icon={() => <CalendarIcon />}
@@ -66,7 +66,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
         </div>
 
         {/* Email Field */}
-        <div className="mail">
+        <div className="mail" id="email">
           <Input
             label="Email"
             type="email"
