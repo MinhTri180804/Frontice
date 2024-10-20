@@ -31,7 +31,7 @@ const RecruiterCompanyPage = React.lazy(
 const extendedRoutes: RouteObject[] = [
   {
     index: true,
-    path: paths.default,
+    path: paths.home,
     element: <HomePage />,
   },
   {
