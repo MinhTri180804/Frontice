@@ -82,7 +82,10 @@
     "ForgotPassword": "Quên mật khẩu",
     "Login": "Đăng nhập",
     "Register": "Đăng kí",
-    "VerifyOtp": "Xác thực mã OTP"
+    "VerifyOtp": "Xác thực mã OTP",
+    "Authentication": {
+      "BackPrevious": "Quay về"
+    }
   },
   "Checkbox": {
     "RememberAccount": "Ghi nhớ tài khoản"

@@ -1,10 +1,9 @@
-import { RegisterOptions, useForm } from 'react-hook-form';
-import { IResetPasswordRequest } from '../../../../../types/request';
+import { RegisterOptions } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { IAboutOfField } from '../../../../../types/base';
+import { IResetPasswordRequest } from '../../../../../types/request';
 
 const useResetPasswordForm = () => {
-  const { getValues } = useForm<IResetPasswordRequest>();
   const { t } = useTranslation();
 
   const aboutOfNewPassword: IAboutOfField<
@@ -39,9 +38,6 @@ const useResetPasswordForm = () => {
     name: `${t('Field.ConfirmPassword')}`,
     rule: {
       ...aboutOfNewPassword.rule,
-      validate: (value) =>
-        value === getValues('newPassword') ||
-        `${t('Validation.Field.PasswordConfirm.Match')}`,
     },
   };
 
