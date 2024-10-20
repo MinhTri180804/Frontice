@@ -1,0 +1,50 @@
+.toc {
+  width: 200px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    .section {
+      margin-bottom: 10px;
+
+      a.section-title {
+        font-size: 14px;
+        font-weight: bold;
+        color: gray;
+        text-decoration: none;
+
+        &:hover {
+          color: black;
+        }
+      }
+
+      .sub-section {
+        margin: 5px 0;
+        padding-left: 10px;
+
+        a {
+          font-size: 14px;
+          color: gray;
+          text-decoration: none;
+
+          &:hover {
+            color: black;
+          }
+
+          &.active {
+            color: #4a4aff;
+            background-color: #f3f4ff;
+            border-left: 3px solid #4a4aff;
+          }
+        }
+      }
+    }
+  }
+}
