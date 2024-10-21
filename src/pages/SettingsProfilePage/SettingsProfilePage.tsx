@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../components/common';
 import TableContents from '../../components/common/TableContents';
 import BannerAndAvatar from './Partials/BannerAndAvatar';
@@ -14,6 +15,7 @@ interface FormData {
   facebook: string;
   twitter: string;
 }
+
 const sectionsData = [
   {
     title: 'Banner & Avatar',
@@ -46,6 +48,8 @@ const sectionsData = [
 ];
 
 const SettingsProfilePage: React.FC = () => {
+  const { t } = useTranslation();
+
   const {
     register, // register kiem tra loi
     handleSubmit,
@@ -55,9 +59,10 @@ const SettingsProfilePage: React.FC = () => {
     console.log(data);
     //nhung props se duoc nhan vao data
   };
+
   return (
     <div className="container-settings-profile-page">
-      <div className="settings-profile-page-title">Settings Profile</div>
+      <div className="settings-profile-page-title">{t('Settings Profile')}</div>
       <div className="form-filter">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="main-settings-profile-page">
@@ -69,7 +74,7 @@ const SettingsProfilePage: React.FC = () => {
             <div className="submit">
               <Button
                 type="submit"
-                label="Submit"
+                label={t('Save Settings')}
                 styleType="primary"
                 buttonSize="large"
               />
@@ -77,7 +82,7 @@ const SettingsProfilePage: React.FC = () => {
             <div className="preview">
               <Button
                 type="button"
-                label="Preview"
+                label={t('Preview')}
                 styleType="secondary"
                 buttonSize="large"
               />

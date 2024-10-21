@@ -46,7 +46,10 @@ const TableContents: React.FC<TableOfContentsProps> = ({ sections }) => {
             key={sectionIndex}
             onClick={() => handleSectionClick(sectionIndex)}
           >
-            <a href={section.href} className="section-title">
+            <a
+              href={section.href}
+              className={`section-title ${activeSectionIndex === sectionIndex ? 'active' : ''}`}
+            >
               {section.title}
             </a>
             {section.subsections && section.subsections.length > 0 && (

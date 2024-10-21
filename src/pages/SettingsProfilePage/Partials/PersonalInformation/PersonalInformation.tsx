@@ -2,6 +2,7 @@ import { Input } from '../../../../components/common';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import './PersonalInformation.scss';
+import { useTranslation } from 'react-i18next';
 
 interface PersonalInformationProps {
   register: UseFormRegister<any>;
@@ -12,16 +13,18 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
   register,
   errors,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="container-personal-informations" id="personal-info-section">
-      <div className="title-component">Personal Information</div>
+      <div className="title-component">{t('Personal Information')}</div>
 
       <div className="container-input">
         <div className="row">
           <div className="first" id="name">
             <Input
-              label="First Name"
-              placeholder="Enter your first name"
+              label={t('First Name')}
+              type="text"
+              placeholder={t('Enter your first name')}
               {...register('firstName', { required: 'First name is required' })}
             />
             {errors.firstName && (
@@ -30,8 +33,8 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
           </div>
           <div className="last">
             <Input
-              label="Last Name"
-              placeholder="Enter your last name"
+              label={t('Last Name')}
+              placeholder={t('Enter your last name')}
               {...register('lastName', { required: 'Last name is required' })}
             />
             {errors.lastName && (
@@ -40,11 +43,11 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
           </div>
         </div>
 
-        {/* Row for Date of Birth and Gender */}
+        {/* Row for Date of Birth and Gennder */}
         <div className="row">
           <div className="first" id="dob-gender">
             <Input
-              label="Date of Birth"
+              label={t('Date of Birth')}
               Icon={() => <CalendarIcon />}
               placeholder="01/01/2002"
               {...register('dob', { required: 'Date of birth is required' })}
@@ -52,12 +55,14 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
             {errors.dob && <span className="error">{errors.dob.message}</span>}
           </div>
           <div className="last">
-            <label>Gender</label>
+            <div className="title-select">
+              <label>{t('Gender')}</label>
+            </div>
             <select {...register('gender', { required: 'Gender is required' })}>
-              <option value="">Select your gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="">{t('Select your gender')}</option>
+              <option value="male">{t('Male')}</option>
+              <option value="female">{t('Female')}</option>
+              <option value="other">{t('Other')}</option>
             </select>
             {errors.gender && (
               <span className="error">{errors.gender.message}</span>

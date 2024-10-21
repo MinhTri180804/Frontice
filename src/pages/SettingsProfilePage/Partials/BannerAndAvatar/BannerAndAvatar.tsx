@@ -3,13 +3,17 @@ import { ArrowUpTrayIcon } from '@heroicons/react/24/outline';
 import BannerPathImage from '../../../../asset/images/banner.png';
 import AvatarPathImage from '../../../../asset/images/avatar.png';
 import { Input } from '../../../../components/common';
+import { useTranslation } from 'react-i18next';
 
 const BannerAndAvatar: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="container-banner-avatar" id="banner-avatar-section">
-      <div className="title-component">Banner &amp; Avatar</div>
+      <div className="title-component">
+        {t('Banner')} &amp; {t('Avatar')}
+      </div>
       <div className="title-banner" id="banner">
-        Banner
+        {t('Banner')}
       </div>
       <div className="container-banner">
         <div className="image">
@@ -24,12 +28,12 @@ const BannerAndAvatar: React.FC = () => {
           />
           <label htmlFor="uploadFileBanner">
             <ArrowUpTrayIcon />
-            <p>Upload file</p>
+            <p>{t('Upload file')}</p>
           </label>
         </div>
       </div>
       <div className="title-avatar" id="avatar">
-        Avatar
+        {t('Avatar')}
       </div>
       <div className="container-avatar">
         <div className="image-action">
@@ -45,7 +49,7 @@ const BannerAndAvatar: React.FC = () => {
             />
             <label htmlFor="uploadFileAvatar">
               <ArrowUpTrayIcon />
-              <p>Upload file</p>
+              <p>{t('Upload file')}</p>
             </label>
           </div>
         </div>
@@ -54,17 +58,17 @@ const BannerAndAvatar: React.FC = () => {
             <Input
               label="GitHub"
               status="default"
-              placeholder="Enter your link Github account..."
+              placeholder={`${t('Enter your link Github account')}...`}
             />
             <Input
               label="Google"
               status="default"
-              placeholder="Enter your mail..."
+              placeholder={`${t('Enter your link Google account')}...`}
             />
             <Input
               label="Portfolio"
               status="default"
-              placeholder="Enter your portfolio..."
+              placeholder={`${t('Enter your link Portfolio account')}...`}
             />
           </div>
         </div>

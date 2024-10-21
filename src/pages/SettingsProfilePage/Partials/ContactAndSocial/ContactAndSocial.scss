@@ -13,5 +13,17 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    & > .codepen,
+    .gitlab,
+    .linkedin,
+    .stack-overflow {
+      display: flex;
+      flex-direction: column;
+      span {
+        font-style: italic;
+        color: $satinDeepBlack-tints-300;
+        margin-top: 8px;
+      }
+    }
   }
 }

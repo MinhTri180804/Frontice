@@ -1,6 +1,7 @@
 import { Input } from '../../../../components/common';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import './ContactAndSocial.scss';
+import { useTranslation } from 'react-i18next';
 interface ContactAndSocialProps {
   register: UseFormRegister<any>;
   errors: FieldErrors<any>;
@@ -9,27 +10,29 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
   register,
   errors,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="container-contact-social">
       <div className="title-component" id="contact-social-section">
-        Contact & Social
+        {t('Contact')} & {t('Social')}
       </div>
       <div className="container-input">
         <div className="codepen" id="codepen">
           <Input
             label="Codepen"
             type="text"
-            placeholder="Enter your link codepen..."
+            placeholder={`${t('Enter your link Codepen')}...`}
             {...register('codepen', { required: 'Codepen name is required' })}
-            status={errors.codepen && 'error'}
-            message={errors.codepen?.message || 'errrors'}
           />
+          {errors.gitlab && (
+            <span className="error">{errors.codepen?.message}</span>
+          )}
         </div>
         <div className="gitlab" id="gitlab">
           <Input
             label="Gitlab"
             type="text"
-            placeholder="Enter your link account gitlab ..."
+            placeholder={`${t('Enter your link Gitlab account')}...`}
             {...register('gitlab', { required: 'Gitlab is required' })}
           />
           {errors.gitlab && (
@@ -52,9 +55,9 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             label="Stack Overflow"
             type="text"
             id="stackoverflow"
-            placeholder="Enter your link StackOverFlow..."
+            placeholder={`${t('Enter your link Stack Overflow account')}...`}
             {...register('stackOverflow', {
-              required: 'stackOverflow name is required',
+              required: 'Stack Overflow name is required',
             })}
           />
           {errors.stackOverflow && (
