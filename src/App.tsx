@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-  QueryProvider,
-  Router,
-  ToastHandler
-} from './components/wrapper';
+import { QueryProvider, Router, ToastHandler } from './components/wrapper';
 import { paths } from './constant';
 import './app.scss';
-import "./configs/i18n"
+import './configs/i18n';
 
 const App: React.FC = () => {
   return (

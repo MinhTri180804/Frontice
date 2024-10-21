@@ -7,6 +7,7 @@
   border-radius: 24px;
   background: linear-gradient(180deg, #5250f7 0%, #1e1e1e 100%);
   @include flex-row(none, center, flex-end);
+  position: relative;
 
   & > .content {
     margin-bottom: 62px;
@@ -51,6 +52,26 @@
     & > .steps {
       @include flex-column(14px);
       width: 100%;
+    }
+  }
+
+  & > .actions {
+    width: fit-content;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    @include flex-row(12px, flex-start, stretch);
+
+    & > .back__previous-page {
+      & > button.btn__previous-page--custom {
+        background-color: $BG-white;
+        color: $saturatedSky-main;
+        border-radius: 12px;
+
+        &:hover {
+          background-color: #ffffffc2;
+        }
+      }
     }
   }
 }

@@ -1,10 +1,9 @@
-import { RegisterOptions, useForm } from 'react-hook-form';
-import { IRegisterRequest } from '../../../../../types/request';
+import { RegisterOptions } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { IAboutOfField } from '../../../../../types/base';
+import { IRegisterRequest } from '../../../../../types/request';
 
 const useFormRegister = () => {
-  const { getValues } = useForm<IRegisterRequest>();
   const { t } = useTranslation();
 
   const aboutOfFirstName: IAboutOfField<
@@ -75,18 +74,14 @@ const useFormRegister = () => {
     },
   };
 
+  console.log('password-value: ');
+
   const aboutOfConfirmPassword: IAboutOfField<
     RegisterOptions<IRegisterRequest, 'confirmPassword'>
   > = {
     name: `${t('Field.ConfirmPassword')}`,
     rule: {
       ...aboutOfPassword.rule,
-      validate: (value) => {
-        return (
-          value === getValues('password') ||
-          `${t('Validation.Field.PasswordConfirm.Match')}`
-        );
-      },
     },
   };
 

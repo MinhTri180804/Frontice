@@ -19,14 +19,16 @@ const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
   const { i18n, t } = useTranslation();
   const i18Language = i18n.language;
 
-  const { aboutOfConfirmPassword, aboutOfNewPassword } = useResetPasswordForm();
   const {
     register,
     formState: { errors },
     control,
+    getValues,
   } = useForm<IResetPasswordRequest>({
     defaultValues: { resetToken },
   });
+
+  const { aboutOfConfirmPassword, aboutOfNewPassword } = useResetPasswordForm();
 
   const navigate = useNavigate();
 
@@ -90,7 +92,12 @@ const ResetPasswordForm: FC<IResetPasswordFromProps> = ({ resetToken }) => {
         type="password"
       />
       <Input
-        {...register('confirmPassword', aboutOfConfirmPassword.rule)}
+        {...register('confirmPassword', {
+          ...aboutOfConfirmPassword.rule,
+          validate: (value) =>
+            value === getValues('newPassword') ||
+            `${t('Validation.Field.PasswordConfirm.Match')}`,
+        })}
         status={errors.confirmPassword && 'error'}
         message={errors.confirmPassword?.message}
         label={aboutOfConfirmPassword.name}
