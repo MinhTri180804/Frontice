@@ -1,3 +1,3 @@
-export { default as StatisticCard } from "./StatisticCard"
-export { default as SolutionTable } from "./SolutionTable"
-export { default as PreviewRecruiterChallenge } from "./PreviewRecruiterChallenge"
+export { default as SectionStatistic } from './SectionStatistic';
+export { default as ProfileOverview } from './ProfileOverview';
+export { default as ChallengeIncompleteList } from './ChallengeIncompleteList';

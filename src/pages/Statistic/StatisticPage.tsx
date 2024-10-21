@@ -1,28 +1,64 @@
-import React from "react";
-import "./StatisticPage.scss"
-import { PreviewRecruiterChallenge, SolutionTable, StatisticCard } from "./partitals";
+import {
+  AcademicCapIcon,
+  CommandLineIcon,
+  LightBulbIcon,
+} from '@heroicons/react/24/outline';
+import React from 'react';
+import Solution from '../../components/common/Solution';
+import './StatisticPage.scss';
+import {
+  ChallengeIncompleteList,
+  ProfileOverview,
+  SectionStatistic,
+} from './partitals';
 
 const StatisticPage: React.FC = () => {
-    return (
-        <div className="statistic-container">
-            <h1 className='statistic-title'>Statistic Page</h1>
+  return (
+    <div className="statistic__page-container">
+      <h1 className="title-page">Statistic Page</h1>
 
-            <div className="statistic-row">
-                <div className="statistic-left-column">
-                    <StatisticCard />
-                    <SolutionTable />
-                </div>
-
-                <div className="statistic-right-column">
-                    <PreviewRecruiterChallenge />
-                </div>
-            </div>
-
-            <div className="challenge-component">
-                Challege Component
-            </div>
+      <div className="content">
+        <SectionStatistic
+          title="Overview"
+          Icon={() => <LightBulbIcon width={32} height={32} />}
+        >
+          <div className="line"></div>
+          <ProfileOverview />
+        </SectionStatistic>
+        <div className="section-with-account">
+          <SectionStatistic
+            options
+            className="incomplete__challenge"
+            Icon={() => <AcademicCapIcon width={32} height={32} />}
+            title="Incomplete Challenges"
+          >
+            <div className="line"></div>
+            <ChallengeIncompleteList />
+          </SectionStatistic>
+          <div className="account"></div>
         </div>
-    )
+        <SectionStatistic
+          title="My Solution"
+          Icon={() => <CommandLineIcon width={24} height={24} />}
+          className="my__solution"
+        >
+          <div className="line"></div>
+          <div className="solution__list">
+            {Array.from({
+              length: 8,
+            }).map(() => (
+              <Solution
+                image="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/dmfvghaamqjt9lrx43ql.jpg"
+                time="About 5 hours ago"
+                name="Contact form"
+                tech={['Html', 'css', 'javascript']}
+              />
+            ))}
+          </div>
+        </SectionStatistic>
+      </div>
+    </div>
+  );
 };
 
 export default StatisticPage;
