@@ -1,15 +1,30 @@
+import {
+  AcademicCapIcon,
+  CommandLineIcon,
+  LightBulbIcon,
+} from '@heroicons/react/24/outline';
 import React from 'react';
-import './StatisticPage.scss';
-import { SectionStatistic } from './partitals';
-import { AcademicCapIcon, CommandLineIcon } from '@heroicons/react/24/outline';
-import ChallengeIncomplete from './partitals/ChallengeIncomplete/ChallengeIncomplete';
 import Solution from '../../components/common/Solution';
+import './StatisticPage.scss';
+import {
+  ChallengeIncompleteList,
+  ProfileOverview,
+  SectionStatistic,
+} from './partitals';
 
 const StatisticPage: React.FC = () => {
   return (
     <div className="statistic__page-container">
       <h1 className="title-page">Statistic Page</h1>
+
       <div className="content">
+        <SectionStatistic
+          title="Overview"
+          Icon={() => <LightBulbIcon width={32} height={32} />}
+        >
+          <div className="line"></div>
+          <ProfileOverview />
+        </SectionStatistic>
         <div className="section-with-account">
           <SectionStatistic
             options
@@ -18,21 +33,7 @@ const StatisticPage: React.FC = () => {
             title="Incomplete Challenges"
           >
             <div className="line"></div>
-            <div className="challenge__list">
-              {Array.from({
-                length: 6,
-              }).map(() => (
-                <ChallengeIncomplete
-                  className="challenge__incomplete"
-                  name="Link-sharing app"
-                  technicalList={['html', 'css']}
-                  difficulty="High"
-                  level="Diamon"
-                  score={125}
-                  imageURL="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/thypgk1nmxm4modj1wdl.jpg"
-                />
-              ))}
-            </div>
+            <ChallengeIncompleteList />
           </SectionStatistic>
           <div className="account"></div>
         </div>

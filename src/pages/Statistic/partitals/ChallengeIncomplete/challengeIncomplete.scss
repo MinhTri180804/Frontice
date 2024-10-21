@@ -6,6 +6,7 @@
   border: 1px solid $benthicBlack-tints-200;
   background-color: $BG-white;
   border-radius: 12px;
+  width: 100%;
 
   @include grid(12, none, 12px, start, stretch);
   & > .image {
