@@ -89,5 +89,31 @@
   },
   "Checkbox": {
     "RememberAccount": "Ghi nhớ tài khoản"
-  }
+  },
+  "Upload file": "Tải lên tập tin",
+  "Enter your portfolio": "Nhập portfolio của bạn",
+  "Settings Profile": "Cài đặt Hồ sơ",
+  "Banner": "Ảnh Bìa",
+  "Avatar": "Ảnh Đại Diện",
+  "Enter your link Github account": "Nhập vào đường dẫn Github của bạn",
+  "Enter your link Google account": "Nhập vào đường dẫn Google của bạn",
+  "Enter your link Portfolio account": "nhập vào đường dẫn portfolio của bạn",
+  "Personal Information": "Thông tin cá nhân",
+  "First Name": "Họ",
+  "Last Name": "Tên",
+  "Date of Birth": "Ngày tháng năm sinh",
+  "Gender": "giới tính",
+  "Contact": "Liên hệ",
+  "Social": "Mạng xã hội",
+  "Enter your link Codepen": "Nhập vào liên kết tài khoản Codepen của bạn",
+  "Enter your link Gitlab account": "Nhập vào liên kết tài khoản Gitlab của bạn",
+  "Enter your link Stack Overflow account": "Nhập vào đường dẫn Stack Overflow của bạn",
+  "Save Settings": "Lưu thay đổi",
+  "Preview": "Xem trước",
+  "Enter your first name": "Nhập vào Họ của bạn",
+  "Enter your last name": "Nhập vào tên của bạn",
+  "Select your gender": "Chọn giới tính",
+  "Male": "Nam",
+  "Female": "Nữ",
+  "Other": "Khác"
 }

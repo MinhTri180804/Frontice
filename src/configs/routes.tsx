@@ -27,6 +27,9 @@ const StatisticPage = React.lazy(() => import('../pages/Statistic'));
 const RecruiterCompanyPage = React.lazy(
   () => import('../pages/RecruiterCompany'),
 );
+const SettingsProfilePage = React.lazy(
+  () => import('../pages/SettingsProfilePage'),
+);
 
 const extendedRoutes: RouteObject[] = [
   {
@@ -37,6 +40,10 @@ const extendedRoutes: RouteObject[] = [
   {
     path: paths.profile,
     element: <ProfilePage />,
+  },
+  {
+    path: paths.settingsProfilePage,
+    element: <SettingsProfilePage />,
   },
   {
     path: paths.solutionDetails,
