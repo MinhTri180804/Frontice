@@ -8,9 +8,10 @@
   border-radius: 12px;
   background-color: $BG-white;
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.11);
-  @include flex-row(32px, center, center);
-
+  // @include flex-row(32px, center, center);
+  @include grid(12, none, 24px, start, center);
   & > .challenge__about {
+    grid-column: span 7;
     @include flex-column(32px, flex-start, start);
     & > .heading {
       width: 100%;
@@ -106,5 +107,9 @@
         width: 100%;
       }
     }
+  }
+  & > .challenge__preview {
+    grid-column: span 5;
+    width: 100%;
   }
 }
