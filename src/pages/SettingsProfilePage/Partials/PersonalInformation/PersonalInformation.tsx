@@ -48,7 +48,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
           <div className="first" id="dob-gender">
             <Input
               label={t('Date of Birth')}
-              Icon={() => <CalendarIcon />}
+              type="date"
               placeholder="01/01/2002"
               {...register('dob', { required: 'Date of birth is required' })}
             />
