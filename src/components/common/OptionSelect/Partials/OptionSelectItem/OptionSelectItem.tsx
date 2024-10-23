@@ -7,6 +7,7 @@ interface IOptionSelectItemProps extends HTMLProps<HTMLDivElement> {
   optionData: IOptionSelectItem;
   handleSelectItem: (option: IOptionSelectItem) => void;
   isSelected?: boolean;
+  isActive?: boolean;
 }
 
 const OptionSelectItem: FC<IOptionSelectItemProps> = ({
@@ -14,6 +15,7 @@ const OptionSelectItem: FC<IOptionSelectItemProps> = ({
   handleSelectItem,
   isSelected = false,
   className,
+  isActive = false,
   ...props
 }) => {
   const optionSelectItemClass = classNames(
@@ -21,6 +23,7 @@ const OptionSelectItem: FC<IOptionSelectItemProps> = ({
     className,
     {
       selected: isSelected,
+      active: isActive,
     },
   );
 
