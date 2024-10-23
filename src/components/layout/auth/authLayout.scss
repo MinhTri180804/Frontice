@@ -1,9 +1,16 @@
 .auth__layout-container {
+  position: relative;
   padding: 12px;
   max-width: 100dvw;
   width: 100dvw;
   max-height: 100dvh;
   height: 100dvh;
+
+  & > .option__language {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
 
   & > .wrap {
     display: grid;
