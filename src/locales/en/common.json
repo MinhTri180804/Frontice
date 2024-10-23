@@ -103,5 +103,13 @@
   },
   "Checkbox": {
     "RememberAccount": "Remember account"
+  },
+  "Language": {
+    "Vietnamese": "Vietnamese",
+    "English": "English",
+    "Country": "Vietnam"
+  },
+  "ChangeLanguage": {
+    "success": "Changed language {{language}} successfully"
   }
 }

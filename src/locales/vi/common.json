@@ -115,5 +115,13 @@
   "Select your gender": "Chọn giới tính",
   "Male": "Nam",
   "Female": "Nữ",
-  "Other": "Khác"
+  "Other": "Khác",
+  "Language": {
+    "Vietnamese": "Tiếng Việt",
+    "English": "Tiếng Anh",
+    "Country": "Việt Nam"
+  },
+  "ChangeLanguage": {
+    "success": "Chuyển ngôn ngữ {{language}} thành công"
+  }
 }
