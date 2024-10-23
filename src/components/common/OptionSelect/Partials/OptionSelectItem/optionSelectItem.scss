@@ -9,7 +9,9 @@
   @include flex-row(8px, flex-start, center);
   cursor: pointer;
   transition: background-color $background_transition_time_duration linear;
-
+  &.active {
+    background-color: $saturatedSky-tints-200;
+  }
   &:hover {
     background-color: $saturatedSky-tints-200;
   }

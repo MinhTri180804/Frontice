@@ -82,6 +82,7 @@ const OptionSelect: FC<IOptionSelectProps> = ({
             handleSelectItem={handleOptionSelect}
             optionData={option}
             key={`${index}`}
+            isActive={valueSelect.optionValue === option.optionValue}
           />
         ))}
       </div>

@@ -33,8 +33,9 @@ const Home: React.FC = () => {
           iconPosition="left"
           Icon={() => <AcademicCapIcon width={32} height={32} />}
         >
-          {Array.from({ length: 7 }).map(() => (
+          {Array.from({ length: 7 }).map((_, index) => (
             <Challenge
+              key={`${index}`}
               name="Frontend Quiz app"
               bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
               description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"
@@ -61,12 +62,13 @@ const Home: React.FC = () => {
 
         <Section
           className="challenge__recruiter"
-          title="Challenge System"
+          title="Challenge Recruiter"
           iconPosition="left"
           Icon={() => <AcademicCapIcon width={32} height={32} />}
         >
-          {Array.from({ length: 7 }).map(() => (
+          {Array.from({ length: 7 }).map((_, index) => (
             <Challenge
+              key={`${index}`}
               name="Frontend Quiz app"
               bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
               description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"

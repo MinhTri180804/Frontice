@@ -9,5 +9,6 @@ export { default as ChallengeOverview } from './ChallengeOverview';
 export { default as FAQ } from './Faq';
 export { default as Tooltip } from './Tooltip';
 export { default as OptionSelect } from './OptionSelect';
+export { default as OptionSelectMultiple } from './OptionSelectMultiple';
 
 export { default as Section } from './Section';

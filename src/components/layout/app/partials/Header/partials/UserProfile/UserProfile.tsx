@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import './UserProfile.scss';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import {
   NotificationIcon,
   UpAndDownIcon,
 } from '../../../../../../../assets/icons';
 import { DefaultAvatar } from '../../../../../../../assets/images';
-import { useTranslation } from 'react-i18next';
-import { Dropdown } from './partials';
-import { OptionSelect } from '../../../../../../common';
-import { IOptionSelectItem } from '../../../../../../../types/entity/components';
 import { IOptionLanguage } from '../../../../../../../types/entity';
-import { toast } from 'react-toastify';
+import { IOptionSelectItem } from '../../../../../../../types/entity/components';
+import { OptionSelect } from '../../../../../../common';
+import { Dropdown } from './partials';
+import './UserProfile.scss';
 
 const UserProfile: React.FC = () => {
   const { i18n, t } = useTranslation();
@@ -78,6 +78,7 @@ const UserProfile: React.FC = () => {
           options={languageOptions}
         />
       </div>
+
       <div className="notification-icon">
         <NotificationIcon width={24} height={24} />
       </div>
