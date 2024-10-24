@@ -4,7 +4,9 @@ import {
   LightBulbIcon,
 } from '@heroicons/react/24/outline';
 import React from 'react';
+import { InformationAuthor } from '../../components/common';
 import Solution from '../../components/common/Solution';
+import { useAuthStore } from '../../store/authStore';
 import './StatisticPage.scss';
 import {
   ChallengeIncompleteList,
@@ -13,6 +15,7 @@ import {
 } from './partitals';
 
 const StatisticPage: React.FC = () => {
+  const { profile } = useAuthStore();
   return (
     <div className="statistic__page-container">
       <h1 className="title-page">Statistic Page</h1>
@@ -23,7 +26,7 @@ const StatisticPage: React.FC = () => {
           Icon={() => <LightBulbIcon width={32} height={32} />}
         >
           <div className="line"></div>
-          <ProfileOverview />
+          {profile && <ProfileOverview profile={profile} />}
         </SectionStatistic>
         <div className="section-with-account">
           <SectionStatistic
@@ -35,7 +38,9 @@ const StatisticPage: React.FC = () => {
             <div className="line"></div>
             <ChallengeIncompleteList />
           </SectionStatistic>
-          <div className="account"></div>
+          <div className="account">
+            {profile && <InformationAuthor authorProfile={profile} />}
+          </div>
         </div>
         <SectionStatistic
           title="My Solution"

@@ -1,17 +1,18 @@
-import './SolutionDetails.scss';
-import pathImg from '../../../../asset/images/solution.png';
 import {
-  HandThumbUpIcon,
-  HandThumbDownIcon,
   ChatBubbleLeftEllipsisIcon,
+  HandThumbDownIcon,
+  HandThumbUpIcon,
 } from '@heroicons/react/24/outline';
-import { Button } from '../../../../components/common';
+import { InformationAuthor } from '../../../../components/common';
+import { useAuthStore } from '../../../../store/authStore';
+import './SolutionDetails.scss';
 interface Solution {
   tech?: string[];
   image?: string;
 }
 const SolutitonDetails: React.FC<Solution> = ({ ...props }) => {
-  const { tech = ['html', 'css', 'js'], image = pathImg } = props;
+  const { tech = ['html', 'css', 'js'] } = props;
+  const { profile } = useAuthStore();
   return (
     <div className="container-solution-details">
       <div className="summary-component">
@@ -63,37 +64,9 @@ const SolutitonDetails: React.FC<Solution> = ({ ...props }) => {
         </section>
       </div>
       {/* InformationAuthorComponent */}
-      <div className="information-author">
-        <div className="author">
-          <div className="image-solution">
-            <img src={image} alt="" />
-          </div>
-          <div className="name-rank-author">
-            <div className="name">Nguyen Minh Tri</div>
-            <div className="rank">Diamond</div>
-          </div>
-        </div>
-        <div className="challenge-summary">
-          <div className="join-challenge">
-            <div className="title">Tham Gia</div>
-            <div className="total">12</div>
-            <p>Challenges</p>
-          </div>
-          <div className="submit-challenge">
-            <div className="title">Hoàn thành</div>
-            <div className="total">5</div>
-            <p>Challenges</p>
-          </div>
-        </div>
-        <div className="progress-bar"></div>
-        <div className="action-view-profile">
-          <Button
-            label="View Profile"
-            buttonSize="medium"
-            styleType="secondary"
-          />
-        </div>
-      </div>
+      <section className="author__information">
+        {profile && <InformationAuthor authorProfile={profile} />}
+      </section>
     </div>
   );
 };
