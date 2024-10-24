@@ -68,6 +68,12 @@ const authService = {
       data,
     );
   },
+
+  logout: () => {
+    return axiosClient.post<IBaseResponse<null>>(
+      `${BASE_URL}${paths.API.AUTH.logout}`,
+    );
+  },
 };
 
 export default authService;

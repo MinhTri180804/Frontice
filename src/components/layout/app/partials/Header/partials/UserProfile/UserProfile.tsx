@@ -8,14 +8,18 @@ import {
 import { DefaultAvatar } from '../../../../../../../assets/images';
 import { IOptionLanguage } from '../../../../../../../types/entity';
 import { IOptionSelectItem } from '../../../../../../../types/entity/components';
-import { OptionSelect } from '../../../../../../common';
+import { Button, OptionSelect } from '../../../../../../common';
 import { Dropdown } from './partials';
 import './UserProfile.scss';
+import { useAuthStore } from '../../../../../../../store/authStore';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../../../../../../constant';
 
 const UserProfile: React.FC = () => {
   const { i18n, t } = useTranslation();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-
+  const { account, isAuthentication } = useAuthStore();
+  const navigate = useNavigate();
   const languageOptions: IOptionSelectItem[] = [
     {
       displayContent: `🇻🇳 ${t('Language.Vietnamese')}`,
@@ -82,24 +86,46 @@ const UserProfile: React.FC = () => {
       <div className="notification-icon">
         <NotificationIcon width={24} height={24} />
       </div>
-      <div className="user-profile">
-        <div className="user-avatar">
-          <img
-            src={DefaultAvatar}
-            alt={t('Layout.Header.UserProfile.avatar')}
+      {isAuthentication && account ? (
+        <div className="user-profile" onClick={toggleDropdown}>
+          <div className="user-avatar">
+            <img
+              src={DefaultAvatar}
+              alt={t('Layout.Header.UserProfile.avatar')}
+            />
+          </div>
+          <div className="user-info">
+            <div className="user-name">
+              {account.firstName} {account.lastName}
+            </div>
+          </div>
+          <div className="drop-down">
+            <UpAndDownIcon width={24} height={24} stroke="black" />
+          </div>
+
+          <Dropdown isOpen={isDropdownOpen} />
+        </div>
+      ) : (
+        <div className="option-authentication">
+          <Button
+            buttonSize="small"
+            label={t('Button.Login')}
+            styleType="secondary"
+            onClick={() => {
+              navigate(`${paths.auth}/${paths.login}`);
+            }}
+          />
+
+          <Button
+            buttonSize="small"
+            label={t('Button.Register')}
+            styleType="secondary"
+            onClick={() => {
+              navigate(`${paths.auth}/${paths.register}`);
+            }}
           />
         </div>
-        <div className="user-info">
-          <div className="user-name">
-            {t('Layout.Header.UserProfile.userName')}
-          </div>
-          <div className="user-id">#id</div>
-        </div>
-        <div className="drop-down" onClick={toggleDropdown}>
-          <UpAndDownIcon width={24} height={24} stroke="black" />
-        </div>
-      </div>
-      <Dropdown isOpen={isDropdownOpen} />
+      )}
     </div>
   );
 };

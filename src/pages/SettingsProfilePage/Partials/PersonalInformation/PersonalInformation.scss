@@ -1,7 +1,7 @@
 @use '../../../../styles/scss/utils/mixin/typography' as *;
 @use '../../../../styles/scss/utils/variables/colors' as *;
 .container-personal-informations {
-  border: 1px solid gray;
+  border: 1px solid $benthicBlack-tints-200;
   border-radius: 4px;
   padding: 24px;
   & > .title-component {
