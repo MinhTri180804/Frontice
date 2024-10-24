@@ -21,6 +21,7 @@ const authService = {
       data,
     );
   },
+
   signUp: (data: IRegisterRequest) => {
     return axiosClient.post<IBaseResponse<ISignUpResponse>>(
       `${BASE_URL}${paths.API.AUTH.register}`,

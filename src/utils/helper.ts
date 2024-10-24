@@ -1,7 +1,5 @@
-import { paths } from '../constant';
-import { useAuthStore } from '../store/authStore';
-import { IAccountOfLoginResponse } from '../types/response';
 import { jwtDecode } from 'jwt-decode';
+import { paths } from '../constant';
 
 const i18nHelper = {
   getLanguageSystemStaff: () => {
@@ -13,9 +11,9 @@ const i18nHelper = {
 
 const checkAuthentication: () => boolean = () => {
   const refreshToken = localStorage.getItem(paths.LOCAL_STORAGE.refreshToken);
-  const account = localStorage.getItem(paths.LOCAL_STORAGE.account);
+  const profile = localStorage.getItem(paths.LOCAL_STORAGE.profile);
 
-  if (!refreshToken || !account) {
+  if (!refreshToken || !profile) {
     return false;
   }
   const refreshTokenValidity = checkRefreshTokenValidity(refreshToken);
@@ -44,4 +42,4 @@ const checkRefreshTokenValidity: (refreshToken: string) => boolean = (
   return true;
 };
 
-export { i18nHelper, checkAuthentication, checkRefreshTokenValidity };
+export { checkAuthentication, checkRefreshTokenValidity, i18nHelper };

@@ -42,6 +42,11 @@
         "Error": "Đăng xuất tài khoản thất bại",
         "Pending": "Đang thực hiện đăng xuất tài khoản"
       }
+    },
+    "Challenger": {
+      "profile": {
+        "error": "Xác thực thông tin tài khoản không thành công"
+      }
     }
   },
   "Validation": {

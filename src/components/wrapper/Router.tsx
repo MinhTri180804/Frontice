@@ -16,6 +16,7 @@ export interface RouterProps {
 
 export function Routes(props: RouterProps) {
   const { defaultRoute } = props;
+  console.log(defaultRoute);
   // const location = useLocation();
 
   // Check for stored path in localStorage

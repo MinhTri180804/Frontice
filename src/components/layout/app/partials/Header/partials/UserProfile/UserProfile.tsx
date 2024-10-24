@@ -18,7 +18,7 @@ import { paths } from '../../../../../../../constant';
 const UserProfile: React.FC = () => {
   const { i18n, t } = useTranslation();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const { account, isAuthentication } = useAuthStore();
+  const { profile, isAuthentication } = useAuthStore();
   const navigate = useNavigate();
   const languageOptions: IOptionSelectItem[] = [
     {
@@ -86,7 +86,7 @@ const UserProfile: React.FC = () => {
       <div className="notification-icon">
         <NotificationIcon width={24} height={24} />
       </div>
-      {isAuthentication && account ? (
+      {isAuthentication && profile ? (
         <div className="user-profile" onClick={toggleDropdown}>
           <div className="user-avatar">
             <img
@@ -96,7 +96,7 @@ const UserProfile: React.FC = () => {
           </div>
           <div className="user-info">
             <div className="user-name">
-              {account.firstName} {account.lastName}
+              {profile.firstName} {profile.lastName}
             </div>
           </div>
           <div className="drop-down">

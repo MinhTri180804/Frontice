@@ -12,12 +12,13 @@ import { IOptionLanguage } from '../../../../../types/entity';
 import { ILoginRequest } from '../../../../../types/request/login';
 import {
   saveAccessToken,
-  saveAccount,
+  saveProfile,
   saveRefreshToken,
 } from '../../../../../utils/localstorage';
 import useFormLogin from './formLogin.hook';
 import './formLogin.scss';
 import { useAuthStore } from '../../../../../store/authStore';
+import challengerService from '../../../../../services/challengerService';
 
 const DEFAULT_PAGE_LOGIN_SUCCESS = paths.home;
 
@@ -42,24 +43,23 @@ const FormLogin: FC = () => {
     toast.promise(
       authService
         .login(data.data)
-        .then((response) => {
-          const { accessToken, refreshToken, account } = response.data.data;
+        .then(async (response) => {
+          const { accessToken, refreshToken } = response.data.data;
           saveAccessToken(accessToken);
           saveRefreshToken(refreshToken);
-          saveAccount(account);
-          login(account);
-
-          navigate(DEFAULT_PAGE_LOGIN_SUCCESS);
-
-          const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.Login.success')}`;
-          if (i18Language === paths.LANGUAGE.vietnamese) {
-            return response.data.messageEng || MESSAGE_SUCCESS;
-          }
-
-          if (i18Language === paths.LANGUAGE.english) {
-            return response.data.messageEng || MESSAGE_SUCCESS;
+          try {
+            const responseProfile = await challengerService.profile();
+            const dataProfile = responseProfile.data.data;
+            saveProfile(dataProfile);
+            login(dataProfile);
+            navigate(DEFAULT_PAGE_LOGIN_SUCCESS);
+            const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.Login.success')}`;
+            return MESSAGE_SUCCESS;
+          } catch (error) {
+            throw error || t('ToastMessage.Challenger.profile.error');
           }
         })
+
         .catch((error: IBaseResponse<null>) => {
           const MESSAGE_ERROR = `${t('ToastMessage.Auth.Login.error')}`;
           if (i18Language === paths.LANGUAGE.english)

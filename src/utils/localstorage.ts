@@ -1,6 +1,9 @@
 import { paths } from '../constant';
-import { IOptionLanguage } from '../types/entity';
-import { IAccountOfLoginResponse } from '../types/response';
+import {
+  IAccountEntity,
+  IOptionLanguage,
+  IProfileEntity,
+} from '../types/entity';
 
 // Email before register
 const saveEmailSignUp: (email: string) => void = (email) => {
@@ -52,14 +55,12 @@ const removeRefreshToken: () => void = () => {
 };
 
 // Save account
-const saveAccount: (dataAccount: IAccountOfLoginResponse) => void = (
-  dataAccount,
-) => {
+const saveAccount: (dataAccount: IAccountEntity) => void = (dataAccount) => {
   const dataFormat = JSON.stringify(dataAccount);
   localStorage.setItem(paths.LOCAL_STORAGE.account, dataFormat);
 };
 
-const getAccount: () => IAccountOfLoginResponse | null = () => {
+const getAccount: () => IAccountEntity | null = () => {
   const dataAccount = localStorage.getItem(paths.LOCAL_STORAGE.account);
   if (dataAccount) {
     return JSON.parse(dataAccount);
@@ -70,6 +71,26 @@ const getAccount: () => IAccountOfLoginResponse | null = () => {
 
 const removeAccount: () => void = () => {
   localStorage.removeItem(paths.LOCAL_STORAGE.account);
+};
+
+// profile;
+
+const saveProfile: (dataProfile: IProfileEntity) => void = (dataProfile) => {
+  const dataFormat = JSON.stringify(dataProfile);
+  localStorage.setItem(paths.LOCAL_STORAGE.profile, dataFormat);
+};
+
+const getProfile: () => IProfileEntity | null = () => {
+  const dataProfile = localStorage.getItem(paths.LOCAL_STORAGE.profile);
+  if (dataProfile) {
+    return JSON.parse(dataProfile) as IProfileEntity;
+  }
+
+  return null;
+};
+
+const removeProfile: () => void = () => {
+  localStorage.removeItem(paths.LOCAL_STORAGE.profile);
 };
 
 // Email forgot password
@@ -128,4 +149,7 @@ export {
   saveEmailForgotPassword,
   saveEmailSignUp,
   saveRefreshToken,
+  saveProfile,
+  getProfile,
+  removeProfile,
 };

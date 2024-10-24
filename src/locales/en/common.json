@@ -50,6 +50,11 @@
         "Error": "Logout of account failed",
         "Pending": "Logging out of account in progress"
       }
+    },
+    "Challenger": {
+      "profile": {
+        "error": "Account information authentication failed"
+      }
     }
   },
   "ToastMEssage": {

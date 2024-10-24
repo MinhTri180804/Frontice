@@ -1,3 +1,4 @@
-import { IAccountOfLoginResponse, ILoginResponse } from './login';
+import { ILoginResponse } from './login';
 import { IRefreshTokenResponse } from './refreshToken';
-export type { IAccountOfLoginResponse, ILoginResponse, IRefreshTokenResponse };
+import { IProfileResponse } from './profile';
+export type { ILoginResponse, IRefreshTokenResponse, IProfileResponse };

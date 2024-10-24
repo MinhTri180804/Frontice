@@ -1,28 +1,28 @@
 import { create } from 'zustand';
-import { IAccountOfLoginResponse } from '../types/response';
 import {
   removeAccessToken,
   removeAccount,
   removeRefreshToken,
 } from '../utils/localstorage';
+import { IProfileEntity } from '../types/entity';
 
 type State = {
-  account: IAccountOfLoginResponse | null;
+  profile: IProfileEntity | null;
   isAuthentication: boolean;
 };
 
 type Actions = {
   logout: () => void;
-  login: (account: IAccountOfLoginResponse | null) => void;
+  login: (profile: IProfileEntity | null) => void;
 };
 
 export const useAuthStore = create<State & Actions>((set) => ({
-  account: null,
+  profile: null,
   isAuthentication: false,
   isLogOut: true,
-  login: (account) =>
+  login: (profile) =>
     set(() => ({
-      account: account,
+      profile: profile,
       isAuthentication: true,
     })),
   logout: () => {
@@ -31,7 +31,7 @@ export const useAuthStore = create<State & Actions>((set) => ({
     removeAccount();
     set(() => ({
       isAuthentication: false,
-      account: null,
+      profile: null,
     }));
   },
 }));

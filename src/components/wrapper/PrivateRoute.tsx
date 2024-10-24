@@ -8,8 +8,8 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-  const { isAuthentication, account } = useAuthStore();
-  if (account && isAuthentication) {
+  const { isAuthentication, profile } = useAuthStore();
+  if (profile && isAuthentication) {
     return <Navigate to={paths.home} />;
   }
 

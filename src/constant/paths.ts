@@ -39,6 +39,11 @@ const paths = {
       verify_email: '/email-verification',
       verify_forgot_password_otp: '/verify-forgot-password-otp',
       refreshToken: '/refresh-token',
+      profile: '',
+    },
+    CHALLENGER: {
+      root: '/challenger',
+      profile: '/profile',
     },
   },
 
@@ -49,6 +54,7 @@ const paths = {
     account: 'accountInformation',
     emailForgotPassword: 'emailForgotPassword',
     i18nLanguage: 'i18nextLng',
+    profile: 'profile',
   },
 
   LANGUAGE: {
