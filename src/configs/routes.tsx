@@ -21,8 +21,8 @@ const ProfilePage = React.lazy(() => import('../pages/Profile'));
 const SolutionDetailsPage = React.lazy(
   () => import('../pages/SolutionDetails'),
 );
-const Challeges = React.lazy(() => import('../pages/Challenges'));
-const Solutions = React.lazy(() => import('../pages/Solutions'));
+const ChallengesPage = React.lazy(() => import('../pages/Challenges'));
+const SolutionsPage = React.lazy(() => import('../pages/Solutions'));
 const StatisticPage = React.lazy(() => import('../pages/Statistic'));
 const RecruiterCompanyPage = React.lazy(
   () => import('../pages/RecruiterCompany'),
@@ -42,7 +42,7 @@ const extendedRoutes: RouteObject[] = [
     element: <ProfilePage />,
   },
   {
-    path: paths.settingsProfilePage,
+    path: paths.setting,
     element: <SettingsProfilePage />,
   },
   {
@@ -51,11 +51,11 @@ const extendedRoutes: RouteObject[] = [
   },
   {
     path: paths.challenges,
-    element: <Challeges />,
+    element: <ChallengesPage />,
   },
   {
     path: paths.solutions,
-    element: <Solutions />,
+    element: <SolutionsPage />,
   },
   {
     path: paths.statistic,

@@ -6,8 +6,6 @@ export interface ILoginResponse extends IBaseJWTToken {
 }
 
 export interface IAccountOfLoginResponse extends IBaseTimestamp {
-  id: string;
-  isDeleted: number;
   email: string;
   role: string;
   status: number;
@@ -17,12 +15,4 @@ export interface IAccountOfLoginResponse extends IBaseTimestamp {
   firstName: string;
   lastName: string;
   isAuthenticated: number;
-  enabled: boolean;
-  accountNonExpired: boolean;
-  credentialsNonExpired: boolean;
-  accountNonLocked: boolean;
-  username: string;
-  authorities: {
-    authority: string;
-  }[];
 }

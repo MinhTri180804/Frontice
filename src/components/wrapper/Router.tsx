@@ -1,16 +1,14 @@
 import React from 'react';
 import {
   BrowserRouter,
-  useRoutes,
-  RouteObject,
   Navigate,
-  useLocation,
+  RouteObject,
+  useRoutes,
 } from 'react-router-dom';
-import { LoadingPage } from '../../pages';
 import routes from '../../configs/routes';
-import { AppLayout } from '../layout/app';
 import { paths } from '../../constant';
-import { useEffect } from 'react';
+import { LoadingPage } from '../../pages';
+import { AppLayout } from '../layout/app';
 
 export interface RouterProps {
   defaultRoute: string;
@@ -18,16 +16,16 @@ export interface RouterProps {
 
 export function Routes(props: RouterProps) {
   const { defaultRoute } = props;
-  const location = useLocation();
+  // const location = useLocation();
 
   // Check for stored path in localStorage
-  const storedPath = localStorage.getItem('path');
-  const redirectPath = storedPath ? storedPath : defaultRoute;
+  // const storedPath = localStorage.getItem('path');
+  const redirectPath = paths.home;
 
-  useEffect(() => {
-    // Save current path to localStorage whenever it changes
-    localStorage.setItem('path', location.pathname);
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   // Save current path to localStorage whenever it changes
+  //   localStorage.setItem('path', location.pathname);
+  // }, [location.pathname]);
 
   const defaultRouteObject: RouteObject = {
     index: true,

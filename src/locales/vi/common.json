@@ -36,6 +36,11 @@
         "error": "Đổi mới mật khẩu thất bại",
         "success": "Đổi mới mật khẩu thành công",
         "pending": "Đang thực hiện thay đổi mật khẩu"
+      },
+      "Logout": {
+        "Success": "Đăng xuất tài khoản thành công",
+        "Error": "Đăng xuất tài khoản thất bại",
+        "Pending": "Đang thực hiện đăng xuất tài khoản"
       }
     }
   },
@@ -123,5 +128,8 @@
   },
   "ChangeLanguage": {
     "success": "Chuyển ngôn ngữ {{language}} thành công"
-  }
+  },
+  "Setting": "Cài đặt",
+  "Profile": "Trang cá nhân",
+  "Logout": "Đăng xuất"
 }

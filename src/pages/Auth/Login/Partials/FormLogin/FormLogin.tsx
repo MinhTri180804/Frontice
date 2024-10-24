@@ -17,6 +17,7 @@ import {
 } from '../../../../../utils/localstorage';
 import useFormLogin from './formLogin.hook';
 import './formLogin.scss';
+import { useAuthStore } from '../../../../../store/authStore';
 
 const DEFAULT_PAGE_LOGIN_SUCCESS = paths.home;
 
@@ -27,6 +28,8 @@ const FormLogin: FC = () => {
     register,
     formState: { errors },
   } = useForm<ILoginRequest>();
+
+  const { login } = useAuthStore();
   const { aboutOfEmail, aboutOfPassword } = useFormLogin();
   const { i18n, t } = useTranslation();
   const i18Language = i18n.language as IOptionLanguage;
@@ -44,6 +47,8 @@ const FormLogin: FC = () => {
           saveAccessToken(accessToken);
           saveRefreshToken(refreshToken);
           saveAccount(account);
+          login(account);
+
           navigate(DEFAULT_PAGE_LOGIN_SUCCESS);
 
           const MESSAGE_SUCCESS = `${t('ToastMessage.Auth.Login.success')}`;

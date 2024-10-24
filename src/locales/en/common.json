@@ -44,6 +44,11 @@
         "success": "Log in successfully",
         "error": "Login failed",
         "pending": "Login in progress"
+      },
+      "Logout": {
+        "Success": "Successfully logged out of account",
+        "Error": "Logout of account failed",
+        "Pending": "Logging out of account in progress"
       }
     }
   },
@@ -111,5 +116,8 @@
   },
   "ChangeLanguage": {
     "success": "Changed language {{language}} successfully"
-  }
+  },
+  "Setting": "Setting",
+  "Profile": "Personal page",
+  "Logout": "Sign out"
 }

@@ -7,6 +7,7 @@ import { OptionSelect } from '../../common';
 import { IOptionSelectItem } from '../../../types/entity/components';
 import { useTranslation } from 'react-i18next';
 import { IOptionLanguage } from '../../../types/entity';
+import { PrivateRoute } from '../../wrapper';
 
 const AuthLayout: FC = () => {
   const { i18n } = useTranslation();
@@ -50,7 +51,9 @@ const AuthLayout: FC = () => {
         </div>
         <div className="auth__form-section">
           <AuthForm>
-            <Outlet />
+            <PrivateRoute>
+              <Outlet />
+            </PrivateRoute>
           </AuthForm>
         </div>
       </div>
