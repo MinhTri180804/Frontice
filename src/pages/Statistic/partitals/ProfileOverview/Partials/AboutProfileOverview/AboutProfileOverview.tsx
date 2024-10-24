@@ -4,7 +4,7 @@ import { FC, HTMLProps } from 'react';
 
 interface IAboutProfileOverviewProps extends HTMLProps<HTMLDivElement> {
   title: string;
-  value: string;
+  value: string | number;
 }
 
 const AboutProfileOverview: FC<IAboutProfileOverviewProps> = ({

@@ -13,15 +13,17 @@
   border-radius: 4px;
   background: $BG-white;
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12);
+  visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
   transition:
     opacity $shadow_transition_time_duration ease,
-    transform $shadow_transition_time_duration ease;
-
+    transform $shadow_transition_time_duration ease,
+    visibility 0.3s ease;
   &.open {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
   }
 
   .dropdown-item {
