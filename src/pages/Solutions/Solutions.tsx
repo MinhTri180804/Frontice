@@ -5,6 +5,9 @@ import './Solution.scss';
 import image from '../../asset/images/solution.png';
 import userAvatar from '../../asset/images/avatar.png';
 import React, { useEffect, useState } from 'react';
+import Pagination from '../../components/common/Paginations';
+import getChallengeService from '../../services/challengeApi';
+import { useQuery } from '@tanstack/react-query';
 interface DataItemSolution {
   time: string;
   name: string;
@@ -12,23 +15,23 @@ interface DataItemSolution {
   id: string;
 }
 const Solutions: React.FC = () => {
+  const LIMIT = 10; // Số lượng bài đăng hiển thị trên một trang
   const [dataSolution, setDataSolution] = useState<DataItemSolution[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/data.json'); //duong dan file data.json
-        const result = await response.json();
-        setDataSolution(result);
-      } catch (error) {
-        console.error('Error', error);
-      } finally {
-        // Sau khi tải xong thì tắt trạng thái loading
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const handleChangePage: (currentPage: number) => void = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ['item'],
+    queryFn: () => getChallengeService(currentPage, LIMIT),
+  });
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
+  console.log('data', data.result); //tra ve data cua tung challenges
   return (
     <>
       <div className="container-solution-list-page">
@@ -95,6 +98,11 @@ const Solutions: React.FC = () => {
             ))}
           </div>
         </div>
+        <Pagination
+          totalPages={res}
+          currentPage={currentPage}
+          onPageChange={handleChangePage}
+        />
       </div>
     </>
   );

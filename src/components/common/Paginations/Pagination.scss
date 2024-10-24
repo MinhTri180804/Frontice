@@ -1,0 +1,37 @@
+@use '../../../styles/scss/utils/variables/colors' as *;
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &__item {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+
+    &.active {
+      background-color: $saturatedSky-main;
+      color: $white;
+    }
+
+    &.disabled {
+      background-color: #e5e5e5;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(.disabled, .active) {
+      color: $saturatedSky-main;
+      border: 1px solid $saturatedSky-main;
+    }
+  }
+}
