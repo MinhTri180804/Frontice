@@ -48,7 +48,7 @@ const Solutions: React.FC = () => {
         </div>
         <div className="solution-list">
           <div className="cols">
-            {dataSolution.map((solutionItem) => (
+            {data.result.map((solutionItem) => (
               <Solution
                 key={solutionItem.id}
                 image={image} // Hình ảnh mặc định
