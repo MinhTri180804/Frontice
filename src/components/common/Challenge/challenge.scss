@@ -45,7 +45,10 @@
       & > .heading-name {
         @include typography_BVNPro-desktop-h5();
         color: $satinDeepBlack-main;
-
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         &::first-letter {
           text-transform: uppercase;
         }

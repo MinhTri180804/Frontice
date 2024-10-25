@@ -1,7 +1,37 @@
+import { useState } from 'react';
 import { Button, Challenge } from '../../components/common';
 import './Challenges.scss';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import getChallengeService from '../../services/challengeApi';
+import { useQuery } from '@tanstack/react-query';
+import { IDataChallengeResponse } from '../../types/response/listChallenge';
+import Pagination from '../../components/common/Paginations';
 const Challenges: React.FC = () => {
+  const LIMIT = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handleChangePage: (currentPage: number) => void = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
+  const {
+    isPending,
+    data: responseChallenges,
+    isError,
+  } = useQuery({
+    queryKey: ['students', currentPage],
+    queryFn: async () => {
+      const response = await getChallengeService(currentPage, LIMIT);
+      const responseData = response.data.data;
+      return responseData;
+    },
+  });
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
+  console.log('response data: ', responseChallenges);
   return (
     <>
       <div className="container-challenges-page">
@@ -17,24 +47,16 @@ const Challenges: React.FC = () => {
           />
         </div>
         <div className="challenges-list">
-          {Array.from({ length: 10 }).map(() => (
-            <Challenge
-              name="Frontend Quiz app"
-              bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
-              description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"
-              level="Diamond"
-              difficulty="High"
-              technicalList={['html', 'css', 'javascript']}
-              score={120}
-              tags={[
-                {
-                  value: 'premium',
-                },
-                { value: 'new' },
-              ]}
-            />
-          ))}
+          {responseChallenges.result &&
+            responseChallenges.result.map((challenge, index) => (
+              <Challenge key={index} challengeData={challenge} />
+            ))}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={responseChallenges.meta.totalPages}
+          onPageChange={handleChangePage}
+        />
       </div>
     </>
   );

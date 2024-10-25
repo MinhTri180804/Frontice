@@ -1,25 +1,31 @@
-import { IBaseResponse } from '../base';
-
 // Interface for Category
-interface ICategory {
+export interface ICategory {
   id: string;
   title: string;
 }
 
 // Interface for ChallengePoint
-interface IChallengePoint {
+export interface IChallengePoint {
   level: string;
   difficulty: string;
   point: string;
 }
-
+export interface IPreviews {
+  id: string;
+  url: string;
+  label: string;
+}
+export interface ITechnical {
+  id: string;
+  title: string;
+}
 // Interface for DataChallengeResponse
-interface IDataChallengeResponse {
+export interface IDataChallengeResponse {
   id: string;
   title: string;
   category: ICategory;
-  technicals: string[];
-  previews: string[];
+  technicals: ITechnical[];
+  previews: IPreviews[];
   challengePoint: IChallengePoint;
   openDate: string;
   closeDate: string;
@@ -34,14 +40,14 @@ interface IDataChallengeResponse {
   createAt: number;
   updateAt: number | null;
 }
-interface IMeta {
+export interface IMeta {
   pageNo: number;
   pageSize: number;
   totalElements: number;
   totalPages: number;
 }
 
-export interface IlistChallengeResponse
-  extends IBaseResponse<IDataChallengeResponse> {
+export interface IlistChallengeResponse {
+  result: IDataChallengeResponse[];
   meta: IMeta;
 }
