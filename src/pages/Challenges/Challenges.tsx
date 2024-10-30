@@ -6,7 +6,9 @@ import getChallengeService from '../../services/challengeApi';
 import { useQuery } from '@tanstack/react-query';
 import { IDataChallengeResponse } from '../../types/response/listChallenge';
 import Pagination from '../../components/common/Paginations';
+import { useTranslation } from 'react-i18next';
 const Challenges: React.FC = () => {
+  const { t } = useTranslation();
   const LIMIT = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const handleChangePage: (currentPage: number) => void = (currentPage) => {
@@ -17,7 +19,7 @@ const Challenges: React.FC = () => {
     data: responseChallenges,
     isError,
   } = useQuery({
-    queryKey: ['students', currentPage],
+    queryKey: ['challenge', currentPage],
     queryFn: async () => {
       const response = await getChallengeService(currentPage, LIMIT);
       const responseData = response.data.data;
@@ -36,7 +38,7 @@ const Challenges: React.FC = () => {
     <>
       <div className="container-challenges-page">
         <div className="header">
-          <div className="title">Challenges List</div>
+          <div className="title">{t('Challenges List')}</div>
           <Button
             style={{ width: 'fit-content' }}
             label="Filter"

@@ -6,51 +6,54 @@ import {
   ChallengeDetailsInformation,
   ChallengeDetailsSolution,
 } from './Partials';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import getChallengeDetailService from '../../services/challengeDetailApi';
+import { useTranslation } from 'react-i18next';
 
 const ChallengeDetailsPage: FC = () => {
+  const { t } = useTranslation();
   const [tabActive, setTabActive] = useState<number>(1);
+  const { id } = useParams();
+  console.log('id', id);
   const changeTabActive = (tabId: number) => {
     setTabActive(tabId);
   };
+  const {
+    isPending,
+    data: responseChallengeDetails,
+    isError,
+  } = useQuery({
+    queryKey: ['challengeDetails', id],
+    queryFn: async () => {
+      const response = await getChallengeDetailService(id ?? '');
+      const responseData = response.data.data;
+      return responseData;
+    },
+  });
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
+  console.log('first 28: ', responseChallengeDetails);
   return (
     <div className="challenge__details-page">
-      <div className="title">Challenge details</div>
+      <div className="title">{t('Challenge details')}</div>
       <div className="content">
         <ChallengeOverview
-          name="Mortgage repayment calculator"
-          description="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
-          score={125}
-          peopleParticipated={12}
+          name={responseChallengeDetails.title}
+          description={responseChallengeDetails.description}
+          score={responseChallengeDetails.challengePoint.points}
+          peopleParticipated="123"
           peopleSubmit={22}
-          technicalList={['html', 'scss', 'javascript']}
-          level="Diamond"
-          difficulty="High"
-          optionsImagePreview={[
-            {
-              id: '1',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg',
-              label: 'desktop design',
-            },
-            {
-              id: '2',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/vfzss4cvrzrhmmu0odek.jpg',
-              label: 'question design',
-            },
-            {
-              id: '3',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/r2vq1awkyyg2o9dj0gpm.jpg',
-              label: 'tablet design',
-            },
-            {
-              id: '4',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/dlnm123cefx8pilktakc.jpg',
-              label: 'mobile design',
-            },
-          ]}
+          technicalList={responseChallengeDetails?.technicals?.map(
+            (tech) => tech.title,
+          )}
+          level={responseChallengeDetails?.challengePoint?.level}
+          difficulty={responseChallengeDetails.challengePoint.difficulty}
+          optionsImagePreview={responseChallengeDetails.previews}
         />
 
         <section className="tab__content-wrapper">
@@ -59,25 +62,29 @@ const ChallengeDetailsPage: FC = () => {
               onClick={() => changeTabActive(1)}
               className={`item ${tabActive === 1 && 'active'} `}
             >
-              Information
+              {t('Information')}
             </li>
             <li
               onClick={() => changeTabActive(2)}
               className={`item ${tabActive === 2 && 'active'} `}
             >
-              Download assets
+              {t('Download assets')}
             </li>
             <li
               onClick={() => changeTabActive(3)}
               className={`item ${tabActive === 3 && 'active'} `}
             >
-              Solution
+              {t('Solution')}
             </li>
           </ul>
 
           <div className="content__of-tab">
             {tabActive === 1 && <ChallengeDetailsInformation />}
-            {tabActive === 2 && <ChallengeDetailsDownload />}
+            {tabActive === 2 && (
+              <ChallengeDetailsDownload
+                resource={responseChallengeDetails.resource}
+              />
+            )}
             {tabActive === 3 && <ChallengeDetailsSolution />}
           </div>
         </section>

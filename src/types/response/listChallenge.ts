@@ -8,7 +8,7 @@ export interface ICategory {
 export interface IChallengePoint {
   level: string;
   difficulty: string;
-  point: string;
+  points: string;
 }
 export interface IPreviews {
   id: string;

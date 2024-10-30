@@ -15,23 +15,23 @@ interface DataItemSolution {
   id: string;
 }
 const Solutions: React.FC = () => {
-  const LIMIT = 10; // Số lượng bài đăng hiển thị trên một trang
-  const [dataSolution, setDataSolution] = useState<DataItemSolution[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const handleChangePage: (currentPage: number) => void = (currentPage) => {
-    setCurrentPage(currentPage);
-  };
-  const { isLoading, isError, data } = useQuery({
-    queryKey: ['item'],
-    queryFn: () => getChallengeService(currentPage, LIMIT),
-  });
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error fetching data</div>;
-  }
-  console.log('data', data.result); //tra ve data cua tung challenges
+  // const LIMIT = 10; // Số lượng bài đăng hiển thị trên một trang
+  // const [dataSolution, setDataSolution] = useState<DataItemSolution[]>([]);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const handleChangePage: (currentPage: number) => void = (currentPage) => {
+  //   setCurrentPage(currentPage);
+  // };
+  // const { isLoading, isError, data } = useQuery({
+  //   queryKey: ['item'],
+  //   queryFn: () => getChallengeService(currentPage, LIMIT),
+  // });
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // if (isError) {
+  //   return <div>Error fetching data</div>;
+  // }
+  // console.log('data', data.result); //tra ve data cua tung challenges
   return (
     <>
       <div className="container-solution-list-page">

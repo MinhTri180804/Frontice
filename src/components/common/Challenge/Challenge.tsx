@@ -1,7 +1,7 @@
 import './challenge.scss';
-import { FC, lazy } from 'react';
+import { FC } from 'react';
 import Button from '../Button';
-import TagChallenge from '../TagChallenge';
+// import TagChallenge from '../TagChallenge';
 import ChallengeTechnical from '../ChallengeTechnical';
 import ChallengeLevelDifficulty from '../ChallengeLevelDifficulty';
 import { useNavigate } from 'react-router-dom';
@@ -15,20 +15,15 @@ interface IChallengeProps {
 const Challenge: FC<IChallengeProps> = ({ challengeData }) => {
   const navigate = useNavigate();
   const handleClickViewDetails = () => {
-    navigate(paths.challengeDetails);
+    navigate(`${paths.challengeDetails}/${challengeData.id}`);
+    // navigate(paths.challengeDetails);
   };
 
   // https://drive.google.com/uc?export=view&id=1iKxEIHvVqQp3AogemONFo8Tn_fG0Ckrw
   return (
     <div className="challenge__component-container">
       <div className="banner">
-        <img
-          crossOrigin="anonymous"
-          src={
-            'https://drive.google.com/thumbnail?id=1iKxEIHvVqQp3AogemONFo8Tn_fG0Ckrw&sz=s4000'
-          }
-          alt=""
-        />
+        <img src={challengeData?.previews[0]?.url} alt="" />
         <div className="tag__challenge-list">
           {/* {tags.map((tag, index) => (
             <TagChallenge key={`${tag.value}-${index}`} type={tag.value} />
@@ -38,9 +33,9 @@ const Challenge: FC<IChallengeProps> = ({ challengeData }) => {
 
       <div className="content">
         <div className="heading">
-          <div className="heading-name">{challengeData.title}</div>
+          <div className="heading-name">{challengeData?.title}</div>
           <div className="heading-technical">
-            {challengeData.technicals.map((technical, index) => (
+            {challengeData?.technicals.map((technical, index) => (
               <ChallengeTechnical
                 technicalValue={technical.title}
                 key={`${technical}-${index}`}
@@ -51,17 +46,19 @@ const Challenge: FC<IChallengeProps> = ({ challengeData }) => {
 
         <div className="overview">
           <div className="score">
-            <span className="value">{challengeData.challengePoint.point}</span>
+            <span className="value">
+              {challengeData?.challengePoint?.points}
+            </span>
             <span className="label">Score</span>
           </div>
           <ChallengeLevelDifficulty
-            level={challengeData.challengePoint.level}
-            difficulty={challengeData.challengePoint.difficulty}
+            level={challengeData?.challengePoint?.level}
+            difficulty={challengeData?.challengePoint.difficulty}
           />
         </div>
 
         <div className="description">
-          <span>{challengeData.description}</span>
+          <span>{challengeData?.description}</span>
         </div>
       </div>
 
