@@ -2,7 +2,12 @@ import './BannerWithInfo.scss';
 import Banner from '../../../../asset/images/banner.png';
 import Avatar from '../../../../asset/images/avatar.png';
 import { Button } from '../../../../components/common';
-import { PlusIcon, EnvelopeIcon, LinkIcon } from '@heroicons/react/24/outline';
+import {
+  PlusIcon,
+  EnvelopeIcon,
+  LinkIcon,
+  Cog6ToothIcon,
+} from '@heroicons/react/24/outline';
 
 const BannerWithInfo: React.FC = () => {
   return (
@@ -31,10 +36,10 @@ const BannerWithInfo: React.FC = () => {
               />
               <Button
                 styleType="primary"
-                label="Follow"
+                label="Settings"
                 iconPosition="right"
                 buttonSize="small"
-                Icon={() => <PlusIcon />}
+                Icon={() => <Cog6ToothIcon />}
               />
             </div>
           </div>

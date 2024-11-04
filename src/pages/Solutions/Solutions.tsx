@@ -85,7 +85,7 @@ const Solutions: React.FC = () => {
             ))}
           </div>
           <div className="cols">
-            {dataSolution.map((solutionItem) => (
+            {/* {dataSolution.map((solutionItem) => (
               <Solution
                 key={solutionItem.id}
                 image={image} // Hình ảnh mặc định
@@ -95,14 +95,14 @@ const Solutions: React.FC = () => {
                 userAvatar={userAvatar}
                 isShowDesc
               />
-            ))}
+            ))} */}
           </div>
         </div>
-        <Pagination
-          totalPages={res}
+        {/* <Pagination
+          
           currentPage={currentPage}
           onPageChange={handleChangePage}
-        />
+        /> */}
       </div>
     </>
   );
