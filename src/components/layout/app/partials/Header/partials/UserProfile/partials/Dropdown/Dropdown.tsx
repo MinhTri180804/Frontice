@@ -32,6 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({ isOpen }) => {
           logout();
           navigate(`${paths.auth}/${paths.login}`);
           const MESSAGE_SUCCESS = t('ToastMessage.Auth.Logout.Success');
+          console.log(response);
           if (language === 'en') {
             return response.data.messageEng || MESSAGE_SUCCESS;
           }
