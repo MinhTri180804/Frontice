@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { ChallengeSkeleton } from '../../components/skeleton';
 const Challenges: React.FC = () => {
   const { t } = useTranslation();
-  const LIMIT = 10;
+  const LIMIT = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const handleChangePage: (currentPage: number) => void = (currentPage) => {
     setCurrentPage(currentPage);

@@ -20,26 +20,22 @@ const SubmitSolutionPage: FC = () => {
           optionsImagePreview={[
             {
               id: '1',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg',
+              url: 'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg',
               label: 'desktop design',
             },
             {
               id: '2',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/vfzss4cvrzrhmmu0odek.jpg',
+              url: 'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/vfzss4cvrzrhmmu0odek.jpg',
               label: 'question design',
             },
             {
               id: '3',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/r2vq1awkyyg2o9dj0gpm.jpg',
+              url: 'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/r2vq1awkyyg2o9dj0gpm.jpg',
               label: 'tablet design',
             },
             {
               id: '4',
-              imageUrl:
-                'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/dlnm123cefx8pilktakc.jpg',
+              url: 'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/dlnm123cefx8pilktakc.jpg',
               label: 'mobile design',
             },
           ]}

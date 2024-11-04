@@ -6,9 +6,11 @@
   border: 1px solid $saturatedSky-main;
   @include flex-row(4px, center, center);
   @include typography_BVNPro-desktop-body-3();
+  width: fit-content;
   overflow: hidden;
   & > .difficulty,
   & > .level {
+    width: fit-content;
     padding: 4px 8px;
   }
   & > .difficulty {

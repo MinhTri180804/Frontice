@@ -1,37 +1,9 @@
+import { PlusIcon } from '@heroicons/react/24/outline';
+import React from 'react';
 import { Button } from '../../components/common';
 import Solution from '../../components/common/Solution';
-import { PlusIcon } from '@heroicons/react/24/outline';
 import './Solution.scss';
-import image from '../../asset/images/solution.png';
-import userAvatar from '../../asset/images/avatar.png';
-import React, { useEffect, useState } from 'react';
-import Pagination from '../../components/common/Paginations';
-import getChallengeService from '../../services/challengeApi';
-import { useQuery } from '@tanstack/react-query';
-interface DataItemSolution {
-  time: string;
-  name: string;
-  tech: string[];
-  id: string;
-}
 const Solutions: React.FC = () => {
-  const LIMIT = 10; // Số lượng bài đăng hiển thị trên một trang
-  const [dataSolution, setDataSolution] = useState<DataItemSolution[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const handleChangePage: (currentPage: number) => void = (currentPage) => {
-    setCurrentPage(currentPage);
-  };
-  const { isLoading, isError, data } = useQuery({
-    queryKey: ['item'],
-    queryFn: () => getChallengeService(currentPage, LIMIT),
-  });
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error fetching data</div>;
-  }
-  // console.log('data', data.result); //tra ve data cua tung challenges
   return (
     <>
       <div className="container-solution-list-page">
@@ -48,54 +20,60 @@ const Solutions: React.FC = () => {
         </div>
         <div className="solution-list">
           <div className="cols">
-            {dataSolution.map((solutionItem) => (
+            {Array.from({ length: 6 }).map((_, index) => (
               <Solution
-                key={solutionItem.id}
-                image={image} // Hình ảnh mặc định
-                name={solutionItem.name}
-                time={solutionItem.time}
-                tech={solutionItem.tech}
-                userAvatar={userAvatar}
-              />
-            ))}
-          </div>
-          <div className="cols">
-            {dataSolution.map((solutionItem) => (
-              <Solution
-                key={solutionItem.id}
-                image={image} // Hình ảnh mặc định
-                name={solutionItem.name}
-                time={solutionItem.time}
-                tech={solutionItem.tech}
-                userAvatar={userAvatar}
-                isShowDesc={true}
-              />
-            ))}
-          </div>
-          <div className="cols">
-            {dataSolution.map((solutionItem) => (
-              <Solution
-                key={solutionItem.id}
-                image={image} // Hình ảnh mặc định
-                name={solutionItem.name}
-                time={solutionItem.time}
-                tech={solutionItem.tech}
-                userAvatar={userAvatar}
-              />
-            ))}
-          </div>
-          <div className="cols">
-            {/* {dataSolution.map((solutionItem) => (
-              <Solution
-                key={solutionItem.id}
-                image={image} // Hình ảnh mặc định
-                name={solutionItem.name}
-                time={solutionItem.time}
-                tech={solutionItem.tech}
-                userAvatar={userAvatar}
+                key={`${index}`}
+                titleSolution="Mortgage repayment calculator"
+                descriptionSolution="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
+                image="https://www.frontendmentor.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdz209s6jk%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Cw_700%2FChallenges%2Fjxgbqnn2ft6dmecbsvtf.jpg&w=3840&q=75"
+                tech={['Html', 'Css', 'Javascript']}
+                name="Mortgage repayment calculator"
+                time="Submitted 23 minutes ago"
                 isShowDesc
               />
-            ))} */}
+            ))}
+          </div>
+          <div className="cols">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Solution
+                key={`${index}`}
+                titleSolution="Mortgage repayment calculator"
+                descriptionSolution="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
+                image="https://www.frontendmentor.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdz209s6jk%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Cw_700%2FChallenges%2Fjxgbqnn2ft6dmecbsvtf.jpg&w=3840&q=75"
+                tech={['Html', 'Css', 'Javascript']}
+                name="Mortgage repayment calculator"
+                time="Submitted 23 minutes ago"
+                isShowDesc
+              />
+            ))}
+          </div>
+          <div className="cols">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Solution
+                key={`${index}`}
+                titleSolution="Mortgage repayment calculator"
+                descriptionSolution="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
+                image="https://www.frontendmentor.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdz209s6jk%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Cw_700%2FChallenges%2Fjxgbqnn2ft6dmecbsvtf.jpg&w=3840&q=75"
+                tech={['Html', 'Css', 'Javascript']}
+                name="Mortgage repayment calculator"
+                time="Submitted 23 minutes ago"
+                isShowDesc
+              />
+            ))}
+          </div>
+          <div className="cols">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Solution
+                key={`${index}`}
+                titleSolution="Mortgage repayment calculator"
+                descriptionSolution="This mortgage calculator is an excellent project for practicing working with forms, client-side validation, and updating the DOM. Remember to focus on accessibility, too!"
+                image="https://www.frontendmentor.io/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdz209s6jk%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Cw_700%2FChallenges%2Fjxgbqnn2ft6dmecbsvtf.jpg&w=3840&q=75"
+                tech={['Html', 'Css', 'Javascript']}
+                name="Mortgage repayment calculator"
+                time="Submitted 23 minutes ago"
+                isShowDesc
+              />
+            ))}
           </div>
         </div>
         {/* <Pagination

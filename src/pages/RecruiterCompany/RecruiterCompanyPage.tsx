@@ -12,7 +12,7 @@ import { useState } from 'react';
 import getChallengeRecruiter from '../../services/recruiterChallengeApi';
 
 const RecruiterCompanyPage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const LIMIT = 10;
   const {
     isLoading,
@@ -22,7 +22,7 @@ const RecruiterCompanyPage: React.FC = () => {
     queryKey: ['challenge', currentPage],
     queryFn: async () => {
       const response = await getChallengeRecruiter(currentPage, LIMIT);
-      const responseData = response.data.data;
+      const responseData = response?.data?.data;
       return responseData;
     },
   });

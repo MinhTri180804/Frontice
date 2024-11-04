@@ -1,12 +1,13 @@
 import {
-  HandThumbUpIcon,
-  HandThumbDownIcon,
   ChatBubbleLeftEllipsisIcon,
+  HandThumbDownIcon,
+  HandThumbUpIcon,
 } from '@heroicons/react/24/outline';
-import './Solution.scss';
-import DescUser from './Partials/User';
-import DescSolution from './Partials/Solutions';
+import { DefaultAvatar } from '../../../assets/images';
 import SolutionLevelDifficulty from '../SolutionLevelDifficulty';
+import DescSolution from './Partials/Solutions';
+import DescUser from './Partials/User';
+import './Solution.scss';
 interface Solution {
   image: string;
   time: string;
@@ -24,7 +25,6 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
     time,
     name,
     tech,
-    userAvatar = '',
     titleSolution = 'Title of the solution',
     descriptionSolution = ' Lorem ipsum dolor sit amet consectetur adipisicing elit. In alias cum optio aspernatur! Omnis inventore ipsum impedit corporis dolorum, debitis pariatur reprehenderit, praesentium unde placeat deleniti distinctio. Obcaecati, recusandae vitae.',
     isShowDesc = false,
@@ -37,8 +37,10 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
             <img src={image} alt="" />
           </div>
           <div className="desc-solution-item">
-            <div className="time-solution">{time}</div>
-            <div className="name-solution">{name}</div>
+            <div className="time">
+              <div className="time-solution">{time}</div>
+              <div className="name-solution">{name}</div>
+            </div>
             <div className="tech-solution">
               {tech.map((item) => (
                 <span key={item}>{item}</span>
@@ -47,12 +49,12 @@ const Solution: React.FC<Solution> = ({ ...props }) => {
             <div className="point-panel">
               <div className="score-solution">123 score</div>
               <div className="rank-level">
-                <SolutionLevelDifficulty level="Diamon" difficulty="High" />
+                <SolutionLevelDifficulty level="Diamond" difficulty="High" />
               </div>
             </div>
             {isShowDesc && (
               <DescUser
-                userAvatar={userAvatar}
+                userAvatar={DefaultAvatar}
                 userId="#123"
                 userName="user name"
                 userRank="Gold"

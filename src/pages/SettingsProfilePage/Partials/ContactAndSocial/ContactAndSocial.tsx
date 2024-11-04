@@ -1,15 +1,11 @@
-import { Input } from '../../../../components/common';
-import { UseFormRegister, FieldErrors } from 'react-hook-form';
-import './ContactAndSocial.scss';
 import { useTranslation } from 'react-i18next';
-interface ContactAndSocialProps {
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
-}
-const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
-  register,
-  errors,
-}) => {
+import { Input } from '../../../../components/common';
+import './ContactAndSocial.scss';
+// interface ContactAndSocialProps {
+//   register: UseFormRegister;
+//   errors: FieldErrors<any>;
+// }
+const ContactAndSocial: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div className="container-contact-social">
@@ -22,33 +18,33 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             label="Codepen"
             type="text"
             placeholder={`${t('Enter your link Codepen')}...`}
-            {...register('codepen', { required: 'Codepen name is required' })}
+            // {...register('codepen', { required: 'Codepen name is required' })}
           />
-          {errors.gitlab && (
-            <span className="error">{errors.codepen?.message}</span>
-          )}
+          {/* {errors.gitlab && (
+            <span className="error">{errors?.codepen?.message}</span>
+          )} */}
         </div>
         <div className="gitlab" id="gitlab">
           <Input
             label="Gitlab"
             type="text"
             placeholder={`${t('Enter your link Gitlab account')}...`}
-            {...register('gitlab', { required: 'Gitlab is required' })}
+            // {...register('gitlab', { required: 'Gitlab is required' })}
           />
-          {errors.gitlab && (
+          {/* {errors.gitlab && (
             <span className="error">{errors.gitlab.message}</span>
-          )}
+          )} */}
         </div>
         <div className="linkedin" id="linkedin">
           <Input
             label="Linkedin"
             type="text"
             placeholder="Enter your link Linkedin..."
-            {...register('linkedin', { required: 'Linkedin is required' })}
+            // {...register('linkedin', { required: 'Linkedin is required' })}
           />
-          {errors.linkedin && (
+          {/* {errors.linkedin && (
             <span className="error">{errors.linkedin.message}</span>
-          )}
+          )} */}
         </div>
         <div className="stack-overflow" id="stackoverflow">
           <Input
@@ -56,13 +52,13 @@ const ContactAndSocial: React.FC<ContactAndSocialProps> = ({
             type="text"
             id="stackoverflow"
             placeholder={`${t('Enter your link Stack Overflow account')}...`}
-            {...register('stackOverflow', {
-              required: 'Stack Overflow name is required',
-            })}
+            // {...register('stackOverflow', {
+            //   required: 'Stack Overflow name is required',
+            // })}
           />
-          {errors.stackOverflow && (
+          {/* {errors.stackOverflow && (
             <span className="error">{errors.stackOverflow.message}</span>
-          )}
+          )} */}
         </div>
       </div>
     </div>

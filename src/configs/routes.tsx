@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, RouteObject } from 'react-router-dom';
 import { AppLayout } from '../components/layout/app';
 import { AuthLayout } from '../components/layout/auth';
+import GuestOnlyRoute from '../components/wrapper/GuestOnlyRoute';
 import { paths } from '../constant';
 import {
   ChallengeDetailsPage,
@@ -16,6 +17,9 @@ import {
   ResetPasswordPage,
 } from '../pages/Auth';
 import OtpPage from '../pages/Auth/OTP/OtpPage';
+import PrivateRoute from '../components/wrapper/PrivateRoute';
+import MySolutionPage from '../pages/MySolution/MySolution';
+import ChallengesRecruiter from '../pages/ChallengesRecruiter';
 
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
 const SolutionDetailsPage = React.lazy(
@@ -31,44 +35,93 @@ const SettingsProfilePage = React.lazy(
   () => import('../pages/SettingsProfilePage'),
 );
 
-const extendedRoutes: RouteObject[] = [
+const extendedPrivateRoutes: RouteObject[] = [
+  {
+    path: paths.profile,
+    element: (
+      <PrivateRoute>
+        <ProfilePage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: paths.setting,
+    element: (
+      <PrivateRoute>
+        <SettingsProfilePage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: paths.solutions,
+    element: (
+      <PrivateRoute>
+        <SolutionsPage />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: paths.statistic,
+    element: (
+      <PrivateRoute>
+        <StatisticPage />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: paths.solutionDetails,
+    element: (
+      <PrivateRoute>
+        <SolutionDetailsPage />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: paths.submitSolution,
+    element: (
+      <PrivateRoute>
+        <SubmitSolutionPage />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: paths.challengesRecruiter,
+    element: (
+      <PrivateRoute>
+        <ChallengesRecruiter />
+      </PrivateRoute>
+    ),
+  },
+
+  {
+    path: paths.mySolutions,
+    element: (
+      <PrivateRoute>
+        <MySolutionPage />
+      </PrivateRoute>
+    ),
+  },
+];
+
+const extendedPublicRoutes: RouteObject[] = [
   {
     index: true,
     path: paths.home,
     element: <HomePage />,
   },
-  {
-    path: paths.profile,
-    element: <ProfilePage />,
-  },
-  {
-    path: paths.setting,
-    element: <SettingsProfilePage />,
-  },
-  {
-    path: paths.solutionDetails,
-    element: <SolutionDetailsPage />,
-  },
+
   {
     path: paths.challenges,
     element: <ChallengesPage />,
   },
-  {
-    path: paths.solutions,
-    element: <SolutionsPage />,
-  },
-  {
-    path: paths.statistic,
-    element: <StatisticPage />,
-  },
+
   {
     path: paths.recruiterCompany,
     element: <RecruiterCompanyPage />,
-  },
-
-  {
-    path: paths.submitSolution,
-    element: <SubmitSolutionPage />,
   },
 
   {
@@ -110,7 +163,8 @@ const routes: RouteObject[] = [
       </AppLayout>
     ),
     children: [
-      ...extendedRoutes,
+      ...extendedPublicRoutes,
+      ...extendedPrivateRoutes,
       {
         path: '*',
         element: <NotFoundPage />,
@@ -119,7 +173,11 @@ const routes: RouteObject[] = [
   },
   {
     path: paths.auth,
-    element: <AuthLayout />,
+    element: (
+      <GuestOnlyRoute>
+        <AuthLayout />
+      </GuestOnlyRoute>
+    ),
     children: [
       ...extendedRoutesAuth,
       {

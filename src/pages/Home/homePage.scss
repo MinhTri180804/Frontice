@@ -31,14 +31,17 @@
     & > section.challenge__system {
       margin: 64px 0px;
       & > .content {
-        @include grid(12, none, 24px, start, start);
+        @include flex-column(24px, flex-start, stretch);
+        & > .list__challenges {
+          @include grid(12, none, 24px, start, start);
 
-        & > div {
-          grid-column: span 3;
+          & > div {
+            grid-column: span 3;
+          }
         }
 
         & > .button__view-more {
-          grid-column: span 3;
+          width: 100%;
           height: 100%;
         }
       }

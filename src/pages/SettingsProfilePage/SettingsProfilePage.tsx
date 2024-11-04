@@ -1,3 +1,4 @@
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../components/common';
 import TableContents from '../../components/common/TableContents';
@@ -5,7 +6,6 @@ import BannerAndAvatar from './Partials/BannerAndAvatar';
 import ContactAndSocial from './Partials/ContactAndSocial/ContactAndSocial';
 import PersonalInformation from './Partials/PersonalInformation';
 import './SettingsProfilePage.scss';
-import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface FormData {
   avatar: string;
@@ -49,11 +49,7 @@ const sectionsData = [
 
 const SettingsProfilePage: React.FC = () => {
   const { t } = useTranslation();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+  const { handleSubmit } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
   };
@@ -65,8 +61,12 @@ const SettingsProfilePage: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="main-settings-profile-page">
             <BannerAndAvatar />
-            <PersonalInformation register={register} errors={errors} />
-            <ContactAndSocial register={register} errors={errors} />
+            <PersonalInformation
+            // register={register} errors={errors}
+            />
+            <ContactAndSocial
+            // register={register} errors={errors}
+            />
           </div>
           <div className="action-submit-preview">
             <div className="submit">

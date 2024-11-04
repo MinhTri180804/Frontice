@@ -11,6 +11,7 @@
   & > .difficulty,
   & > .level {
     padding: 4px 8px;
+    text-transform: capitalize;
   }
   & > .difficulty {
     background-color: $saturatedSky-main;

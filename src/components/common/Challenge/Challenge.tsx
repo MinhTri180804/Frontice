@@ -7,6 +7,8 @@ import ChallengeLevelDifficulty from '../ChallengeLevelDifficulty';
 import { useNavigate } from 'react-router-dom';
 import { paths } from '../../../constant';
 import { IDataChallengeResponse } from '../../../types/response/listChallenge';
+import TagChallenge from '../TagChallenge';
+import ConditionWrapper from '../../wrapper/ConditionWrapper';
 
 interface IChallengeProps {
   challengeData: IDataChallengeResponse;
@@ -25,9 +27,20 @@ const Challenge: FC<IChallengeProps> = ({ challengeData }) => {
       <div className="banner">
         <img src={challengeData?.previews[0]?.url} alt="" />
         <div className="tag__challenge-list">
-          {/* {tags.map((tag, index) => (
-            <TagChallenge key={`${tag.value}-${index}`} type={tag.value} />
-          ))} */}
+          <ConditionWrapper condition={challengeData?.typeChallenge === 'free'}>
+            <TagChallenge key={'1-free'} type={'free'} />
+          </ConditionWrapper>
+          <ConditionWrapper
+            condition={challengeData?.typeChallenge === 'free++'}
+          >
+            <TagChallenge key={'1-free++'} type={'free++'} />
+          </ConditionWrapper>
+          <ConditionWrapper
+            condition={challengeData?.typeChallenge === 'premium'}
+          >
+            <TagChallenge key={'1-premium'} type={'premium'} />
+          </ConditionWrapper>
+          <TagChallenge key={'1-new'} type={'new'} />
         </div>
       </div>
 
@@ -37,7 +50,7 @@ const Challenge: FC<IChallengeProps> = ({ challengeData }) => {
           <div className="heading-technical">
             {challengeData?.technicals.map((technical, index) => (
               <ChallengeTechnical
-                technicalValue={technical.title}
+                technicalValue={technical}
                 key={`${technical}-${index}`}
               />
             ))}

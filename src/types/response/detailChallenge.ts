@@ -12,7 +12,7 @@ export interface IChallengeDetailResponse {
   assets: string;
   isHidden: boolean | null;
   category: ICategory;
-  technicals: ITechnical[];
+  technicals: string[];
   challengePoint: IChallengePoint;
   previews: IPreview[];
   resource: IResource;

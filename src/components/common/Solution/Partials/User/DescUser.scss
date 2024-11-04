@@ -1,4 +1,6 @@
-@use '../../../../../styles/scss/utils/variables/colors' as *;
+@use '../../../../../styles/scss/utils' as *;
+@use '../../../../../styles/scss/flex-grid' as *;
+
 .desc-user {
   display: flex;
   border-top: 1px solid $FIELD-stroke;
@@ -20,12 +22,18 @@
   }
 
   & > .name-rank-id {
+    @include flex-column(6px, flex-start, stretch);
     & > .name-rank {
       display: flex;
       gap: 12px;
       & > .rank-user {
         color: $sunsetGlow-main;
       }
+    }
+
+    & > .id-user {
+      @include typography_BVNPro-desktop-body-4;
+      color: $benthicBlack-tints-300;
     }
   }
 }

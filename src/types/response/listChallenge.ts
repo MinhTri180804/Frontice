@@ -24,7 +24,7 @@ export interface IDataChallengeResponse {
   id: string;
   title: string;
   category: ICategory;
-  technicals: ITechnical[];
+  technicals: string[];
   previews: IPreviews[];
   challengePoint: IChallengePoint;
   openDate: string;

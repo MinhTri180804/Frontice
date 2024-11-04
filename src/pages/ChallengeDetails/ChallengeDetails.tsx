@@ -1,17 +1,16 @@
-import { ChallengeOverview, FAQ, Section } from '../../components/common';
-import './challengeDetails.scss';
+import { useQuery } from '@tanstack/react-query';
 import { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { ChallengeOverview, FAQ, Section } from '../../components/common';
+import { ChallengeSkeleton } from '../../components/skeleton';
+import getChallengeDetailService from '../../services/challengeDetailApi';
+import './challengeDetails.scss';
 import {
   ChallengeDetailsDownload,
   ChallengeDetailsInformation,
   ChallengeDetailsSolution,
 } from './Partials';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import getChallengeDetailService from '../../services/challengeDetailApi';
-import { useTranslation } from 'react-i18next';
-import { ChallengeSkeleton } from '../../components/skeleton';
-import Filter from '../../components/common/Filter';
 
 const ChallengeDetailsPage: FC = () => {
   const { t } = useTranslation();
@@ -54,9 +53,7 @@ const ChallengeDetailsPage: FC = () => {
           score={responseChallengeDetails.challengePoint.points}
           peopleParticipated="123"
           peopleSubmit={22}
-          technicalList={responseChallengeDetails?.technicals?.map(
-            (tech) => tech.title,
-          )}
+          technicalList={responseChallengeDetails?.technicals}
           level={responseChallengeDetails?.challengePoint?.level}
           difficulty={responseChallengeDetails.challengePoint.difficulty}
           optionsImagePreview={responseChallengeDetails.previews}
@@ -121,8 +118,6 @@ const ChallengeDetailsPage: FC = () => {
         </Section>
         <section className="faq__challenge"></section>
       </div>
-      //FIXME: filter lỏ
-      <Filter />
     </div>
   );
 };
