@@ -121,6 +121,7 @@ const ChallengeDetailsPage: FC = () => {
         </Section>
         <section className="faq__challenge"></section>
       </div>
+      //FIXME: filter lỏ
       <Filter />
     </div>
   );

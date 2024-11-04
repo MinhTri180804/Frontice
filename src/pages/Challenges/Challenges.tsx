@@ -4,7 +4,6 @@ import './Challenges.scss';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import getChallengeService from '../../services/challengeApi';
 import { useQuery } from '@tanstack/react-query';
-import { IDataChallengeResponse } from '../../types/response/listChallenge';
 import Pagination from '../../components/common/Paginations';
 import { useTranslation } from 'react-i18next';
 import { ChallengeSkeleton } from '../../components/skeleton';
@@ -27,7 +26,7 @@ const Challenges: React.FC = () => {
       return responseData;
     },
   });
-
+  console.log('current page: ' + currentPage);
   if (isError) {
     return <div>Error fetching data</div>;
   }
