@@ -10,7 +10,6 @@ import authService from '../../../../../services/authServices';
 import challengerService from '../../../../../services/challengerService';
 import { useAuthStore } from '../../../../../store/authStore';
 import { IBaseResponse } from '../../../../../types/base';
-import { IOptionLanguage } from '../../../../../types/entity';
 import { ILoginRequest } from '../../../../../types/request/login';
 import {
   saveAccessToken,
@@ -32,8 +31,7 @@ const FormLogin: FC = () => {
 
   const { login } = useAuthStore();
   const { aboutOfEmail, aboutOfPassword } = useFormLogin();
-  const { i18n, t } = useTranslation();
-  const i18Language = i18n.language as IOptionLanguage;
+  const { t } = useTranslation();
   const handleRememberAccount: () => void = () => {
     // TODO: Implement logic remember account
     console.log('Remember account');

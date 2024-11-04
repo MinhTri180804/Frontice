@@ -20,6 +20,7 @@ const App: React.FC = () => {
       logout();
     }
   }, []);
+
   return (
     <div className="app-container">
       <QueryProvider>

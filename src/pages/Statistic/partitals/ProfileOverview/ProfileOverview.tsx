@@ -24,7 +24,7 @@ const ProfileOverview: FC<IProfileOverviewProps> = ({ profile }) => {
       <AccountProfileOverview
         className="account__profile-overview"
         avatarUrl={
-          profile.accountResponse.avatar ||
+          profile?.accountResponse?.avatar ||
           'https://www.shutterstock.com/image-vector/vector-illustration-watercolor-style-portrait-600nw-2294597499.jpg'
         }
         name={`${profile.firstName} ${profile.lastName}`}
@@ -36,11 +36,11 @@ const ProfileOverview: FC<IProfileOverviewProps> = ({ profile }) => {
           title="Account"
           value={profile.isPremium === 1 ? 'Premium' : 'Normal'}
         />
-        <AboutProfileOverview title="Level" value={profile.level} />
-        <AboutProfileOverview title="Score" value={profile.score} />
+        <AboutProfileOverview title="Level" value={profile?.level} />
+        <AboutProfileOverview title="Score" value={profile?.score} />
         <AboutProfileOverview
           title="Challenge Submit"
-          value={`${profile.totalSubmittedChallenge} Solution`}
+          value={`${profile?.totalSubmittedChallenge} Solution`}
         />
       </div>
 

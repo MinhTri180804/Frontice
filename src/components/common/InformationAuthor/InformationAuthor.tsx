@@ -13,7 +13,7 @@ const InformationAuthor: FC<IInformationAuthorProps> = ({ authorProfile }) => {
       <div className="author">
         <div className="image-solution">
           <img
-            src={authorProfile.accountResponse.avatar || DefaultAvatar}
+            src={authorProfile?.accountResponse?.avatar || DefaultAvatar}
             alt=""
           />
         </div>
