@@ -19,7 +19,7 @@ interface IChallengeOverviewProps {
   optionsImagePreview: {
     id: string;
     label: string;
-    imageUrl: string;
+    url: string;
   }[];
   error?: {
     message: string;

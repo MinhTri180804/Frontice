@@ -5,7 +5,7 @@ import OptionImagePreview from '../OptionImagePreview';
 interface IOptionsImagePreview {
   id: string;
   label: string;
-  imageUrl: string;
+  url: string;
 }
 
 interface IImagePreviewProps {
@@ -14,7 +14,7 @@ interface IImagePreviewProps {
 
 const ImagePreview: FC<IImagePreviewProps> = ({ optionsImagePreview }) => {
   const [showImagePreview, setShowImagePreview] = useState<string>(
-    optionsImagePreview[0].imageUrl,
+    optionsImagePreview[0].url,
   );
   const [optionPreviewActive, setOptionPreviewActive] = useState<string>(
     optionsImagePreview[0].id,
@@ -36,7 +36,7 @@ const ImagePreview: FC<IImagePreviewProps> = ({ optionsImagePreview }) => {
         {optionsImagePreview.map((option, index) => (
           <OptionImagePreview
             key={`${index}`}
-            imagePreviewUrl={option.imageUrl}
+            imagePreviewUrl={option.url}
             label={option.label}
             handleSelect={handleSelectOption}
             id={option.id}

@@ -31,7 +31,7 @@ const Solutions: React.FC = () => {
   if (isError) {
     return <div>Error fetching data</div>;
   }
-  console.log('data', data.result); //tra ve data cua tung challenges
+  // console.log('data', data.result); //tra ve data cua tung challenges
   return (
     <>
       <div className="container-solution-list-page">

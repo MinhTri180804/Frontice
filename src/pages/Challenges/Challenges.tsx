@@ -1,12 +1,41 @@
+import { useState } from 'react';
 import { Button, Challenge } from '../../components/common';
 import './Challenges.scss';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import getChallengeService from '../../services/challengeApi';
+import { useQuery } from '@tanstack/react-query';
+import Pagination from '../../components/common/Paginations';
+import { useTranslation } from 'react-i18next';
+import { ChallengeSkeleton } from '../../components/skeleton';
 const Challenges: React.FC = () => {
+  const { t } = useTranslation();
+  const LIMIT = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handleChangePage: (currentPage: number) => void = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
+  const {
+    isPending,
+    data: responseChallenges,
+    isError,
+  } = useQuery({
+    queryKey: ['challenge', currentPage],
+    queryFn: async () => {
+      const response = await getChallengeService(currentPage, LIMIT);
+      const responseData = response.data.data;
+      return responseData;
+    },
+  });
+  console.log('current page: ' + currentPage);
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
+  console.log('response data: ', responseChallenges);
   return (
     <>
       <div className="container-challenges-page">
         <div className="header">
-          <div className="title">Challenges List</div>
+          <div className="title">{t('Challenges List')}</div>
           <Button
             style={{ width: 'fit-content' }}
             label="Filter"
@@ -17,24 +46,22 @@ const Challenges: React.FC = () => {
           />
         </div>
         <div className="challenges-list">
-          {Array.from({ length: 10 }).map(() => (
-            <Challenge
-              name="Frontend Quiz app"
-              bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
-              description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"
-              level="Diamond"
-              difficulty="High"
-              technicalList={['html', 'css', 'javascript']}
-              score={120}
-              tags={[
-                {
-                  value: 'premium',
-                },
-                { value: 'new' },
-              ]}
-            />
-          ))}
+          {isPending
+            ? Array.from({ length: LIMIT }).map((_, index) => (
+                <div className="challenge-skeleton_component-container">
+                  <ChallengeSkeleton key={index} />
+                </div>
+              ))
+            : responseChallenges.result.map((challenge, index) => (
+                <Challenge key={index} challengeData={challenge} />
+              ))}
+          {}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={responseChallenges?.meta.totalPages || 0}
+          onPageChange={handleChangePage}
+        />
       </div>
     </>
   );

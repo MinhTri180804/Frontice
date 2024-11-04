@@ -1,8 +1,24 @@
 import { Button } from '../../../../components/common';
+import { IResource } from '../../../../types/response/detailChallenge';
 import BoxContent from '../BoxContent';
 import './challengeDetailsDownload.scss';
 
-const ChallengeDetailsDownload = () => {
+interface DownloadButtonProps {
+  resource: IResource;
+}
+const ChallengeDetailsDownload: React.FC<DownloadButtonProps> = ({
+  resource,
+}) => {
+  const handleDownload = (url: string, name: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = name;
+    console.log('name: ' + name);
+    document.body.appendChild(link);
+    link.click();
+    // document.body.removeChild(link);
+  };
+  console.log('resource', resource);
   return (
     <div className="challenge__details-download-tab">
       <BoxContent
@@ -18,6 +34,9 @@ const ChallengeDetailsDownload = () => {
           label="Download starter"
           styleType="primary"
           buttonSize="normal"
+          onClick={() =>
+            handleDownload(resource.assetsUrl, resource.assetsName)
+          }
         />
       </BoxContent>
       <BoxContent
@@ -33,6 +52,7 @@ const ChallengeDetailsDownload = () => {
           label="Download design"
           styleType="primary"
           buttonSize="normal"
+          onClick={() => handleDownload(resource.figmaUrl, resource.figmaName)}
         />
       </BoxContent>
     </div>

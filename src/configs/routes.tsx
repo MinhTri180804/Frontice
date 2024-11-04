@@ -71,7 +71,10 @@ const extendedRoutes: RouteObject[] = [
     element: <SubmitSolutionPage />,
   },
 
-  { path: paths.challengeDetails, element: <ChallengeDetailsPage /> },
+  {
+    path: `${paths.challengeDetails}/:id`,
+    element: <ChallengeDetailsPage />,
+  },
 ];
 
 const extendedRoutesAuth: RouteObject[] = [

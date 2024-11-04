@@ -1,0 +1,40 @@
+@use '../../styles/scss/flex-grid' as *;
+@use '../../styles/scss/utils/mixin/typography' as *;
+@use '../../styles/scss/utils/variables/colors' as *;
+.container-page-not-found {
+  // @include grid(12, none, 24px, none, none);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  scrollbar-width: none;
+  & > figure {
+    // grid-column: span 8;
+
+    & > img {
+      width: 525px;
+      height: 360px;
+      filter: hue-rotate(32deg);
+    }
+    & > h2,
+    & > h3,
+    & > p {
+      text-align: center;
+    }
+    & > h2 {
+      @include typography_BVNPro-desktop-h3;
+      color: $saturatedSky-main;
+      margin-bottom: 24px;
+    }
+    & > h3 {
+      @include typography_BVNPro-desktop-h5;
+      color: $satinDeepBlack-main;
+    }
+    & > p {
+      @include typography_BVNPro-desktop-body-1;
+      color: $satinDeepBlack-tints-400;
+      margin-bottom: 24px;
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import axios from 'axios';
-const getChallengeService = async (page: number, limit: number) => {
-  const response = await axios.get(
+import { IlistChallengeResponse } from '../types/response/listChallenge';
+import { IBaseResponse } from '../types/base';
+
+const getChallengeService = async (pageNo: number, pageSize: number) => {
+  return axios.get<IBaseResponse<IlistChallengeResponse>>(
     `https://front-ice-platform-production.up.railway.app/api/v1/challenges`,
     {
-      params: { _limit: limit, _page: page },
+      params: { pageNo, pageSize },
     },
   );
-  return response.data.data;
 };
 
 export default getChallengeService;

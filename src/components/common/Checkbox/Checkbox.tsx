@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useId, useState } from 'react';
 import './checkbox.scss';
 import classNames from 'classnames';
 
@@ -30,18 +30,18 @@ const Checkbox: FC<ICheckboxProps> = ({
     disabled: isDisabled,
     error: isError,
   });
-
+  const id = useId();
   return (
     <div className={checkboxClass}>
       <input
         className="inp-cbx"
-        id="morning"
+        id={id}
         type="checkbox"
         checked={checked}
         onChange={handleChecked}
         disabled={isDisabled}
       />
-      <label className="cbx" htmlFor="morning">
+      <label className="cbx" htmlFor={id}>
         <span>
           <svg width="12px" height="10px">
             <use xlinkHref="#check-4"></use>

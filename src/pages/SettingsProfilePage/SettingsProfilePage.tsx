@@ -49,15 +49,13 @@ const sectionsData = [
 
 const SettingsProfilePage: React.FC = () => {
   const { t } = useTranslation();
-
   const {
-    register, // register kiem tra loi
+    register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
-    //nhung props se duoc nhan vao data
   };
 
   return (
