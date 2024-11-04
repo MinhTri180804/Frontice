@@ -62,11 +62,7 @@ const FormLogin: FC = () => {
 
         .catch((error: IBaseResponse<null>) => {
           const MESSAGE_ERROR = `${t('ToastMessage.Auth.Login.error')}`;
-          if (i18Language === paths.LANGUAGE.english)
-            throw error.messageEng || MESSAGE_ERROR;
-
-          if (i18Language === paths.LANGUAGE.vietnamese)
-            throw error.messageVN || MESSAGE_ERROR;
+          throw error.messageEng || MESSAGE_ERROR;
         }),
 
       {
