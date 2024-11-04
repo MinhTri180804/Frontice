@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Form, FormSubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContentProps } from 'react-toastify';
@@ -7,6 +7,8 @@ import { Button, Input } from '../../../../../components/common';
 import { Checkbox } from '../../../../../components/common/Checkbox';
 import { paths } from '../../../../../constant';
 import authService from '../../../../../services/authServices';
+import challengerService from '../../../../../services/challengerService';
+import { useAuthStore } from '../../../../../store/authStore';
 import { IBaseResponse } from '../../../../../types/base';
 import { IOptionLanguage } from '../../../../../types/entity';
 import { ILoginRequest } from '../../../../../types/request/login';
@@ -17,17 +19,15 @@ import {
 } from '../../../../../utils/localstorage';
 import useFormLogin from './formLogin.hook';
 import './formLogin.scss';
-import { useAuthStore } from '../../../../../store/authStore';
-import challengerService from '../../../../../services/challengerService';
 
 const DEFAULT_PAGE_LOGIN_SUCCESS = paths.home;
 
 const FormLogin: FC = () => {
   const navigate = useNavigate();
   const {
-    control,
     register,
     formState: { errors },
+    handleSubmit,
   } = useForm<ILoginRequest>();
 
   const { login } = useAuthStore();
@@ -39,10 +39,10 @@ const FormLogin: FC = () => {
     console.log('Remember account');
   };
 
-  const handleLogin: FormSubmitHandler<ILoginRequest> = (data) => {
+  const handleLogin: SubmitHandler<ILoginRequest> = (data) => {
     toast.promise(
       authService
-        .login(data.data)
+        .login(data)
         .then(async (response) => {
           const { accessToken, refreshToken } = response.data.data;
           saveAccessToken(accessToken);
@@ -81,8 +81,10 @@ const FormLogin: FC = () => {
     );
   };
 
+  console.log(errors.password?.message);
+
   return (
-    <Form className="login__form" control={control} onSubmit={handleLogin}>
+    <form className="login__form" onSubmit={handleSubmit(handleLogin)}>
       <Input
         {...register('email', aboutOfEmail.rule)}
         label={aboutOfEmail.name}
@@ -93,8 +95,8 @@ const FormLogin: FC = () => {
 
       <Input
         {...register('password', aboutOfPassword.rule)}
-        message={errors.email?.message}
-        status={errors.email && 'error'}
+        message={errors.password?.message}
+        status={errors.password && 'error'}
         label={aboutOfPassword.name}
         placeholder="Enter your password..."
         type="password"
@@ -117,8 +119,9 @@ const FormLogin: FC = () => {
         styleType="primary"
         label={`${t('Button.Login')}`}
         buttonSize="medium"
+        type="submit"
       />
-    </Form>
+    </form>
   );
 };
 
