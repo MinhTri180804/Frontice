@@ -1,29 +1,33 @@
-import React from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import { QueryProvider, Router } from './components/wrapper';
-import { paths } from './constant';
+import React, { useEffect } from 'react';
 import './app.scss';
+import { QueryProvider, Router, ToastHandler } from './components/wrapper';
+import './configs/i18n';
+import { paths } from './constant';
+import { useAuthStore } from './store/authStore';
+import { checkAuthentication } from './utils/helper';
+import { getProfile } from './utils/localstorage';
 
 const App: React.FC = () => {
+  const { login, logout } = useAuthStore();
+  useEffect(() => {
+    const checkAuth = checkAuthentication();
+    if (checkAuth) {
+      const profile = getProfile();
+      if (profile) {
+        login(profile);
+      }
+    } else {
+      logout();
+    }
+  }, []);
+
   return (
     <div className="app-container">
       <QueryProvider>
-        <Router defaultRoute={paths.home} />
+        <ToastHandler>
+          <Router defaultRoute={paths.home} />
+        </ToastHandler>
       </QueryProvider>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </div>
   );
 };

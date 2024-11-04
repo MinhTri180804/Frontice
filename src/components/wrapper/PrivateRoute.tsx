@@ -1,19 +1,19 @@
-import React from "react";
-import { paths } from "../../constant";
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import { useAuthStore } from '../../store/authStore';
+import UnauthorizedPage from '../../pages/Error/Unauthorized/Unauthorized';
 
 interface PrivateRouteProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-const isAuthenticated: boolean = true
-
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-    if (!isAuthenticated) {
-        return <Navigate to={paths.login} />;
-    }
+  const { isAuthentication, profile } = useAuthStore();
 
-    return <>{children}</>;
+  if (!profile || !isAuthentication) {
+    return <UnauthorizedPage />;
+  }
+
+  return <>{children}</>;
 };
 
 export default PrivateRoute;

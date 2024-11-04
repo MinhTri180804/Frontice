@@ -1,40 +1,43 @@
-import React, { useId } from 'react';
+import React, { forwardRef, HTMLProps, Ref, useId } from 'react';
 import './Input.scss';
 
-interface InputProps {
+interface IInputProps extends HTMLProps<HTMLInputElement> {
   label?: string;
-  size?: 'small' | 'medium' | 'large';
-  type: string;
-  placeholder?: string;
-  required?: boolean;
+  status?: 'default' | 'error' | 'success' | 'loading';
+  message?: string;
   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
-const Input: React.FC<InputProps> = ({ ...props }) => {
+const Input = forwardRef((props: IInputProps, ref: Ref<HTMLInputElement>) => {
   const idInput = useId();
 
-  const { label, type, placeholder, required, size, Icon } = props;
+  const {
+    label,
+    required,
+    Icon,
+    message,
+    status = 'default',
+    ...inputProps
+  } = props;
 
   return (
-    <div className={`input-container ${size}`}>
+    <div className={`input__component ${status} `}>
       {label && (
         <label htmlFor={idInput}>
           {label} {required && <span style={{ color: 'red' }}>*</span>}
         </label>
       )}
-      <input
-        id={idInput}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-      />
-      {Icon && (
-        <div className="icon">
-          <Icon />
-        </div>
-      )}
+      <div className="input__component-container">
+        <input id={idInput} ref={ref} {...inputProps} />
+        {Icon && (
+          <div className="icon">
+            <Icon />
+          </div>
+        )}
+      </div>
+      {message && <div className={`message ${status}`}> {message}</div>}
     </div>
   );
-};
+});
 
 export default Input;

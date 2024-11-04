@@ -1,12 +1,25 @@
 @use '../../../styles/scss/utils/variables' as *;
+@use '../../../styles/scss/flex-grid' as *;
 .button-container {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  gap: 8px;
+  width: 100%;
   cursor: pointer;
+  transition: background-color $background_transition_time_duration ease-in-out;
+  @include flex-row(8px, center, center);
+  border-radius: 8px;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  & > .label {
+    flex-grow: 1;
+    max-width: fit-content;
+    white-space: nowrap;
+  }
+
+  & > .icon {
+    flex-shrink: 0;
+  }
+
   &.large {
-    border-radius: 4px;
     padding: 20px 32px;
     font-size: 20px;
 
@@ -17,7 +30,6 @@
   }
 
   &.normal {
-    border-radius: 4px;
     padding: 16px 32px;
 
     font-size: 20px;
@@ -28,7 +40,6 @@
   }
 
   &.medium {
-    border-radius: 4px;
     padding: 14px 32px;
 
     color: $white;
@@ -41,7 +52,6 @@
   }
 
   &.small {
-    border-radius: 4px;
     padding: 12px 24px;
     color: $white;
     font-size: 14px;
@@ -52,7 +62,6 @@
   }
 
   &.extra-small {
-    border-radius: 4px;
     padding: 8px 24px;
     color: $white;
     font-size: 14px;
