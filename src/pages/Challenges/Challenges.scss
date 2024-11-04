@@ -14,5 +14,8 @@
     & > .challenge__component-container {
       grid-column: span 3;
     }
+    & > .challenge-skeleton_component-container {
+      grid-column: span 3;
+    }
   }
 }

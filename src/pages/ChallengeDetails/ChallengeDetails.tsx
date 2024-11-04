@@ -10,6 +10,8 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import getChallengeDetailService from '../../services/challengeDetailApi';
 import { useTranslation } from 'react-i18next';
+import { ChallengeSkeleton } from '../../components/skeleton';
+import Filter from '../../components/common/Filter';
 
 const ChallengeDetailsPage: FC = () => {
   const { t } = useTranslation();
@@ -32,7 +34,11 @@ const ChallengeDetailsPage: FC = () => {
     },
   });
   if (isPending) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <ChallengeSkeleton />
+      </div>
+    );
   }
   if (isError) {
     return <div>Error fetching data</div>;
@@ -115,6 +121,7 @@ const ChallengeDetailsPage: FC = () => {
         </Section>
         <section className="faq__challenge"></section>
       </div>
+      <Filter />
     </div>
   );
 };

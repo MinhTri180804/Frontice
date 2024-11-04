@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import { Challenge } from '../../components/common';
 import './RecruiterCompanyPage.scss';
 import {
@@ -7,8 +8,30 @@ import {
   RecruiterProfile,
   SectionAbout,
 } from './partials';
+import { useState } from 'react';
+import getChallengeRecruiter from '../../services/recruiterChallengeApi';
 
 const RecruiterCompanyPage: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const LIMIT = 10;
+  const {
+    isLoading,
+    data: responseChallengesRecruiter,
+    isError,
+  } = useQuery({
+    queryKey: ['challenge', currentPage],
+    queryFn: async () => {
+      const response = await getChallengeRecruiter(currentPage, LIMIT);
+      const responseData = response.data.data;
+      return responseData;
+    },
+  });
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
   return (
     <div className="recruiter-company-container">
       <h1 className="recruiter-company-title">Recruiter Company</h1>
@@ -44,23 +67,10 @@ const RecruiterCompanyPage: React.FC = () => {
       </div>
       <SectionAbout className="challenge__list" title="Danh sách thử thách">
         <div className="challenge__list-content">
-          {Array.from({ length: 10 }).map(() => (
-            <Challenge
-              name="Frontend Quiz app"
-              bannerUrl="https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/wcxhsnz3foidwbzshiia.jpg"
-              description="This app will test your skills (as well as your knowledge!) as you build out a fully functional quiz. We provide a local JSON file to help you practice working with JSON!"
-              level="Diamond"
-              difficulty="High"
-              technicalList={['html', 'css', 'javascript']}
-              score={120}
-              tags={[
-                {
-                  value: 'premium',
-                },
-                { value: 'new' },
-              ]}
-            />
-          ))}
+          {responseChallengesRecruiter?.result &&
+            responseChallengesRecruiter?.result.map((challenge, index) => (
+              <Challenge key={index} challengeData={challenge} />
+            ))}
         </div>
       </SectionAbout>
     </div>

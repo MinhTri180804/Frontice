@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { IDataChallengeResponse } from '../../types/response/listChallenge';
 import Pagination from '../../components/common/Paginations';
 import { useTranslation } from 'react-i18next';
+import { ChallengeSkeleton } from '../../components/skeleton';
 const Challenges: React.FC = () => {
   const { t } = useTranslation();
   const LIMIT = 10;
@@ -27,9 +28,6 @@ const Challenges: React.FC = () => {
     },
   });
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
   if (isError) {
     return <div>Error fetching data</div>;
   }
@@ -49,14 +47,20 @@ const Challenges: React.FC = () => {
           />
         </div>
         <div className="challenges-list">
-          {responseChallenges.result &&
-            responseChallenges.result.map((challenge, index) => (
-              <Challenge key={index} challengeData={challenge} />
-            ))}
+          {isPending
+            ? Array.from({ length: LIMIT }).map((_, index) => (
+                <div className="challenge-skeleton_component-container">
+                  <ChallengeSkeleton key={index} />
+                </div>
+              ))
+            : responseChallenges.result.map((challenge, index) => (
+                <Challenge key={index} challengeData={challenge} />
+              ))}
+          {}
         </div>
         <Pagination
           currentPage={currentPage}
-          totalPages={responseChallenges.meta.totalPages}
+          totalPages={responseChallenges?.meta.totalPages || 0}
           onPageChange={handleChangePage}
         />
       </div>
