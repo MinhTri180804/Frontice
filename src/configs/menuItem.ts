@@ -1,6 +1,14 @@
 import React from 'react';
 import { paths } from '../constant';
-import { HomeIcon, ChartPieIcon, AcademicCapIcon, CommandLineIcon, Cog6ToothIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import {
+  HomeIcon,
+  ChartPieIcon,
+  AcademicCapIcon,
+  CommandLineIcon,
+  Cog6ToothIcon,
+  UserCircleIcon,
+  WrenchIcon,
+} from '@heroicons/react/24/outline';
 
 export interface MenuItem {
   label: string;
@@ -26,7 +34,11 @@ const menuItems: MenuItem[] = [
   createMenuItem('Statistic', paths.statistic, ChartPieIcon),
   createMenuItem('Challenge', 'challenge', undefined, [
     createMenuItem('Challenges system', paths.challenges, AcademicCapIcon),
-    createMenuItem('Challenges recruiter', paths.challengesRecruiter, AcademicCapIcon),
+    createMenuItem(
+      'Challenges recruiter',
+      paths.challengesRecruiter,
+      AcademicCapIcon,
+    ),
   ]),
   createMenuItem('Solution', 'solution', undefined, [
     createMenuItem('Solutions', paths.solutions, CommandLineIcon),
@@ -35,6 +47,11 @@ const menuItems: MenuItem[] = [
   createMenuItem('Information', 'information', undefined, [
     createMenuItem('Profile', paths.profile, UserCircleIcon),
     createMenuItem('Setting', paths.setting, Cog6ToothIcon),
+  ]),
+
+  createMenuItem('Options', 'options', undefined, [
+    createMenuItem('Submit Solution', paths.submitSolution, WrenchIcon),
+    createMenuItem('Recruiter Company', paths.recruiterCompany, WrenchIcon),
   ]),
 ];
 
